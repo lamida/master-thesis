@@ -44,11 +44,15 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{palatino} % Use the Palatino font by default
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % User the bibtex backend with the authoryear citation style (which resembles APA)
+\usepackage[backend=bibtex,style=numeric,natbib=true]{biblatex} % User the bibtex backend with the authoryear citation style (which resembles APA)
 
-\addbibresource{example.bib} % The filename of the bibliography
+\addbibresource{biblio.bib} % The filename of the bibliography
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
+\usepackage{minted} % code listing
+
+\usepackage{tocbibind}
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -68,7 +72,7 @@ headsepline, % Uncomment to get a line under the header
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{ScaRR Offline Program Analysis} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Scalable Runtime Remote Attestation Offline Program Analysis using LLVM} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Prof. \textsc{Jianying Zhou}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 \degree{Master of Science in Security by Design} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
@@ -160,9 +164,9 @@ Thesis Advisor\\[1cm]
 
 \vspace*{0.2\textheight}
 
-\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
+\noindent\enquote{\itshape  By (the Token of) Time (through the ages), Verily Man is in loss, Except such as have Faith, and do righteous deeds, and (join together) in the mutual teaching of Truth, and of Patience and Constancy.}\bigbreak
 
-\hfill Dave Barry
+\hfill The Quran - The Epoch
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
@@ -171,7 +175,7 @@ Thesis Advisor\\[1cm]
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+Runtime remote attestation enable attesting application to ensure there is no control flow attack that alter the intended behavior of the program. Prior to the ScaRR \cite{toffaliniScaRRScalableRuntime2019} , remote attestation was only feasible for embedded system and there was no scalable solution for complex programs. This thesis present the implementation of ScaRR offline measurement using LLVM and analyze the performance of the computation.
 
 \end{abstract}
 
@@ -195,6 +199,8 @@ The acknowledgments and the people to thank go here, don't forget to include you
 \listoffigures % Prints the list of figures
 
 \listoftables % Prints the list of tables
+
+\listoflistings % Prints List of Codes
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS

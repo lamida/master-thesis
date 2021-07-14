@@ -1,7 +1,12 @@
 % Chapter 3
 
-\chapter{Method} % Main chapter title
+\chapter{Scope of Work} % Main chapter title
 
 \label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter3} 
 
-\section{Lorem Ipsum}
+\section{Implementation}
+This thesis is implementing the ScaRR Control Flow Model as LLVM passes using LLVM 13.0.0. 
+
+\section{Analysis}
+
+We analyzed the control-flow model extracted against different programs with various size and complexities. In this thesis, we are only analyzing program written in C. However, since the LLVM pass is running control from graph extraction against the intermediate representation, we should get consistent result on any programming language that compiles to IR.
