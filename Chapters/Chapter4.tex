@@ -8,10 +8,14 @@ In this chapter we will start with brief overview of related remote attestation 
 
 \section{Related Attestation Scheme}
 
+\ft{related works in Introduction (As I wrote in my mail, I send it again)}
+
 In this section we present how different attestation scheme encode the offline program representations.
 
 \subsection{C-Flat (2016)}
 
+\ft{no need to make a subsection for each work, just discuss together in a 
+single section. You can separate them in paragraphs.}
 C-Flat \cite{aberaCFLATControlFlowAttestation2016} is the first remote attestation scheme to detect runtime control flow attack for embedded systems. C-Flat are generating offline measurement by traversing all possible path of program from start node to the termination node. In each node, C-Flat will hash the node ID and the hash of previous node. In the first node, since there is no previous hash, we will pass 0. This will create hash chains which will be stored as offline measurement database.
 
 \begin{figure}[htbp]
@@ -103,7 +107,19 @@ Consider the CFG in the Figure \ref{fig:4-5}. The LoA between node 3 (Checkpoint
 \label{fig:4-5}
 \end{figure}
 
+\section{Overview}
+
+\ft{I guess we need a section Overview section in which you explain the three 
+main ``steps'': Flattening CFG, Find Checkpoints, and last LoA collector. Then, 
+you describe how you implemented each part in each section (more or less how 
+you already doing).}
+
+\ft{in addition to the pseud code (that are correct btw), you should integrate 
+with an image of a CFG that gives an intuition of what you are looking for in 
+those passes.}
+
 \section{ScaRR LLVM Pass}
+\ft{basically, this is the first part of your methodology section xD}
 
 ScaRR offline measurement is represented as the following key-value pair.
 
@@ -114,6 +130,7 @@ As described in the above, checkpoint is a special basic block that delimit path
 ScaRR extractor will traverse the graph in two passes. The first pass is find whether the basic block is a checkpoint. The second pass will traverse the graph and mark List of Action between every two checkpoint. 
 
 \subsection{ScaRR Checkpoint Marker}
+\ft{basically, this becomes a section (not subsection). Same for the others.}
 
 The logic of checkpoint marker is to traverse the whole control flow graph at least one and for each basic block, we will have to check whether the basic block can be considered as any of checkpoint type mentioned above. To allow marking additional information about ScaRR checkpoint, we are modifying the BasicBlock class to add checkpoint instance variable.
 
@@ -131,7 +148,7 @@ The logic of checkpoint marker is to traverse the whole control flow graph at le
     ...
     }
 \end{minted}
-\caption{Add Checkpoint Instance Variable to BasicBlock class}    
+\caption{Add Checkpoint Instance Variable to BasicBlock class.}    
 \label{listing:4-1}
 \end{listing}
 
@@ -178,7 +195,8 @@ To mark Virtual checkpoint, we need to find loop header basic block. Although th
         }
     }
 \end{minted}
-\caption{Getting Virtual Checkpoint}    
+\caption{Getting Virtual Checkpoint \ft{you could reduce the font size -- also 
+for the others.}}    
 \label{listing:4-3}
 \end{listing}
 

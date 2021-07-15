@@ -4,13 +4,42 @@
 
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 
+\ft{DON'T USE FUTURE TENSE. EVERYTHING IN PRESENT TENSE. SIMPLE PAST AT MOST. 
+check it everywhere.}
 In this chapter, we will present some backgrounds on software attack and remote attestation to detect the attacks. After that, we will share an overview of LLVM that relevant to the research. 
 
 \section{Software Attack}
 
-Software attack happens when adversaries make program execution to perform action of their choice. The adversary choice can be executing malicious operations or leaking secret information and more. In the past adversary will modify the binary of the application to statically alter the the behaviour of the program. Nowadays, to prevent detection, attacks are being done by altering runtime properties of the program. Many of this runtime software security attacks are occured due to memory corruption bug in software written in low-level languages like C and C++ \cite{szekeresSoKEternalWar2013}.
+\ft{don't call them software attack, these are ``Control flow attacks''}
 
-Once memory corruption is triggered, there are different exploit types which adversary can use to perform the attack. Some of the relevant exploits are control-flow hijack \cite{shachamGeometryInnocentFlesh2007, schusterCounterfeitObjectorientedProgramming2015}  and data only attack \cite{chenNonControlDataAttacksAre2005, carliniControlFlowBendingEffectiveness2015}. Control-flow hijack can be classified further into code injection attack and code reuse attack such as return oriented programming \cite{roemerReturnorientedProgrammingSystems2012}. Code injection attack is already mitigated by Data Exectuion Prevention. A return-oriented program chains together short instruction sequences already present in a program’s address space, each of which ends in a “return” instruction. ROP can't be mititgated by \( W \bigoplus R \) or trusted computing
+Software attack happens when adversaries make program execution to perform 
+action of their choice. The adversary choice can be executing malicious 
+operations or leaking secret information and more.
+\ft{do you use ``in the past'', and then ``will'' (?) just use past tense :D}
+In the past adversary will modify the binary of the application to statically 
+alter the the behaviour of the program. Nowadays, to prevent detection, attacks 
+are being done by altering runtime properties of the program. Many of this 
+runtime software security attacks are occured due to memory corruption bug in 
+software written in low-level languages like C and C++ 
+\cite{szekeresSoKEternalWar2013}.
+
+Once memory corruption is triggered, there are different exploit types which 
+adversary can use to perform the attack. Some of the relevant exploits are 
+control-flow hijack \cite{shachamGeometryInnocentFlesh2007, 
+schusterCounterfeitObjectorientedProgramming2015}  and data only attack 
+\cite{chenNonControlDataAttacksAre2005, 
+carliniControlFlowBendingEffectiveness2015}. Control-flow hijack can be 
+classified further into code injection attack and code reuse attack such as 
+return oriented programming \cite{roemerReturnorientedProgrammingSystems2012}. 
+Code injection attack is already mitigated by Data Exectuion 
+Prevention~\ft{cite}. A return-oriented program chains together short 
+instruction sequences already 
+present in a program’s address space, each of which ends in a “return”
+\ft{use \texttt{ret} (with the texttt tag) instead of ``return''. Moreover, the 
+quotes in latex are made with `` and ''. Not ".}
+ instruction. ROP can't be mititgated by \( W \bigoplus R \)~\ft{cite}.
+ 
+\ft{Add a citation about all the defenses cited.}
 
 \section{Remote Attestation}
 Remote attestation is the activity of making a claim about properties of a remote target by supplying evidence to an appraiser over a network \cite{cokerPrinciplesRemoteAttestation2011a}. The rampant deployment of IoT and different applications in the cloud require robust remote attestation method to ensure detection when the application is attacked.
@@ -19,6 +48,7 @@ Remote attestation scope was only covering static attestation of the application
 
 In remote attestation there will be two roles involved, a trusted prover and a verifier. A prover is the one that must proof that the software hasn't been compromised. Verifier will check prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier will compare the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
 
+\ft{present tense!}
 This research will be mainly focused on offline measurement data generation for remote attestation which will be used by verifier to validate the control flow graph. We will be using LLVM in implementing the offline program analyzer.
 
 \section{LLVM}
@@ -57,7 +87,17 @@ LLVM optimizer — which includes Analyzer and Transformer — are working on IR
 
 \subsection{LLVM Pass}
 
-LLVM are applying transformations (which may include some analysis pipelines) and optimizations on tools called opt. opt is taking LLVM IR (either as text, bytecode or in memory) as input and then do transformations, analysis and optimizations on it. Transformation and optimization will alter the LLVM structure. Analysis will get information from the structure, which usually will be used by one or more transformations. Different transformations, optimizations and analyses are performed as pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM function pass will be executed once for every function in the program. LLVM module pass will be executed once for every module. LLVM loop pass will run a time for each loop. 
+LLVM are applying transformations (which may include some analysis pipelines) 
+and optimizations on tools called opt.\ft{write \texttt{opt} for tool name.}
+opt is taking LLVM IR (either as text, bytecode or in memory) as input and then 
+do transformations, analysis and optimizations on it. Transformation and 
+optimization will alter the LLVM structure. Analysis will get information from 
+the structure, which usually will be used by one or more transformations. 
+Different transformations, optimizations and analyses are performed as 
+pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM 
+function pass will be executed once for every function in the program. LLVM 
+module pass will be executed once for every module. LLVM loop pass will run a 
+time for each loop. 
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=.25]{Figures/llvm.png}}
@@ -95,7 +135,13 @@ In writing LLVM pass, we will use LLVM API. In this section we will present rele
 
 Module is the top level container for all other IR objects. Module contains list of global variables, functions, symbol tables and other various data about target characteristics. Module can be a single translation unit of a program (source file) or can be multiple translation unit combined by linker. 
 
-In LLVM pass, we can get access to module by implementing a Module pass or by parsing IR using `parseIR` or `parseIRFile` from `IRReader.h`. Once we get a handler to a module, getting a functions within module will be as simple as passing module to a loop, since module provides iterator that return list of function in the module.
+In LLVM pass, we can get access to module by implementing a Module pass or by
+\ft{for all functions, use \texttt{parseIR()}, also for file name 
+\texttt{IIReader.h} } parsing IR using `parseIR` or 
+`parseIRFile` from 
+`IRReader.h`. Once we get a handler to a module, getting a functions within 
+module will be as simple as passing module to a loop, since module provides 
+iterator that return list of function in the module.
 
 \begin{listing}
 \inputminted[]{cpp}{code/module.cpp}
