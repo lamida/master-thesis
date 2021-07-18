@@ -19,9 +19,9 @@ Once memory corruption is triggered, there are different exploit types which adv
 \section{Remote Attestation}
 Remote attestation is the activity of making a claim about properties of a remote target by supplying evidence to an appraiser over a network \cite{cokerPrinciplesRemoteAttestation2011a}. The rampant deployment of IoT and different applications in the cloud require robust remote attestation method to ensure detection when the application is attacked.
 
-Remote attestation scope was only covering static attestation of the application binary. However, in the recent years there have been more sophisticated attack that can alter the behavior of application so that static attestation will not suffice. 
+Remote attestation scope was only covering static attestation of the application binary. However, in the recent years there have been more sophisticated attack that can alter the behavior of application so that static attestation does not suffice. 
 
-In remote attestation there will be two roles involved, a trusted prover and a verifier. A prover is the one that must proof that the software hasn't been compromised. Verifier will check prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier will compare the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
+In remote attestation there are two roles involved, a trusted prover and a verifier. A prover is the one that must prove that the software has not been compromised. Verifier checks prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier compares the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
 
 This research mainly focuses on offline measurement data generation for remote attestation which is used by verifier to validate the control flow graph. We use LLVM in implementing the offline program analyzer.
 
@@ -47,7 +47,7 @@ The IR of the program can be seen in listing \ref{listing:2-2}. The text represe
 \label{listing:2-2}
 \end{listing}
 
-In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks — container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. From the C code and the IR above, the CFG graph is as follow.
+In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks: container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. From the C code and the IR above, the CFG graph is as follow.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=.5]{Figures/cfg.png}}
@@ -57,13 +57,21 @@ In the IR, each line contains LLVM instructions. Instructions are grouped in bas
 
 The details of LLVM IR is available in the Language Reference \cite{LLVMLanguageReferencea}.
 
-LLVM optimizer — which includes Analyzer and Transformer — are working on IR. In this thesis we are using this analyzer and transformer in building the Offline Program Analyzer.
+LLVM optimizer \textemdash{} which includes Analyzer and Transformer \textemdash{} are working on IR. In this thesis we are using this analyzer and transformer in building the Offline Program Analyzer.
 
 \subsection{LLVM Pass}
 
-LLVM are applying transformations (which may include some analysis pipelines) and optimizations on tools called \texttt{opt}. \texttt{opt} is taking LLVM IR (either as text, bytecode or in memory) as input and then do transformations, analysis and optimizations on it. Transformation and optimization will alter the LLVM structure. Analysis will get information from the structure, which usually will be used by one or more transformations.  Different transformations, optimizations and analyses are performed as pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM function pass will be executed once for every function in the program. LLVM module pass will be executed once for every module. LLVM loop pass will run a time for each loop.  \begin{figure}[htbp] \centerline{\includegraphics[scale=.25]{Figures/llvm.png}} \caption{LLVM Pass (This is image will be replaced with the proper one)} \label{fig:2-2} \end{figure} In LLVM there are two ways of implementing Pass. First is using legacy approach and the latest one is using new pass manager approach. The approach different in structuring the code the implement the pass and also the way we use the pass.  In the legacy approach, we need to inherit from either ModulePass, FunctionPass or LoopPass and override runOnXXX method (xxx is either Function, Module or Loop). In the newer approach we have to inherit CRTP mix-in PassInfoMixin<PassT> and override the run method.
+LLVM are applying transformations \textemdash{} which may include some analysis pipelines \textemdash{} and optimizations on tools called \texttt{opt}. \texttt{opt} is taking LLVM IR (either as text, bytecode or in memory) as input and then do transformations, analysis and optimizations on it. Transformation and optimization alters the LLVM structure. Analysis gets information from the structure, which usually to be used by one or more transformations. Different transformations, optimizations and analyses are performed as pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM function pass is executed once for every function in the program. LLVM module pass is executed once for every module. LLVM loop pass runs a time for each loop.  
 
-The way we use the pass, in legacy approach we need to provide the pass name as literal argument to \texttt{opt}. See the example below. In the new pass manager, we are putting the pass name after `--passes` argument in comma separated list. The pass will be executed in order.
+\begin{figure}[htbp] 
+    \centerline{\includegraphics[scale=.25]{Figures/llvm.png}} 
+    \caption{LLVM Pass (This is image will be replaced with the proper one)} 
+    \label{fig:2-2} 
+\end{figure} 
+
+In LLVM there are two ways of implementing Pass. First is using legacy approach and the latest one is using new pass manager approach. The approach different in structuring the code the implement the pass and also the way we use the pass.  In the legacy approach, we need to inherit from either ModulePass, FunctionPass or LoopPass and override runOnXXX method (xxx is either Function, Module or Loop). In the newer approach we have to inherit CRTP mix-in PassInfoMixin<PassT> and override the run method.
+
+The way we use the pass, in legacy approach we need to provide the pass name as literal argument to \texttt{opt}. See the example below. In the new pass manager, we are putting the pass name after `--passes` argument in comma separated list. The pass is executed in order.
 
 \begin{listing}
 \begin{minted}{bash}
@@ -83,7 +91,7 @@ The way we use the pass, in legacy approach we need to provide the pass name as 
 
 \subsection{LLVM API}
 
-In writing LLVM pass, we will use LLVM API. In this section we will present relevant component that is required in implementing LLVM Pass for the Offline Program Analyzer. LLVM API is leveraging many C++ features and libraries such as template and STL. The API also provides many ready to use data structure which is not available in the STL. A more broad discussion on the important element of the API is available in the Programmers Manual \cite{LLVMProgrammerManuala}. Complete API documentation can be referred at the doxygen page \cite{LLVMLLVMa}.
+In writing LLVM pass, we use LLVM API. In this section we present relevant component that is required in implementing LLVM Pass for the Offline Program Analyzer. LLVM API is leveraging many C++ features and libraries such as template and STL. The API also provides many ready to use data structure which is not available in the STL. A more broad discussion on the important element of the API is available in the Programmers Manual \cite{LLVMProgrammerManuala}. Complete API documentation can be referred at the doxygen page \cite{LLVMLLVMa}.
 
 \subsubsection{Module}
 
@@ -99,7 +107,7 @@ In LLVM pass, we can get access to module by implementing a Module pass or by pa
 
 \subsubsection{Function}
 
-Function in LLVM represents function in the source program. A function contains list of zero or more BasicBlocks. There will one entry BasicBlock and can be multiple exit BasicBlocks. We can get handler to a function either by getting the iterator from a module instance or by implement a Function Pass. By using optimization, syntax hint or using an inliner pass, a function can be inlined. In this thesis, we are using \emph{inliner-wrapper} pass to inline most function before feeding the IR into the ScaRR passes.
+Function in LLVM represents function in the source program. A function contains list of zero or more BasicBlocks. There is one entry BasicBlock and can be multiple exit BasicBlocks. We can get handler to a function either by getting the iterator from a module instance or by implement a Function Pass. By using optimization, syntax hint or using an inliner pass, a function can be inlined. In this thesis, we are using \emph{inliner-wrapper} pass to inline most function before feeding the IR into the ScaRR passes.
 
 \subsubsection{Basic Block}
 
@@ -139,7 +147,7 @@ clang is one of the frontend provided by LLVM. It can compiles C, C++ and Object
     
 When compiling the source code, we can pass optimization level from 0 (no-optimization) to 3 (most optimal, can make code run faster but larger in size).  
 
-By default, clang will strip out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR.
+By default, clang strips out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR.
 
 \begin{listing}
 \begin{minted}{bash}
@@ -151,7 +159,7 @@ By default, clang will strip out value names and do some optimization when gener
 
 \subsubsection{opt}
 
-\texttt{opt} is LLVM optimizer and analyzer that can be invoked from command line. We are using \texttt{opt} to execute the offline program analyzer which will mark basic block checkpoints and calculate list of action which can be used as information to detect control flow violation during remote attestation.
+\texttt{opt} is LLVM optimizer and analyzer that can be invoked from command line. We are using \texttt{opt} to execute the offline program analyzer which marks basic block checkpoints and calculate list of action which can be used as information to detect control flow violation during remote attestation.
 
 \subsubsection{cmake}
 
