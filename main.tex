@@ -45,25 +45,22 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{palatino} % Use the Palatino font by default
 
 \usepackage[backend=bibtex,style=numeric,natbib=true]{biblatex} % User the bibtex backend with the authoryear citation style (which resembles APA)
-
 \addbibresource{biblio.bib} % The filename of the bibliography
 
 \usepackage{minted} % code listing
-\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
+% TODO: Enabling listing breaking the comilation
+% \usepackage{listings} 
 
-\usepackage{listings}
 \usepackage{xcolor}
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{mPurple}{rgb}{0.58,0,0.82}
 \definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
 
-
 \newcommand{\ie}{\textit{i.e.,} }
 \newcommand{\eg}{\textit{e.g.,} }
 \newcommand{\wrt}{\textit{w.r.t.\ }}
-
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent 
 %quotes in the bibliography
@@ -79,8 +76,6 @@ headsepline, % Uncomment to get a line under the header
 \definecolor{pink-shocking}{rgb}{0.99, 0.06, 0.75}
 \definecolor{green-shocking}{rgb}{0.0, 1, 0.0}
 \newcommand{\ft}[1]{\todobox{pink-shocking}{Flavio}{#1}}
-
-
 
 \usepackage{tocbibind}
 
