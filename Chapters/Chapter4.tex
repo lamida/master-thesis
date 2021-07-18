@@ -206,7 +206,7 @@ The algorithm of getting LoA between two checkpoints are little bit more complex
 
 \subsection{Running The Pass}
 
-To mark the list of Checkpoints, we can invoke LLVM opt as follow.
+To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as follow.
 
 \begin{listing}
 \begin{minted}{c++}
@@ -228,7 +228,7 @@ We can see the basic blocks output that has been marked with checkpoint using LL
 
 The commands above will generate different dot files per function. We can use xdot command line from graphiz to see the graph. 
 
-To mark the list of actions between checkpoints, we can invoke LLVM opt as shown in Listing \ref{listing:4-6}
+To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt} as shown in Listing \ref{listing:4-6}
 
 \begin{listing}
 \begin{minted}{c++}
