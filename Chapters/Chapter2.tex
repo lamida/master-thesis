@@ -4,24 +4,13 @@
 
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 
-\ft{DON'T USE FUTURE TENSE. EVERYTHING IN PRESENT TENSE. SIMPLE PAST AT MOST. 
-check it everywhere.}
-In this chapter, we will present some backgrounds on software attack and remote attestation to detect the attacks. After that, we will share an overview of LLVM that relevant to the research. 
+In this chapter, we present some backgrounds on software attack and remote attestation to detect the attacks. After that, we share an overview of LLVM that relevant to the research. 
 
 \section{Software Attack}
 
 \ft{don't call them software attack, these are ``Control flow attacks''}
 
-Software attack happens when adversaries make program execution to perform 
-action of their choice. The adversary choice can be executing malicious 
-operations or leaking secret information and more.
-\ft{do you use ``in the past'', and then ``will'' (?) just use past tense :D}
-In the past adversary will modify the binary of the application to statically 
-alter the the behaviour of the program. Nowadays, to prevent detection, attacks 
-are being done by altering runtime properties of the program. Many of this 
-runtime software security attacks are occured due to memory corruption bug in 
-software written in low-level languages like C and C++ 
-\cite{szekeresSoKEternalWar2013}.
+Software attack happens when adversaries make program execution to perform action of their choice. The adversary choice can be executing malicious operations or leaking secret information and more.  In the past, adversary modified the binary of the application to statically altered the the behaviour of the program. Nowadays, to prevent detection, attacks are being done by altering runtime properties of the program. Many of this runtime software security attacks are occured due to memory corruption bug in software written in low-level languages like C and C++ \cite{szekeresSoKEternalWar2013}.
 
 Once memory corruption is triggered, there are different exploit types which 
 adversary can use to perform the attack. Some of the relevant exploits are 
@@ -48,8 +37,7 @@ Remote attestation scope was only covering static attestation of the application
 
 In remote attestation there will be two roles involved, a trusted prover and a verifier. A prover is the one that must proof that the software hasn't been compromised. Verifier will check prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier will compare the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
 
-\ft{present tense!}
-This research will be mainly focused on offline measurement data generation for remote attestation which will be used by verifier to validate the control flow graph. We will be using LLVM in implementing the offline program analyzer.
+This research mainly focuses on offline measurement data generation for remote attestation which is used by verifier to validate the control flow graph. We use LLVM in implementing the offline program analyzer.
 
 \section{LLVM}
 
