@@ -4,13 +4,58 @@
 
 \label{Chapter4} % For referencing the chapter elsewhere, use \ref{Chapter4} 
 
-In this chapter we start with brief overview of related remote attestation schemes in the context of generating offline measurement. After that we present the implementation the ScaRR algorithm to extract checkpoint and list of action as LLVM passes. Checkpoints and list of actions are collected to build offline measurement database that is used for the remote attestation.
+In this chapter we start with threat model discussion. After that we present the overview of the implementation of the ScaRR algorithm to extract checkpoint and list of action. Checkpoints and list of actions are collected to build offline measurement database that is used for the remote attestation.
 
 \section{Threat Model}
 
-TBD.
+The threat model in this research from ScaRR threat model \cite{toffaliniScaRRScalableRuntime2019}. There are two parties: attacker and prover. The attacker has aim to hijact the application control flow by using various memory attacks described in Chapter \ref{Chapter3}. However, we do not consider physical attack and data-oriented attack which does not alter program CFG. The prover uses kernel as trusted anchor and has common memory corruption attack mitigations such as \( W \bigoplus R \) and ASLR. 
 
-\section{ScaRR Control-Flow Model}
+\section{Overview of The Offline Measurement}
+
+The goal of the offline measurement is to get the information to be used in the remote attestation. In this research we implement ScaRR Control-flow model \cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the Section \ref{sec:scarr-model}. These are the steps that we do in getting the offline measurements:
+
+\begin{enumerate}
+    \item Flatten the CFG
+    \item Find Checkpoints
+    \item Find List of Actions
+\end{enumerate}
+
+Consider the program in listing \ref{listing:simple-loop}. The CFG is shown in the figure \ref{fig:simple-loop-cfg}.
+
+\begin{listing}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        ]{c++}
+        int main() {
+            for (int i = 0; i < 10; i++) {
+                // do nothing
+            }
+        }
+    \end{minted}
+    \caption{Simple Loop}    
+    \label{listing:simple-loop}
+\end{listing}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=.5]{Figures/04/simple-loop.png}}
+\caption{Simple Loop CFG}
+\label{fig:simple-loop-cfg}
+\end{figure}
+
+
+\ft{I guess we need a section Overview section in which you explain the three 
+main ``steps'': Flattening CFG, Find Checkpoints, and last LoA collector. Then, 
+you describe how you implemented each part in each section (more or less how 
+you already doing).}
+
+\ft{in addition to the pseud code (that are correct btw), you should integrate 
+with an image of a CFG that gives an intuition of what you are looking for in 
+those passes.}
+
+\section{ScaRR Control-Flow Model} \label{sec:scarr-model}
 
 ScaRR \cite{toffaliniScaRRScalableRuntime2019} are taking lesson learned from many former runtime remote attestation scheme to build model that can perform in a scalable way and can perform remote attestation on complex system. ScaRR control-flow model consists of two main components, checkpoint and list of action. 
 
@@ -38,21 +83,11 @@ $$[(BBL_{s1},BBL_{d1}),...,(BBL_{sn},BBL_{dn})]$$
 Consider the CFG in the Figure \ref{fig:4-5}. The LoA between node 3 (Checkpoint Virtual) and node 10 (checkpoint ThreadEnd) is  $[(BBL_3, BBL_{10})]$. However, the LoA between node 0 and node 3 is $[]$ (empty set).
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/loop-cfg.png}}
+\centerline{\includegraphics[scale=.5]{Figures/04/loop-cfg.png}}
 \caption{Loop CFG}
-\label{fig:4-5}
+\label{fig:loop-cfg}
 \end{figure}
 
-\section{Overview}
-
-\ft{I guess we need a section Overview section in which you explain the three 
-main ``steps'': Flattening CFG, Find Checkpoints, and last LoA collector. Then, 
-you describe how you implemented each part in each section (more or less how 
-you already doing).}
-
-\ft{in addition to the pseud code (that are correct btw), you should integrate 
-with an image of a CFG that gives an intuition of what you are looking for in 
-those passes.}
 
 \section{ScaRR LLVM Pass}
 \ft{basically, this is the first part of your methodology section xD}
@@ -71,69 +106,87 @@ ScaRR extractor traverses the graph in two passes. The first pass is find whethe
 The logic of checkpoint marker is to traverse the whole control flow graph at least once. For each basic block, we have to check whether the basic block can be considered as any of checkpoint type mentioned above. To allow marking additional information about ScaRR checkpoint, we are modifying the BasicBlock class to add checkpoint instance variable.
 
 \begin{listing}
-\begin{minted}{c++}
-    class BasicBlock ... {
-    private:
-    // add checkpoint field
-        Checkpoint cp;
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{c++}
+        class BasicBlock ... {
+        private:
+        // add checkpoint field
+            Checkpoint cp;
 
-    public:
-        // setter and accessor
-    void setCheckpoint(Checkpoint);
-    Checkpoint getCheckpoint() const;
-    ...
-    }
-\end{minted}
-\caption{Add Checkpoint Instance Variable to BasicBlock class.}    
-\label{listing:4-1}
+        public:
+            // setter and accessor
+        void setCheckpoint(Checkpoint);
+        Checkpoint getCheckpoint() const;
+        ...
+        }
+    \end{minted}
+    \caption{Add Checkpoint Instance Variable to BasicBlock class.}    
+    \label{listing:4-2}
 \end{listing}
 
 The algorithm to mark the checkpoint is first we iterate all basic block in main function. First we mark the first basic block with no predecessor as ThreadStart checkpoint and basic block with no successor and ThreadEnd checkpoint. 
 
-To identify ExitPoint checkpoint, for each basic block then we iterate  each instruction to find whether any instruction in the basic block is a `call` instruction and has no body defined in this translation unit. Please refer to Listing \ref{listing:4-2}
+To identify ExitPoint checkpoint, for each basic block then we iterate  each instruction to find whether any instruction in the basic block is a `call` instruction and has no body defined in this translation unit. Please refer to Listing \ref{listing:4-3}
 
 \begin{listing}
-\begin{minted}{c++}
-    for (auto &basicBlock: Function) {
-        for (auto &instruction : basicBlock) {
-            if (isa<CallInst>(i)) {
-            auto *call = &cast<CallBase>(i);
-            if (call != nullptr && call->getCalledFunction()->empty()) {
-                // this basicBlock is ExitPoint
-                basicBlock.setCheckpoint(Checkpoint::ExitPoint);
-            } 
-        }
-    } 
-\end{minted}
-\caption{Finding ExitPoint Checkpoint}    
-\label{listing:4-2}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{c++}
+        for (auto &basicBlock: Function) {
+            for (auto &instruction : basicBlock) {
+                if (isa<CallInst>(i)) {
+                auto *call = &cast<CallBase>(i);
+                if (call != nullptr && call->getCalledFunction()->empty()) {
+                    // this basicBlock is ExitPoint
+                    basicBlock.setCheckpoint(Checkpoint::ExitPoint);
+                } 
+            }
+        } 
+    \end{minted}
+    \caption{Finding ExitPoint Checkpoint}    
+    \label{listing:4-3}
 \end{listing}
 
-To mark Virtual checkpoint, we need to find loop header basic block. Although there is no direct API to check whether a basic block is a loop header, LLVM provide it in LoopInfoBase API. See Listing \ref{listing:4-3}
+To mark Virtual checkpoint, we need to find loop header basic block. Although there is no direct API to check whether a basic block is a loop header, LLVM provide it in LoopInfoBase API. See Listing \ref{listing:4-4}
 
 \begin{listing}
-\begin{minted}{c++}
-    void findVirtualCheckpoint(DominatorTree &DT, Function &F) {
-        DT.recalculate(F);
-        // generate the LoopInfoBase for the current function
-        LoopInfoBase<BasicBlock, Loop>* KLoop = new LoopInfoBase<BasicBlock, Loop>();
-        KLoop->releaseMemory();
-        KLoop->analyze(DT);
-        for (auto &bb : F) {
-            // Since the BasicBlock would have been inlined, just traverse from main function
-            if (F.getName() == "main") {
-            auto loop = KLoop->getLoopFor(&bb);
-            if (loop != nullptr) {
-                // found VirtualCheckpoint
-                        loop->getHeader()->setCheckpoint(Checkpoint::Virtual);
-            }
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{c++}
+        void findVirtualCheckpoint(DominatorTree &DT, Function &F) {
+            DT.recalculate(F);
+            // generate the LoopInfoBase for the current function
+            LoopInfoBase<BasicBlock, Loop>* KLoop = new LoopInfoBase<BasicBlock, Loop>();
+            KLoop->releaseMemory();
+            KLoop->analyze(DT);
+            for (auto &bb : F) {
+                // Since the BasicBlock would have been inlined, just traverse from main function
+                if (F.getName() == "main") {
+                auto loop = KLoop->getLoopFor(&bb);
+                if (loop != nullptr) {
+                    // found VirtualCheckpoint
+                            loop->getHeader()->setCheckpoint(Checkpoint::Virtual);
+                }
+                }
             }
         }
-    }
-\end{minted}
-\caption{Getting Virtual Checkpoint \ft{you could reduce the font size -- also 
-for the others.}}    
-\label{listing:4-3}
+    \end{minted}
+    \caption{Getting Virtual Checkpoint \ft{you could reduce the font size -- also 
+    for the others.}}    
+    \label{listing:4-4}
 \end{listing}
 
 \subsection{ScaRR LoA Collector}
@@ -145,33 +198,48 @@ The algorithm of getting LoA between two checkpoints is little bit more complex.
 To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as follow.
 
 \begin{listing}
-\begin{minted}{c++}
-    opt -passes=scarr-cp-marker <file>.ll
-\end{minted}
-\caption{Mark Checkpoint in BasicBlock}    
-\label{listing:4-4}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{c++}
+        opt -passes=scarr-cp-marker <file>.ll
+    \end{minted}
+    \caption{Mark Checkpoint in BasicBlock}    
+    \label{listing:4-5}
 \end{listing}
 
 We can see the basic blocks output that has been marked with checkpoint using LLVM dot-cfg pass.
 
 \begin{listing}
-\begin{minted}{c++}
-    opt -passes=scarr-cp-marker,dot-cfg <file>.ll
-\end{minted}
-\caption{Print Checkpoints in CFG dot file}    
-\label{listing:4-5}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{c++}
+        opt -passes=scarr-cp-marker,dot-cfg <file>.ll
+    \end{minted}
+    \caption{Print Checkpoints in CFG dot file}    
+    \label{listing:4-6}
 \end{listing}
 
 The commands above generates different dot files per function. We can use xdot command line from graphiz to see the graph. 
 
-To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt} as shown in Listing \ref{listing:4-6}
+To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt} as shown in Listing \ref{listing:4-7}
 
 \begin{listing}
-\begin{minted}{c++}
-    opt -passes=scarr-cp-marker,scarr-loa-collector <file>.ll
-\end{minted}
-\caption{Get List of Actions}    
-\label{listing:4-6}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{c++}
+        opt -passes=scarr-cp-marker,scarr-loa-collector <file>.ll
+    \end{minted}
+    \caption{Get List of Actions}    
+    \label{listing:4-7}
 \end{listing}
 
 Note that we have to run scarr-cp-marker before scarr-loa-collector.

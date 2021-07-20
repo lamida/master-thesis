@@ -29,7 +29,7 @@ LLVM is compiler framework that was developed by Chris Lattner which provides po
 
 \subsection{Intermediate Representation}
 
-LLVM intermediate representation (IR) provides high-level information about programs to support sophisticated analysis and transformations. However, the representation is low-level enough to represent arbitrary programs and to allow extensive optimization. As an example, consider a simple C program in listing \ref{listing:3-1}.
+LLVM intermediate representation (IR) provides high-level information about programs to support sophisticated analysis and transformations. However, the representation is low-level enough to represent arbitrary programs and to allow extensive optimization. As an example, consider a simple C program in listing \ref{listing:sample-c}.
 
 \begin{listing}
     \inputminted[
@@ -38,12 +38,12 @@ LLVM intermediate representation (IR) provides high-level information about prog
     baselinestretch=1.2,
     fontsize=\footnotesize,
     linenos
-    ]{c}{Code/sample.c}
+    ]{c}{Code/03/sample.c}
     \caption{Simple C Program}    
-    \label{listing:3-1}
+    \label{listing:sample-c}
 \end{listing}
 
-The IR of the program can be seen in listing \ref{listing:3-2}. The text representation below, is just one of form of IR. Beside this readable instruction representation, LLVM IR also can be represented as byte code and in memory representation. In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks: container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. The details of LLVM IR is available in the Language Reference \cite{LLVMLanguageReferencea}.
+The IR of the program can be seen in listing \ref{listing:sample-ll}. The text representation below, is just one of form of IR. Beside this readable instruction representation, LLVM IR also can be represented as byte code and in memory representation. In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks: container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. The details of LLVM IR is available in the Language Reference \cite{LLVMLanguageReferencea}.
 
 \begin{listing}
     \inputminted[
@@ -52,16 +52,16 @@ The IR of the program can be seen in listing \ref{listing:3-2}. The text represe
     baselinestretch=1.2,
     fontsize=\footnotesize,
     linenos
-    ]{llvm}{Code/sample.ll}
+    ]{llvm}{Code/03/sample.ll}
     \caption{LLVM IR The Sample C Program}    
-    \label{listing:3-2}
+    \label{listing:sample-ll}
 \end{listing}
 
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/cfg.png}}
+\centerline{\includegraphics[scale=.5]{Figures/03/cfg.png}}
 \caption{CFG for Simple C Program}
-\label{fig:2-1}
+\label{fig:cfg}
 \end{figure}
 
 
@@ -72,9 +72,9 @@ LLVM optimizer \textemdash{} which includes Analyzer and Transformer \textemdash
 LLVM are applying transformations \textemdash{} which may include some analysis pipelines \textemdash{} and optimizations on tools called \texttt{opt}. \texttt{opt} is taking LLVM IR (either as text, bytecode or in memory) as input and then do transformations, analysis and optimizations on it. Transformation and optimization alters the LLVM structure. Analysis gets information from the structure, which usually to be used by one or more transformations. Different transformations, optimizations and analyses are performed as pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM function pass is executed once for every function in the program. LLVM module pass is executed once for every module. LLVM loop pass runs a time for each loop.  
 
 \begin{figure}[htbp] 
-    \centerline{\includegraphics[scale=.25]{Figures/llvm.png}} 
+    \centerline{\includegraphics[scale=.25]{Figures/03/llvm.png}} 
     \caption{LLVM Pass (This is image will be replaced with the proper one)} 
-    \label{fig:2-2} 
+    \label{fig:llvm} 
 \end{figure} 
 
 In LLVM there are two ways of implementing Pass. First is using legacy approach and the latest one is using new pass manager approach. The approach different in structuring the code the implement the pass and also the way we use the pass.  In the legacy approach, we need to inherit from either \texttt{ModulePass}, \texttt{FunctionPass} or \texttt{LoopPass} and override \texttt{runOnXXX} method (xxx is either Function, Module or Loop). In the newer approach we have to inherit CRTP mix-in \texttt{PassInfoMixin<PassT>} and override the run method.
@@ -91,7 +91,7 @@ The way we use the pass, in legacy approach we need to provide the pass name as 
         opt --dot-cfg file.ll 
     \end{minted}
     \caption{Running Legacy LLVM Pass}    
-    \label{listing:3-3}
+    \label{listing:legacy-llvm-pass}
 \end{listing}
 
 \begin{listing}
@@ -104,7 +104,7 @@ The way we use the pass, in legacy approach we need to provide the pass name as 
         opt -passes=scarr-cp-marker,scarr-loa-collector file.ll 
     \end{minted}
 \caption{Running LLVM New Pass}    
-\label{listing:3-4}
+\label{listing:new-llvm-pass}
 \end{listing}
 
 \subsection{LLVM API}
@@ -115,7 +115,7 @@ In writing LLVM pass, we use LLVM API. In this section we present relevant compo
 
 Module is the top level container for all other IR objects. Module contains list of global variables, functions, symbol tables and other various data about target characteristics. Module can be a single translation unit of a program (source file) or can be multiple translation unit combined by linker. 
 
-In LLVM pass, we can get access to module by implementing a Module pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from \texttt{IRReader.h}. Once we get a handler to a module, getting a functions within module is as simple as passing module to a loop, since module provides iterator that return list of function in the module (see listing \ref{listing:3-5}).
+In LLVM pass, we can get access to module by implementing a Module pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from \texttt{IRReader.h}. Once we get a handler to a module, getting a functions within module is as simple as passing module to a loop, since module provides iterator that return list of function in the module (see listing \ref{listing:llvm-module-api}).
 
 \begin{listing}
     \inputminted[
@@ -124,9 +124,9 @@ In LLVM pass, we can get access to module by implementing a Module pass or by pa
         baselinestretch=1.2,
         fontsize=\footnotesize,
         linenos
-    ]{cpp}{Code/module.cpp}
+    ]{cpp}{Code/03/module.cpp}
     \caption{LLVM Module API}    
-    \label{listing:3-5}
+    \label{listing:llvm-module-api}
 \end{listing}
 
 \subsubsection{Function}
@@ -135,7 +135,7 @@ Function in LLVM represents function in the source program. A function contains 
 
 \subsubsection{Basic Block}
 
-Basic Block represents single entry and single exit section of the code. The single exit can be one of terminator instruction — branches, return, unwind and invoke. We can get handle to a basic block from function. Refer to listing \ref{listing:3-6} to see how to get the basic block.
+Basic Block represents single entry and single exit section of the code. The single exit can be one of terminator instruction — branches, return, unwind and invoke. We can get handle to a basic block from function. Refer to listing \ref{listing:llvm-basic-block-api} to see how to get the basic block.
 
 \begin{listing}
     \begin{minted}[
@@ -152,7 +152,7 @@ Basic Block represents single entry and single exit section of the code. The sin
         }
     \end{minted}
     \caption{LLVM Basic Block API}    
-    \label{listing:3-6}
+    \label{listing:llvm-basic-block-api}
 \end{listing}
 
 \subsubsection{Graph Traversal}
@@ -165,7 +165,7 @@ We are implementing the algorithms using different tools. We are highlighting so
 
 \subsubsection{clang}
 
-\texttt{clang} is one of the frontend provided by LLVM. It can compiles C, C++ and Objective C. \texttt{clang} command line arguments are compatible with widely use gcc compiler. The main use of \texttt{clang} in this research is to compile source files into LLVM IR text files. Listing \ref{listing:3-7} shows how to compile a C program into LLVM IR. 
+\texttt{clang} is one of the frontend provided by LLVM. It can compiles C, C++ and Objective C. \texttt{clang} command line arguments are compatible with widely use gcc compiler. The main use of \texttt{clang} in this research is to compile source files into LLVM IR text files. Listing \ref{listing:compile-llvm-to-ir} shows how to compile a C program into LLVM IR. 
 
 \begin{listing}
     \begin{minted}[
@@ -177,12 +177,12 @@ We are implementing the algorithms using different tools. We are highlighting so
         clang -S -emit-llvm source.c
     \end{minted}
     \caption{Compiling C to LLVM IR}    
-    \label{listing:3-7}
+    \label{listing:compile-llvm-to-ir}
 \end{listing}
     
 We can pass optimization level from 0 (no-optimization) to 3 (most optimal, can make code run faster but larger in size) when compiling the source code.
 
-By default, clang strips out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR. Listing \ref{listing:3-8} shows how to compile to IR without any optimization and to preserve the function and variable names.
+By default, clang strips out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR. Listing \ref{listing:compile-llvm-to-ir-no-opt} shows how to compile to IR without any optimization and to preserve the function and variable names.
 
 \begin{listing}
     \begin{minted}[
@@ -195,7 +195,7 @@ By default, clang strips out value names and do some optimization when generatin
         -fno-discard-value-names source.c
     \end{minted}
     \caption{Compiling C to LLVM IR without Optimization}    
-    \label{listing:3-8}
+    \label{listing:compile-llvm-to-ir-no-opt}
 \end{listing}
 
 \subsubsection{opt}
@@ -206,7 +206,7 @@ By default, clang strips out value names and do some optimization when generatin
 
 \texttt{cmake} is a build file generator which is have an important role in large project like LLVM. Although the deep understanding of \texttt{cmake} is not required in implementing LLVM pass, but we need to know at least how to build the pass after the implementation so that we can run it.
 
-LLVM can be downloaded using git. See Listing \ref{listing:3-9}. This thesis is implemented on LLVM 13.0.0.
+LLVM can be downloaded using git. See Listing \ref{listing:clone-llvm-code}. This thesis is implemented on LLVM 13.0.0.
 
 \begin{listing}
     \begin{minted}[
@@ -218,10 +218,10 @@ LLVM can be downloaded using git. See Listing \ref{listing:3-9}. This thesis is 
         git clone https://github.com/llvm/llvm-project
     \end{minted}
     \caption{Cloning LLVM Source Code}    
-    \label{listing:3-9}
+    \label{listing:clone-llvm-code}
 \end{listing}
 
-Once it is downloaded we can go to the LLVM directory and generate the build files. \texttt{cmake} supports several build tools such as make and ninja. Refer to listing \ref{listing:3-10}.
+Once it is downloaded we can go to the LLVM directory and generate the build files. \texttt{cmake} supports several build tools such as make and ninja. Refer to listing \ref{listing:build-llvm}.
 
 \begin{listing}
     \begin{minted}[
@@ -238,7 +238,7 @@ Once it is downloaded we can go to the LLVM directory and generate the build fil
         ninja opt # build only opt
     \end{minted}
 \caption{Building LLVM}    
-\label{listing:3-10}
+\label{listing:build-llvm}
 \end{listing}
 
 With all background discussion in this chapter we should be ready to discuss the methodology in Chapter \ref{Chapter4}.
