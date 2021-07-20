@@ -1,0 +1,3 @@
+program,code lines,IR lines,nBB,nM,nCP,nLoA
+bzip2,2036,8542,143,132,76,244
+openssl,832,1793,28,30,19,42

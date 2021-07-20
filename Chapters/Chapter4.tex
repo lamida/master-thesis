@@ -98,9 +98,9 @@ $$[(BBL_{s1},BBL_{d1}),...,(BBL_{sn},BBL_{dn})]$$
 
 Consider again the CFG in the Figure \ref{fig:simple-loop-checkpoints}. The LoA between node 3 (Checkpoint Virtual) and node 10 (checkpoint ThreadEnd) is  $[(BBL_3, BBL_{10})]$. However, the LoA between node 0 and node 3 is $[]$ (empty set).
 
-\section{ScaRR LLVM Pass}
+\section{ScaRR LLVM Pass} 
 
-ScaRR offline measurement is represented as the following key-value pair.
+ScaRR LLVM pass\footnote{https://github.com/lamida/llvm-project/pull/3} is the implementation of ScaRR offline measurement using LLVM. ScaRR offline measurement is represented as the following key-value pair.
 
 $$(cp_A, cp_B, H(LoA)) \Rightarrow [(BBL_{s1}, BBL_{d1}), ..., (BBL_{sn}, BBL_{dn})]$$
 

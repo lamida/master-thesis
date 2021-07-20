@@ -50,9 +50,6 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{minted} % code listing
 
-% TODO: Enabling listing breaking the compilation
-% \usepackage{listings} 
-
 \usepackage{xcolor}
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
@@ -77,8 +74,12 @@ headsepline, % Uncomment to get a line under the header
 \definecolor{pink-shocking}{rgb}{0.99, 0.06, 0.75}
 \definecolor{green-shocking}{rgb}{0.0, 1, 0.0}
 \newcommand{\ft}[1]{\todobox{pink-shocking}{Flavio}{#1}}
+\newcommand{\xt}[1]{\todobox{red}{Jon}{#1}}
 
 \usepackage{tocbibind}
+
+\usepackage{csvsimple}
+
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -295,7 +296,7 @@ The acknowledgments and the people to thank go here, don't forget to include you
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-\include{Appendices/AppendixA}
+%\include{Appendices/AppendixA}
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 

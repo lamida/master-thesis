@@ -4,10 +4,49 @@
 
 \label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter5} 
 
-In this research we used the offline measurement generator in getting the measurement across different programs. We calculated the ScaRR control flow information from each of the program.
+In this research we used the offline measurement generator in getting the measurement across different real world programs. We calculated the ScaRR control flow information from each of the program. We are applying the research methodology into the following different programs \footnote{https://github.com/lamida/scarr-sample-program/}:
+
+\begin{itemize}
+    \item redis 6.2.4
+    \item bzip2 1.0.8
+    \item openssl 1.1.1j
+    \item coreutils 8.32
+\end{itemize}
+
+For each of program, we are collecting the following measurements:
+
+\begin{itemize}
+    \item source code lines
+    \item IR lines
+    \item number of basic blocks (nBB)
+    \item number of ScaRR measurements (nM)
+    \item number of checkpoints (nCP)
+    \item number of LoA (nLoA)
+\end{itemize}
 
 \section{ScaRR Control Flow Result}
 
+\xt{Elaborate the results, add charts for better visualization than just table.}
+
+\csvautolongtable{csv/coreutils.csv}
+\xt{Find a way to add caption to this long table}
+
+\begin{table}[hbtp]
+    \centering
+    \csvautotabular{csv/redis.csv}
+    \caption{Redis ScaRR measurements}
+\end{table}
+
+\begin{table}[hbtp]
+    \centering
+    \csvautotabular{csv/misc.csv}
+    \caption{Some additional programs ScaRR measurements}
+\end{table}
+
 \section{Complexity Analysis}
 
+TBD
+
 \section{Case Study}
+
+TBD

@@ -1,0 +1,4 @@
+program,code lines,IR lines,nBB,nM,nCP,nLoA
+redis-benchmark,1982,29367,254,407,211,564
+redis-cli,8400,45836,513,630,388,1002
+server,6397,25790,88,91,52,138
