@@ -2,24 +2,24 @@
 
 \chapter{Background} % Main chapter title
 
-\label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter2} 
+\label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter3} 
 
-In this chapter, we present some backgrounds on software attack and remote attestation to detect the attacks. After that, we share an overview of LLVM that relevant to the research. 
+In this chapter, we present some backgrounds on control-flow attack and remote attestation to detect attacks. The chapter ends with an overview of LLVM that relevant to the research. 
 
 \section{Control Flow Attack}
 
-Control flow attack happens when adversaries make program execution to perform action of their choice. The adversary choice can be executing malicious operations or leaking secret information and more.  In the past, adversary modified the binary of the application to statically altered the the behaviour of the program. Nowadays, to prevent detection, attacks are being done by altering runtime properties of the program. Many of this runtime software security attacks are occured due to memory corruption bug in software written in low-level languages like C and C++ \cite{szekeresSoKEternalWar2013}.
+Control-flow attack happens when adversaries make a program to perform action of their choice without statically modify the program binary but alter the runtime properties of the program. The adversary intention can be to execute malicious operations or to leak secret information. Many of this runtime software security attacks are occured due to memory corruption bug in software written in low-level languages like C and C++ \cite{szekeresSoKEternalWar2013}.
 
-Once memory corruption is triggered, there are different exploit types which adversary can use to perform the attack. Some of the relevant exploits are control-flow hijack \cite{shachamGeometryInnocentFlesh2007, schusterCounterfeitObjectorientedProgramming2015}  and data only attack \cite{chenNonControlDataAttacksAre2005, carliniControlFlowBendingEffectiveness2015}. Control-flow hijack can be classified further into code injection attack and code reuse attack such as return oriented programming \cite{roemerReturnorientedProgrammingSystems2012}.  Code injection attack is already mitigated by Data Execution Prevention~\ft{cite}. A return-oriented program chains together short instruction sequences already present in a program’s address space, each of which ends in a \texttt{return} instruction. ROP can't be mititgated by \( W \bigoplus R \)~\ft{cite}.
+Once memory corruption is triggered, there are different exploit types which adversary can use to perform the attack. Some of the relevant exploits are control-flow hijack \cite{shachamGeometryInnocentFlesh2007, schusterCounterfeitObjectorientedProgramming2015}  and data only attack \cite{chenNonControlDataAttacksAre2005, carliniControlFlowBendingEffectiveness2015}. 
+
+Control-flow hijack can be classified further into code injection attack and code reuse attack such as return oriented programming \cite{roemerReturnorientedProgrammingSystems2012}.  Code injection attack will inject code in the program which will execute action prepared by the attacker. Code injection attack is already mitigated by solution like non-executable stack (NX), Data Execution Prevention and \( W \bigoplus R \) \cite{vanderveenMemoryErrorsPresent2012}. Code reuse attack will execute malicous action without injecting any codes, hence can't be detected by previosly mentioned defenses mechanism. As example, return-oriented program chains together short instruction sequences already present in a program’s address space, each of which ends in a \texttt{return} instruction. Unfortunately, ROP can not be mitigated by \( W \bigoplus R \) \cite{roemerReturnorientedProgrammingSystems2012}.
+
+Memory error attacks and defenses have been always a continuous battle which unfortunately has not shown that it is over. In 2016, Abera et al proposed to use remote attestation to detect control flow attack \cite{aberaCFLATControlFlowAttestation2016}. That paper opened many researches in this area which we briefly presented in \ref{Chapter1}.
  
-\ft{Add a citation about all the defenses cited.}
-
 \section{Remote Attestation}
-Remote attestation is the activity of making a claim about properties of a remote target by supplying evidence to an appraiser over a network \cite{cokerPrinciplesRemoteAttestation2011a}. The rampant deployment of IoT and different applications in the cloud require robust remote attestation method to ensure detection when the application is attacked.
+In this thesis we explore the use of remote attestation in detecting control-flow attack. Remote attestation is the activity of making a claim about properties of a remote target by supplying evidence to an appraiser over a network \cite{cokerPrinciplesRemoteAttestation2011a}. The ubiquitous deployment of IoT and different applications in the cloud require robust remote attestation method to ensure detection when the application is attacked.  Remote attestation scope was only covering static attestation of the application binary. However, in the recent years there have been more sophisticated attack that can alter the behavior of application so that static attestation does not suffice. 
 
-Remote attestation scope was only covering static attestation of the application binary. However, in the recent years there have been more sophisticated attack that can alter the behavior of application so that static attestation does not suffice. 
-
-In remote attestation there are two roles involved, a trusted prover and a verifier. A prover is the one that must prove that the software has not been compromised. Verifier checks prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier compares the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
+In remote attestation, there are two roles involved, a trusted prover and a verifier. A prover is the one that must prove that the software has not been compromised. Verifier checks prover to ask the current state of runtime of the program. Alternatively, prover also can just update verifier periodically without being asked. The verifier compares the response from prover with the local database which has been generated before. If any of measurement mismatches, it means the has been violation due to an adversary's attack.
 
 This research mainly focuses on offline measurement data generation for remote attestation which is used by verifier to validate the control flow graph. We use LLVM in implementing the offline program analyzer.
 
@@ -27,25 +27,36 @@ This research mainly focuses on offline measurement data generation for remote a
 
 LLVM is compiler framework that was developed by Chris Lattner which provides portable program representation and different tooling. LLVM supports the implementation of different frontend, backend and middle optimizer for various programming languages \cite{lattnerLLVMCompilationFramework2004a}. 
 
-\subsection{Intermediate Reprsentation}
+\subsection{Intermediate Representation}
 
-LLVM intermediate representation (IR) provides high-level information about programs to support sophisticated analysis and transformations but low-level enough to represent arbitrary programs and to allow extensive optimization in it. As an example, consider a simple C program in listing \ref{listing:3-1}.
-
-\begin{listing}
-\inputminted[]{c}{Code/sample.c}
-\caption{Simple C Program}    
-\label{listing:3-1}
-\end{listing}
-
-The IR of the program can be seen in listing \ref{listing:3-2}. The text representation below, is just one of form of IR. Beside this readable instruction representation, LLVM IR also can be represented as byte code and in memory representation.
+LLVM intermediate representation (IR) provides high-level information about programs to support sophisticated analysis and transformations. However, the representation is low-level enough to represent arbitrary programs and to allow extensive optimization. As an example, consider a simple C program in listing \ref{listing:3-1}.
 
 \begin{listing}
-\inputminted[]{llvm}{Code/sample.ll}
-\caption{LLVM IR The Sample C Program}    
-\label{listing:3-2}
+    \inputminted[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+    ]{c}{Code/sample.c}
+    \caption{Simple C Program}    
+    \label{listing:3-1}
 \end{listing}
 
-In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks: container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. From the C code and the IR above, the CFG graph is as follow.
+The IR of the program can be seen in listing \ref{listing:3-2}. The text representation below, is just one of form of IR. Beside this readable instruction representation, LLVM IR also can be represented as byte code and in memory representation. In the IR, each line contains LLVM instructions. Instructions are grouped in basic blocks: container for instructions that execute sequentially. This arrangement, makes application control flow graph (CFG) to be explicit in the IR. The details of LLVM IR is available in the Language Reference \cite{LLVMLanguageReferencea}.
+
+\begin{listing}
+    \inputminted[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+    ]{llvm}{Code/sample.ll}
+    \caption{LLVM IR The Sample C Program}    
+    \label{listing:3-2}
+\end{listing}
+
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=.5]{Figures/cfg.png}}
@@ -53,7 +64,6 @@ In the IR, each line contains LLVM instructions. Instructions are grouped in bas
 \label{fig:2-1}
 \end{figure}
 
-The details of LLVM IR is available in the Language Reference \cite{LLVMLanguageReferencea}.
 
 LLVM optimizer \textemdash{} which includes Analyzer and Transformer \textemdash{} are working on IR. In this thesis we are using this analyzer and transformer in building the Offline Program Analyzer.
 
@@ -67,22 +77,32 @@ LLVM are applying transformations \textemdash{} which may include some analysis 
     \label{fig:2-2} 
 \end{figure} 
 
-In LLVM there are two ways of implementing Pass. First is using legacy approach and the latest one is using new pass manager approach. The approach different in structuring the code the implement the pass and also the way we use the pass.  In the legacy approach, we need to inherit from either ModulePass, FunctionPass or LoopPass and override runOnXXX method (xxx is either Function, Module or Loop). In the newer approach we have to inherit CRTP mix-in PassInfoMixin<PassT> and override the run method.
+In LLVM there are two ways of implementing Pass. First is using legacy approach and the latest one is using new pass manager approach. The approach different in structuring the code the implement the pass and also the way we use the pass.  In the legacy approach, we need to inherit from either \texttt{ModulePass}, \texttt{FunctionPass} or \texttt{LoopPass} and override \texttt{runOnXXX} method (xxx is either Function, Module or Loop). In the newer approach we have to inherit CRTP mix-in \texttt{PassInfoMixin<PassT>} and override the run method.
 
 The way we use the pass, in legacy approach we need to provide the pass name as literal argument to \texttt{opt}. See the example below. In the new pass manager, we are putting the pass name after `--passes` argument in comma separated list. The pass is executed in order.
 
 \begin{listing}
-\begin{minted}{bash}
-    opt --dot-cfg file.ll 
-\end{minted}
-\caption{Running Legacy LLVM Pass}    
-\label{listing:3-3}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        ]{bash}
+        opt --dot-cfg file.ll 
+    \end{minted}
+    \caption{Running Legacy LLVM Pass}    
+    \label{listing:3-3}
 \end{listing}
 
 \begin{listing}
-\begin{minted}{bash}
-    opt -passes=scarr-cp-marker,scarr-loa-collector file.ll 
-\end{minted}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        ]{bash}
+        opt -passes=scarr-cp-marker,scarr-loa-collector file.ll 
+    \end{minted}
 \caption{Running LLVM New Pass}    
 \label{listing:3-4}
 \end{listing}
@@ -95,12 +115,18 @@ In writing LLVM pass, we use LLVM API. In this section we present relevant compo
 
 Module is the top level container for all other IR objects. Module contains list of global variables, functions, symbol tables and other various data about target characteristics. Module can be a single translation unit of a program (source file) or can be multiple translation unit combined by linker. 
 
-In LLVM pass, we can get access to module by implementing a Module pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from \texttt{IRReader.h}. Once we get a handler to a module, getting a functions within module is as simple as passing module to a loop, since module provides iterator that return list of function in the module.
+In LLVM pass, we can get access to module by implementing a Module pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from \texttt{IRReader.h}. Once we get a handler to a module, getting a functions within module is as simple as passing module to a loop, since module provides iterator that return list of function in the module (see listing \ref{listing:3-5}).
 
 \begin{listing}
-\inputminted[]{cpp}{Code/module.cpp}
-\caption{LLVM Module API}    
-\label{listing:3-5}
+    \inputminted[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{cpp}{Code/module.cpp}
+    \caption{LLVM Module API}    
+    \label{listing:3-5}
 \end{listing}
 
 \subsubsection{Function}
@@ -109,18 +135,24 @@ Function in LLVM represents function in the source program. A function contains 
 
 \subsubsection{Basic Block}
 
-Basic Block represents single entry and single exit section of the code. The single exit can be one of terminator instruction — branches, return, unwind and invoke. We can get handle to a basic block from function. 
+Basic Block represents single entry and single exit section of the code. The single exit can be one of terminator instruction — branches, return, unwind and invoke. We can get handle to a basic block from function. Refer to listing \ref{listing:3-6} to see how to get the basic block.
 
 \begin{listing}
-\begin{minted}{cpp}
-    for (auto &function: *module) {
-      for (auto &basicBlok: function) {
-          // do thing with Basic Block
-      }
-    }
-\end{minted}
-\caption{LLVM Basic Block API}    
-\label{listing:3-6}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{cpp}
+        for (auto &function: *module) {
+            for (auto &basicBlok: function) {
+                // do thing with Basic Block
+            }
+        }
+    \end{minted}
+    \caption{LLVM Basic Block API}    
+    \label{listing:3-6}
 \end{listing}
 
 \subsubsection{Graph Traversal}
@@ -133,26 +165,37 @@ We are implementing the algorithms using different tools. We are highlighting so
 
 \subsubsection{clang}
 
-clang is one of the frontend provided by LLVM. It can compiles C, C++ and Objective C. clang command line arguments are compatible with widely use gcc compiler. The main use of clang in this research is to compile source files into LLVM IR text files.
+\texttt{clang} is one of the frontend provided by LLVM. It can compiles C, C++ and Objective C. \texttt{clang} command line arguments are compatible with widely use gcc compiler. The main use of \texttt{clang} in this research is to compile source files into LLVM IR text files. Listing \ref{listing:3-7} shows how to compile a C program into LLVM IR. 
 
 \begin{listing}
-\begin{minted}{bash}
-    clang -S -emit-llvm source.c
-\end{minted}
-\caption{Compiling C to LLVM IR}    
-\label{listing:3-7}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{bash}
+        clang -S -emit-llvm source.c
+    \end{minted}
+    \caption{Compiling C to LLVM IR}    
+    \label{listing:3-7}
 \end{listing}
     
-When compiling the source code, we can pass optimization level from 0 (no-optimization) to 3 (most optimal, can make code run faster but larger in size).  
+We can pass optimization level from 0 (no-optimization) to 3 (most optimal, can make code run faster but larger in size) when compiling the source code.
 
-By default, clang strips out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR.
+By default, clang strips out value names and do some optimization when generating LLVM IR. We can use this flag to disable optimization and get readable value names that can help when troubleshooting and exploring the generated IR. Listing \ref{listing:3-8} shows how to compile to IR without any optimization and to preserve the function and variable names.
 
 \begin{listing}
-\begin{minted}{bash}
-    clang -S -emit-llvm -Xclang -disable-O0-optnone -fno-discard-value-names source.c
-\end{minted}
-\caption{Compiling C to LLVM IR without Optimization}    
-\label{listing:3-8}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{bash}
+        clang -S -emit-llvm -Xclang -disable-O0-optnone \
+        -fno-discard-value-names source.c
+    \end{minted}
+    \caption{Compiling C to LLVM IR without Optimization}    
+    \label{listing:3-8}
 \end{listing}
 
 \subsubsection{opt}
@@ -161,28 +204,41 @@ By default, clang strips out value names and do some optimization when generatin
 
 \subsubsection{cmake}
 
-cmake is a build file generator which is have an important role in large project like LLVM. Although the deep understanding of cmake is not required in implementing LLVM pass, but we need to know at least how to build the pass after the implementation so that we can run it.
+\texttt{cmake} is a build file generator which is have an important role in large project like LLVM. Although the deep understanding of \texttt{cmake} is not required in implementing LLVM pass, but we need to know at least how to build the pass after the implementation so that we can run it.
 
-LLVM can be downloaded using git. This thesis is implemented on LLVM 13.0.0.
+LLVM can be downloaded using git. See Listing \ref{listing:3-9}. This thesis is implemented on LLVM 13.0.0.
 
 \begin{listing}
-\begin{minted}{bash}
-    git clone https://github.com/llvm/llvm-project
-\end{minted}
-\caption{Cloning LLVM Source Code}    
-\label{listing:3-9}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{bash}
+        git clone https://github.com/llvm/llvm-project
+    \end{minted}
+    \caption{Cloning LLVM Source Code}    
+    \label{listing:3-9}
 \end{listing}
 
-Once it is downloaded we can go to the LLVM directory and generate the build files. cmake supports several build tools such as make and ninja. 
+Once it is downloaded we can go to the LLVM directory and generate the build files. \texttt{cmake} supports several build tools such as make and ninja. Refer to listing \ref{listing:3-10}.
 
 \begin{listing}
-\begin{minted}{bash}
-    cd llvm-project/llvm
-    mkdir build
-    cd build
-    cmake -G Ninja ../ # generate build file for Ninja
-    ninja opt # build only opt
-\end{minted}
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        linenos
+    ]{bash}
+        cd llvm-project/llvm
+        mkdir build
+        cd build
+        cmake -G Ninja ../ # generate build file for Ninja
+        ninja opt # build only opt
+    \end{minted}
 \caption{Building LLVM}    
 \label{listing:3-10}
 \end{listing}
+
+With all background discussion in this chapter we should be ready to discuss the methodology in Chapter \ref{Chapter4}.
