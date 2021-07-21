@@ -4,15 +4,51 @@
 
 \label{Chapter4} % For referencing the chapter elsewhere, use \ref{Chapter4} 
 
-In this chapter we present the methodology of the research. First we present the threat model. After that, we show the overview of the implementation of the ScaRR algorithm to extract checkpoint and list of action. The section about ScaRR control-flow model will follow. The last two section is the detail on LLVM implementation to get checkpoints and list of actions from codes. Checkpoints and list of actions are collected to build offline measurement database that is used for the remote attestation.
+In this chapter, we present the methodology of the research. First we present 
+the threat model. \ft{same as before, add reference to the subsections}
+After that, we show the overview of the implementation of the 
+ScaRR algorithm to extract checkpoint and list of action. The section about 
+ScaRR control-flow model will follow. The last two section is the detail on 
+LLVM implementation to get checkpoints and list of actions from codes. 
+Checkpoints and list of actions are collected to build offline measurement 
+database that is used for the remote attestation.
 
 \section{Threat Model}
 
-The threat model in this research from ScaRR threat model \cite{toffaliniScaRRScalableRuntime2019}. There are two parties: attacker and prover. The attacker has aim to hijact the application control flow by using various memory attacks described in Chapter \ref{Chapter3}. However, we do not consider physical attack and data-oriented attack which does not alter program CFG. The prover uses kernel as trusted anchor and has common memory corruption attack mitigations such as \( W \bigoplus R \) and ASLR. 
+The threat model in this research is taken from ScaRR
+\cite{toffaliniScaRRScalableRuntime2019}. There are two parties: attacker and 
+prover. The attacker has aim to hijact the application control flow by using 
+various memory attacks described in Chapter \ref{Chapter3}.
+\ft{add some example here too, moreover, ScaRR considers any attacker in 
+user-space, not only code-reuse attacks.}
+Moreover, we do not consider physical attack and data-oriented attack which 
+does not alter program CFG.
+The prover uses kernel as trusted anchor and has common memory corruption 
+attack mitigations such as \( W \bigoplus R \) and ASLR. 
+\ft{moreover, split attacker and defender capabilities in two paragraphs. Like:}
 
-\section{Overview of The Offline Measurement}
+\vspace{0.5cm}
+\noindent \textbf{Attacker capabilities:}
+The attacker can do this, that, and this other..
 
-The goal of the offline measurement is to get the information to be used in the remote attestation. In this research we implement ScaRR Control-flow model \cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the Section \ref{sec:scarr-model}. These are the steps that we do in getting the offline measurements:
+\vspace{0.5cm}
+\noindent \textbf{Defender capabilities:}
+We assume the defender is a white knight without fear! Arming a spear and 
+fighting the dragon.
+
+\ft{ok, I don't ensure the aforementioned information is correct..}
+
+\section{Overview of The Offline Measurement}\
+\label{sec:overview}
+
+The goal of the offline measurement is to get the information to be used in the 
+remote attestation. In this research we implement ScaRR Control-flow model 
+\cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the Section 
+\ref{sec:scarr-model}. These are the steps that we do in getting the offline 
+measurements:
+
+\ft{make a picture that shows three blocks from left to right. Then, describe 
+the three parts briefly and point them to their dedicated section below.}
 
 \begin{enumerate}
     \item Flattenning the CFG
@@ -39,6 +75,12 @@ The goal of the offline measurement is to get the information to be used in the 
 
 \subsection{Flattenning the CFG}
 
+\ft{sorry dear but this part is not clear. you should start: why do we need 
+flatting? what flattening means? can you give an example? add a listing (simple 
+one) with a main calling the same function A twice, thus show the graph before 
+and after flatting. For the CFG, you can just drawn, no need to extract it from 
+LLVM Pass. If not clear, we better talk.}
+
 Consider the program in listing \ref{listing:simple-loop}. The CFG is shown in the figure \ref{fig:simple-loop-cfg}. The first step of the offline measurement is to flatten the CFG to get all the basic block list. We can flatten the CFG into basic block with one out of some graph traversal algorithm in LLVM. The CFG in figure \ref{fig:simple-loop-cfg} contains these following basic blocks:
 
 \begin{itemize}
@@ -59,7 +101,15 @@ Consider the program in listing \ref{listing:simple-loop}. The CFG is shown in t
 \subsection{Marking the Checkpoints}
 
 
-After we flatten CFG into basic block, we will check each of basic block to find different kind of checkpoints. The marked checkpoints from the CFG in Figure \ref{fig:simple-loop-cfg} can be seen in Figure \ref{fig:simple-loop-checkpoints}.
+After we flatten CFG into basic block, we will check each of basic block to 
+find different kind of checkpoints. The marked checkpoints from the CFG in 
+Figure \ref{fig:simple-loop-cfg} can be seen in Figure 
+\ref{fig:simple-loop-checkpoints}.
+
+\ft{expand this part by a lot! what are the checkpoints? which heiristics use 
+to identify them? virtual checkpoints from loops? start? discuss better. Also, 
+for each heuristics, you should add a specific paragraph (as in the threat 
+model)}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[scale=.5]{Figures/04/simple-loop-checkpoints.png}}
@@ -72,6 +122,10 @@ After we flatten CFG into basic block, we will check each of basic block to find
 The step of finding LoA is traversing path between two checkpoints and add significant basic block that traverse the path between the two checkpoints. The detail of this step is explained in the next sections.
 
 \section{ScaRR Control-Flow Model} \label{sec:scarr-model}
+
+\ft{move this in background. You can say that you focus on ScaRR cfg model 
+because is part of the thesis, or something like this.
+Rule-of-thumb, add a label to a section/subsection as soon you make it.}
 
 ScaRR \cite{toffaliniScaRRScalableRuntime2019} are taking lesson learned from many former runtime remote attestation scheme to build model that can perform in a scalable way and can perform remote attestation on complex system. ScaRR control-flow model consists of two main components, checkpoint and list of action. 
 
@@ -100,6 +154,9 @@ Consider again the CFG in the Figure \ref{fig:simple-loop-checkpoints}. The LoA 
 
 \section{ScaRR LLVM Pass} 
 
+\ft{no need this section. Consider your main section is overview 
+(Sec~\ref{sec:overview}), all the rest should revolve around it. If you want to 
+add a link ti your pass, you can do it in the result.}
 ScaRR LLVM pass\footnote{https://github.com/lamida/llvm-project/pull/3} is the implementation of ScaRR offline measurement using LLVM. ScaRR offline measurement is represented as the following key-value pair.
 
 $$(cp_A, cp_B, H(LoA)) \Rightarrow [(BBL_{s1}, BBL_{d1}), ..., (BBL_{sn}, BBL_{dn})]$$
@@ -110,6 +167,9 @@ ScaRR extractor traverses the graph in two passes. The first pass is find whethe
 
 \section{ScaRR Checkpoint Marker} \label{sec:scarr-checkpoint-marker}
 
+\ft{in fact! this part shoudl be used before :) where you describe the 
+checkpoints. I, as a reader, expect you exaust the discussion about checkpoints 
+before, why 2 sections that say the same things?}
 The logic of checkpoint marker is to traverse the whole control flow graph at least once. For each basic block, we have to check whether the basic block can be considered as any of checkpoint type mentioned above. To allow marking additional information about ScaRR checkpoint, we are modifying the BasicBlock class to add checkpoint instance variable as shown in listing \ref{listing:checkpoint}.
 
 \begin{listing}[htbp]
@@ -138,6 +198,8 @@ The logic of checkpoint marker is to traverse the whole control flow graph at le
 
 The algorithm to mark the checkpoint is first we iterate all basic block in main function. First we mark the first basic block with no predecessor as ThreadStart checkpoint and basic block with no successor and ThreadEnd checkpoint. 
 
+\ft{correct, I expect something like this, but not in this section, put 
+altogether in the previous checkpoints subsection}
 To identify ExitPoint checkpoint, for each basic block then we iterate  each instruction to find whether any instruction in the basic block is a `call` instruction and has no body defined in this translation unit. Please refer to Listing \ref{listing:exit-point-cp}.
 
 \begin{listing}[htbp]
@@ -196,6 +258,9 @@ To mark Virtual checkpoint, we need to find loop header basic block. Although th
 \end{listing}
 
 \section{ScaRR LoA Collector} \label{sec:scarr-loa-collector}
+
+\ft{can you summarize the algorithm in a pseudocude fashion? you should link 
+the lines in the pseudo code and describe it step by step.}
 
 The algorithm of getting LoA between two checkpoints is little bit more complex. First, we iterate all the basic block and if the basic block is a checkpoint we mark this is $cpA$. Next, we recursively traverse the successor of $cpA$ until we find another checkpoint $cpB$. It is possible for $cpA = cpB$. If there is no branch between the two checkpoint, the LoA is an empty set. If there is a branch, the first LoA is always be $cpA$ and the second LoA is always be the first basic block after the branch \textemdash{} which can be $cpB$ or just non checkpoint basic block. Interested readers can refer to the implementation of this pass to see the detail.
 

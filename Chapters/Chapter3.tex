@@ -4,9 +4,19 @@
 
 \label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter3} 
 
-In this chapter, we present some backgrounds on control-flow attack and remote attestation to detect attacks. The chapter ends with an overview of LLVM that relevant to the research. 
+In this chapter, we present some backgrounds on control-flow attack and remote 
+attestation to detect attacks. The chapter ends with an overview of LLVM that 
+relevant to the research. 
+
+\ft{specify what you are going to discuss. For instance.}
+In this chapter, we present some background information on control-flow 
+attacks (Section~\ref{sec:control-flow-attack}) and remote 
+attestation~\ft{ref} to detect attacks. The chapter ends with an overview of 
+LLVM that relevant to the research~\ft{ref}. 
+\ft{btw, be careful of plurals}
 
 \section{Control Flow Attack}
+\label{sec:control-flow-attack}
 
 Control-flow attack happens when adversaries make a program to perform action of their choice without statically modify the program binary but alter the runtime properties of the program. The adversary intention can be to execute malicious operations or to leak secret information. Many of this runtime software security attacks are occured due to memory corruption bug in software written in low-level languages like C and C++ \cite{szekeresSoKEternalWar2013}.
 
