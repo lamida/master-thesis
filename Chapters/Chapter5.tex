@@ -5,22 +5,17 @@
 \label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter5} 
 
 In this research we used the offline measurement generator in getting the 
-measurement across different real world programs. We calculated the ScaRR 
-control flow information from each of the program. We are applying the research 
-methodology into the following different programs 
-\footnote{https://github.com/lamida/scarr-sample-program/}:
-\ft{btw, footnotes should be after the punctuation, \eg aaaaa.\footnote{I am a 
-badass footnote!} -- so, move them accordingly.}
+measurement across different real world programs. We calculate the ScaRR 
+control flow information for each of the programs and we analyse and present the result in this chapter. 
+The analysis and source code of the program is available in this Github repository: \url{https://github.com/lamida/scarr-sample-program/}.
 
-\ft{don' use a list, just talk about the use case in the text and use math mode 
-for their version. Plus, add a citation to their public repository if they have 
-any.}
-\begin{itemize}
-    \item redis 6.2.4
-    \item bzip2 1.0.8
-    \item openssl 1.1.1j
-    \item coreutils 8.32
-\end{itemize}
+In this research we choose 4 large open source projects for analysis. We download the source code and checkout the latest version of the code. 
+The first software is Redis $6.2.4$  \cite{RedisRedis2021}, a what so called data structure server that is widely used in real world. 
+The Redis source build consist of the server binary and the client cli. We analyse both of the program.
+
+The second program we analyse is bzip2 $1.08$ \cite{Bzip2Bzip2}. Bzip2 is free and open source file compression program. The third program is openssl $1.1.1j$ \cite{OpensslOpenssl2021}. OpenSSL is full-featured toolkit for TLS protocol. 
+
+The last suite program we analyse is coreutils $8.32$ \cite{CoreutilsCoreutils2021}. Coreutils is suite of Unix utilities for file, shell and text manipulation.
 
 For each of program, we are collecting the following measurements:
 
