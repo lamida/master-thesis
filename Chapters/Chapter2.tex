@@ -4,10 +4,10 @@
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 
 This chapter presents the scope of the thesis. Apart of literature review, the
-main work on this research are the work on the models implementation for remote
-attestation and the analysis of the model's performance. Section
+main work on this research are the work on the models implementation for runtime
+remote attestation and the analysis of the model's performance. Section
 \ref{sec:implementation} presents the scope of implementation. Section
-\ref{sec:analysis}) discusses the scope of the analysis.
+\ref{sec:analysis} discusses the scope of the analysis.
 
 \section{Implementation}
 \label{sec:implementation}
@@ -29,15 +29,13 @@ program analysis part, specifically on the offline measurements generator as
 shown in the red box in the figure \ref{fig:scarr-system-overview}.
 
 The offline measurement is information that will be used in runtime remote
-attesttion. We write the offline measurement as LLVM passes using LLVM 13.0.0.
-We designed the algorithm based on the description in the original paper. 
-
+attesttion. We write the offline measurement as LLVM passes
+\cite{lattnerLLVMINFRASTRUCTUREMULTISTAGE2002} using LLVM 13.0.0. We designed
+the algorithm based on the description in the original paper. 
 
 We tested the model implementation using different programs that is written in
-C. Since the LLVM pass is running control from graph extraction against the
-intermediate representation, we should get consistent result on any programming
-language that compiles to IR. 
-
+C. Since the LLVM pass is running against the intermediate representation (IR),
+we should get consistent result on any programming language that compiles to IR.
 
 \section{Analysis}
 \label{sec:analysis}
