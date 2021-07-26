@@ -152,6 +152,23 @@
   file = {D\:\\GDrive\\zotero\\Aciiçmez\\aciiçmez_2007_yet_another_microarchitectural_attacks.pdf}
 }
 
+@incollection{aciicmezNewResultsInstruction2010,
+  title = {New {{Results}} on {{Instruction Cache Attacks}}},
+  booktitle = {Cryptographic {{Hardware}} and {{Embedded Systems}}, {{CHES}} 2010},
+  author = {Ac{\i}i{\c c}mez, Onur and Brumley, Billy Bob and Grabher, Philipp},
+  editor = {Hutchison, David and Kanade, Takeo and Kittler, Josef and Kleinberg, Jon M. and Mattern, Friedemann and Mitchell, John C. and Naor, Moni and Nierstrasz, Oscar and Pandu Rangan, C. and Steffen, Bernhard and Sudan, Madhu and Terzopoulos, Demetri and Tygar, Doug and Vardi, Moshe Y. and Weikum, Gerhard and Mangard, Stefan and Standaert, Fran{\c c}ois-Xavier},
+  year = {2010},
+  volume = {6225},
+  pages = {110--124},
+  publisher = {{Springer Berlin Heidelberg}},
+  address = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-642-15031-9_8},
+  abstract = {We improve instruction cache data analysis techniques with a framework based on vector quantization and hidden Markov models. As a result, we are capable of carrying out efficient automated attacks using live I-cache timing data. Using this analysis technique, we run an I-cache attack on OpenSSL's DSA implementation and recover keys using lattice methods. Previous I-cache attacks were proof-of-concept: we present results of an actual attack in a real-world setting, proving these attacks to be realistic. We also present general software countermeasures, along with their performance impact, that are not algorithm specific and can be employed at the kernel and/or compiler level.},
+  isbn = {978-3-642-15030-2 978-3-642-15031-9},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Acıiçmez et al\\acıiçmez_et_al_2010_new_results_on_instruction_cache_attacks.pdf}
+}
+
 @article{aciicmezPredictingSecretKeys2007,
   title = {Predicting Secret Keys via Branch Prediction},
   author = {Ac{\i}i{\c c}mez, Onur and Ko{\c c}, {\c C}etin Kaya and Seifert, Jean Pierre},
@@ -209,6 +226,35 @@
   abstract = {A hackfest named SWaT Security Showdown (S3) has been organized consecutively for two years. S3 has enabled researchers and practitioners to assess the effectiveness of methods and products aimed at detecting cyber attacks launched in real-time on an operational water treatment plant, namely, Secure Water Treatment (SWaT). In S3 independent attack teams design and launch attacks on SWaT while defence teams protect the plant passively and raise alarms upon attack detection. Attack teams are scored according to how successful they are in performing attacks based on specific intents while the defense teams are scored based on the effectiveness of their methods to detect the attacks. This paper focuses on the first two instances of S3 and summarizes the benefits of hackfest and the performance of an attack detection mechanism, named Water Defense, that was exposed to attackers during S3.},
   keywords = {Attack Detection,Capture-The-Flag (CTF),Cyber Security,Cyber-physical Attacks,Cyber-Physical Systems,Hackfest,Industrial Control Systems,Water Defense,Water Treatment Plant},
   file = {D\:\\GDrive\\zotero\\Adepu\\adepu_2018_assessing_the_effectiveness_of_attack_detection_at_a_hackfest_on_industrial.pdf}
+}
+
+@article{adepuControlBehaviorIntegrity2018,
+  title = {Control {{Behavior Integrity}} for {{Distributed Cyber}}-{{Physical Systems}}},
+  author = {Adepu, Sridhar and Brasser, Ferdinand and Garcia, Luis and Rodler, Michael and Davi, Lucas and Sadeghi, Ahmad-Reza and Zonouz, Saman},
+  year = {2018},
+  month = dec,
+  journal = {arXiv:1812.08310 [cs]},
+  eprint = {1812.08310},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  abstract = {Cyber-physical control systems, such as industrial control systems (ICS), are increasingly targeted by cyberattacks. Such attacks can potentially cause tremendous damage, affect critical infrastructure or even jeopardize human life when the system does not behave as intended. Cyberattacks, however, are not new and decades of security research have developed plenty of solutions to thwart them. Unfortunately, many of these solutions cannot be easily applied to safety-critical cyber-physical systems. Further, the attack surface of ICS is quite different from what can be commonly assumed in classical IT systems. We present Scadman, a system with the goal to preserve the Control Behavior Integrity (CBI) of distributed cyber-physical systems. By observing the system-wide behavior, the correctness of individual controllers in the system can be verified. This allows Scadman to detect a wide range of attacks against controllers, like programmable logic controller (PLCs), including malware attacks, code-reuse and data-only attacks. We implemented and evaluated Scadman based on a real-world water treatment testbed for research and training on ICS security. Our results show that we can detect a wide range of attacks--including attacks that have previously been undetectable by typical state estimation techniques--while causing no false-positive warning for nominal threshold values.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security},
+  file = {D\:\\GDrive\\zotero\\Adepu et al\\adepu_et_al_2018_control_behavior_integrity_for_distributed_cyber-physical_systems.pdf;C\:\\Users\\Admin\\Zotero\\storage\\YI6ADANQ\\1812.html}
+}
+
+@inproceedings{adepuControlBehaviorIntegrity2020,
+  title = {Control {{Behavior Integrity}} for {{Distributed Cyber}}-{{Physical Systems}}},
+  booktitle = {2020 {{ACM}}/{{IEEE}} 11th {{International Conference}} on {{Cyber}}-{{Physical Systems}} ({{ICCPS}})},
+  author = {Adepu, Sridhar and Brasser, Ferdinand and Garcia, Luis and Rodler, Michael and Davi, Lucas and Sadeghi, Ahmad-Reza and Zonouz, Saman},
+  year = {2020},
+  month = apr,
+  pages = {30--40},
+  issn = {2642-9500},
+  doi = {10.1109/ICCPS48487.2020.00011},
+  abstract = {Cyber-physical control systems, such as industrial control systems (ICS), are increasingly targeted by cyberattacks. Such attacks can potentially cause tremendous damage, affect critical infrastructure or even jeopardize human life when the system does not behave as intended. Cyberattacks, however, are not new and decades of security research have developed plenty of solutions to thwart them. Unfortunately, many of these solutions cannot be easily applied to safety-critical cyber-physical systems. Further, the attack surface of ICS is quite different from what can be commonly assumed in classical IT systems. We present Scadman, a novel control-logic aware anomaly detection system for distributed cyber-physical systems. By observing the system-wide behavior, the correctness of individual controllers (like programmable logic controllers-PLCs) in ICS can be verified. This allows Scadman to detect a wide range of attacks, including malware attacks, code-reuse and dataonly attacks, as well as sensor attacks. We implemented and evaluated Scadman based on a real-world water treatment testbed for ICS security research and training. Our results show that we can detect a wide range of attacks-including attacks that have previously been undetectable by typical state estimation techniques-while causing no false-positive warning for nominal threshold values.},
+  keywords = {Control systems,Cyber-physical systems,Industrial control,Integrated circuits,Monitoring,Software,State estimation},
+  file = {D\:\\GDrive\\zotero\\Adepu et al\\adepu_et_al_2020_control_behavior_integrity_for_distributed_cyber-physical_systems.pdf;C\:\\Users\\Admin\\Zotero\\storage\\KY49BIEA\\9096017.html}
 }
 
 @article{adepuDistributedAttackDetection2021,
@@ -331,6 +377,21 @@
   year = {1990},
   abstract = {The conventional notion of a program slice|the set of all statements that might aaect the value of a variable occurrence|is totally independent of the program input values. Program debugging, however, involves analyzing the program behavior under the spe-ciic inputs that revealed the bug. In this paper we address the dynamic counterpart of the static slicing problem||nding all statements that really aaected the value of a variable occurrence for the given program inputs. Several approaches for computing dynamic slices are examined. The notion of a Dynamic Dependence Graph and its use in computing dynamic slices is discussed. We i n troduce the concept of a Reduced Dynamic Dependence Graph whose size does not depend on the length of execution history, which is unbounded in general, but whose size is bounded and is proportional to the number of dynamic slices arising during the program execution.},
   file = {D\:\\GDrive\\zotero\\Agrawal\\agrawal_dynamic_program_slicing.pdf}
+}
+
+@inproceedings{agrawalOrderPreservingEncryption2004,
+  title = {Order Preserving Encryption for Numeric Data},
+  booktitle = {Proceedings of the 2004 {{ACM SIGMOD}} International Conference on {{Management}} of Data  - {{SIGMOD}} '04},
+  author = {Agrawal, Rakesh and Kiernan, Jerry and Srikant, Ramakrishnan and Xu, Yirong},
+  year = {2004},
+  pages = {563},
+  publisher = {{ACM Press}},
+  address = {{Paris, France}},
+  doi = {10.1145/1007568.1007632},
+  abstract = {Encryption is a well established technology for protecting sensitive data. However, once encrypted, data can no longer be easily queried aside from exact matches. We present an order-preserving encryption scheme for numeric data that allows any comparison operation to be directly applied on encrypted data. Query results produced are sound (no false hits) and complete (no false drops). Our scheme handles updates gracefully and new values can be added without requiring changes in the encryption of other values. It allows standard database indexes to be built over encrypted tables and can easily be integrated with existing database systems. The proposed scheme has been designed to be deployed in application environments in which the intruder can get access to the encrypted database, but does not have prior domain information such as the distribution of values and cannot encrypt or decrypt arbitrary values of his choice. The encryption is robust against estimation of the true value in such environments.},
+  isbn = {978-1-58113-859-7},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Agrawal et al\\agrawal_et_al_2004_order_preserving_encryption_for_numeric_data.pdf}
 }
 
 @techreport{aguileraManyFacesConsistency2016,
@@ -756,6 +817,14 @@
   file = {D\:\\GDrive\\zotero\\Ambrosin et al\\ambrosin_et_al_2016_sana.pdf}
 }
 
+@article{AMD64ArchitectureProgrammer2012,
+  title = {{{AMD64 Architecture Programmer}}'s {{Manual}}, {{Volume}} 2: {{System Programming}}},
+  year = {2012},
+  pages = {642},
+  language = {en},
+  file = {C\:\\Users\\Admin\\Zotero\\storage\\BVJJDVXK\\2012 - AMD64 Architecture Programmer’s Manual, Volume 2 .pdf}
+}
+
 @article{amdSoftwareTechniquesManaging2018,
   title = {Software {{Techniques}} for {{Managing Speculation}} on {{AMD Processors}}},
   author = {{AMD}},
@@ -980,6 +1049,39 @@
   file = {C\:\\Users\\Admin\\Zotero\\storage\\HW7VFSVF\\a-new-approach-to-linear-filtering-and-prediction-problems.pdf}
 }
 
+@article{ankergardStateoftheArtSoftwareBasedRemote2021,
+  title = {State-of-the-{{Art Software}}-{{Based Remote Attestation}}: {{Opportunities}} and {{Open Issues}} for {{Internet}} of {{Things}}},
+  shorttitle = {State-of-the-{{Art Software}}-{{Based Remote Attestation}}},
+  author = {Ankerg{\aa}rd, Sigurd Frej Joel J{\o}rgensen and Dushku, Edlira and Dragoni, Nicola},
+  year = {2021},
+  month = feb,
+  journal = {Sensors},
+  volume = {21},
+  number = {5},
+  pages = {1598},
+  issn = {1424-8220},
+  doi = {10.3390/s21051598},
+  abstract = {The Internet of Things (IoT) ecosystem comprises billions of heterogeneous Internetconnected devices which are revolutionizing many domains, such as healthcare, transportation, smart cities, to mention only a few. Along with the unprecedented new opportunities, the IoT revolution is creating an enormous attack surface for potential sophisticated cyber attacks. In this context, Remote Attestation (RA) has gained wide interest as an important security technique to remotely detect adversarial presence and assure the legitimate state of an IoT device. While many RA approaches proposed in the literature make different assumptions regarding the architecture of IoT devices and adversary capabilities, most typical RA schemes rely on minimal Root of Trust by leveraging hardware that guarantees code and memory isolation. However, the presence of a specialized hardware is not always a realistic assumption, for instance, in the context of legacy IoT devices and resource-constrained IoT devices. In this paper, we survey and analyze existing softwarebased RA schemes (i.e., RA schemes not relying on specialized hardware components) through the lens of IoT. In particular, we provide a comprehensive overview of their design characteristics and security capabilities, analyzing their advantages and disadvantages. Finally, we discuss the opportunities that these RA schemes bring in attesting legacy and resource-constrained IoT devices, along with open research issues.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Ankergård et al\\ankergård_et_al_2021_state-of-the-art_software-based_remote_attestation.pdf}
+}
+
+@book{anleyShellcoderHandbookDiscovering2007,
+  title = {The Shellcoder's Handbook: Discovering and Exploiting Security Holes},
+  shorttitle = {The Shellcoder's Handbook},
+  editor = {Anley, Chris and Koziol, Jack},
+  year = {2007},
+  edition = {2nd ed},
+  publisher = {{Wiley Pub}},
+  address = {{Indianapolis, IN}},
+  abstract = {"In a nutshell, this book is about code and data and what happens when the two become confused. You'll work with the basic building blocks of security bugs--assembler, source code, the stack, the heap, and so on. You'll experiment, explore, and understand the systems you're running--and how to better protect them." --Back cover},
+  isbn = {978-0-470-08023-8},
+  lccn = {QA76.9.A25 S464 2007},
+  keywords = {Computer security,Data protection,Risk assessment},
+  annotation = {OCLC: ocm72868228},
+  file = {D\:\\GDrive\\zotero\\Anley_Koziol\\anley_koziol_2007_the_shellcoder's_handbook.pdf}
+}
+
 @inproceedings{anselOpenTunerExtensibleFramework2014,
   title = {{{OpenTuner}}: An Extensible Framework for Program Autotuning},
   shorttitle = {{{OpenTuner}}},
@@ -1124,6 +1226,20 @@
   file = {D\:\\GDrive\\zotero\\Arackaparambil et al\\arackaparambil_et_al_2010_on_the_reliability_of_wireless_fingerprinting_using_clock_skews.pdf}
 }
 
+@inproceedings{arbaughSecureReliableBootstrap1997,
+  title = {A Secure and Reliable Bootstrap Architecture},
+  booktitle = {Proceedings. 1997 {{IEEE Symposium}} on {{Security}} and {{Privacy}} ({{Cat}}. {{No}}.{{97CB36097}})},
+  author = {Arbaugh, W.A. and Farber, D.J. and Smith, J.M.},
+  year = {1997},
+  month = may,
+  pages = {65--71},
+  issn = {1081-6011},
+  doi = {10.1109/SECPRI.1997.601317},
+  abstract = {In a computer system, the integrity of lower layers is typically treated as axiomatic by higher layers. Under the presumption that the hardware comprising the machine (the lowest layer) is valid, the integrity of a layer can be guaranteed if and only if: (1) the integrity of the lower layers is checked and (2) transitions to higher layers occur only after integrity checks on them are complete. The resulting integrity "chain" inductively guarantees system integrity. When these conditions are not met, as they typically are not in the bootstrapping (initialization) of a computer system, no integrity guarantees can be made, yet these guarantees are increasingly important to diverse applications such as Internet commerce, security systems and "active networks". In this paper, we describe the AEGIS architecture for initializing a computer system. It validates integrity at each layer transition in the bootstrap process. AEGIS also includes a recovery process for integrity check failures, and we show how this results in robust systems.},
+  keywords = {Computer architecture,Distributed computing,Hardware,IP networks,Laboratories,Microprogramming,Operating systems,Robustness,Security,Virtual machining},
+  file = {D\:\\GDrive\\zotero\\Arbaugh et al\\arbaugh_et_al_1997_a_secure_and_reliable_bootstrap_architecture.pdf;C\:\\Users\\Admin\\Zotero\\storage\\4X6AZSY2\\601317.html}
+}
+
 @techreport{ardagnaAccessControlSmarter2008,
   title = {Access {{Control}} for {{Smarter Healthcare Using Policy Spaces}} \$},
   author = {Ardagna, Claudio A and De Capitani Di Vimercati, Sabrina and Foresti, Sara and Grandison, Tyrone W and Jajodia, Sushil and Samarati, Pierangela},
@@ -1159,6 +1275,14 @@
   abstract = {We present an analysis of security vulnerabilities in the Domain Name System (DNS) and the DNS Security Extensions (DNSSEC). DNS data that is provided by name servers lacks support for data origin authentication and data integrity. This makes DNS vulnerable to man in the middle (MITM) attacks, as well as a range of other attacks. To make DNS more robust, DNSSEC was proposed by the Internet Engineering Task Force (IETF). DNSSECprovides data origin authentication and integrity by using digital signatures. Although DNSSEC provides security for DNS data, it suffers from serious security and operational flaws. We discuss the DNS and DNSSEC architectures, and consider the associated security vulnerabilities. \textcopyright{} 2007 IEEE.},
   isbn = {0769527752},
   keywords = {Cryptography,DNS,DNSSEC,Security,ss}
+}
+
+@article{ARMArchitectureReference2000,
+  title = {{{ARM Architecture Reference Manual ARMv7}}-{{A}} and {{ARMv7}}-{{R}} Edition},
+  year = {2000},
+  pages = {2720},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\_\\2000_arm_architecture_reference_manual_armv7-a_and_armv7-r_edition.pdf}
 }
 
 @techreport{armbrustCloudsBerkeleyView2009,
@@ -1202,6 +1326,28 @@
   file = {D\:\\GDrive\\zotero\\Armbrust et al\\armbrust_et_al_2018_structured_streaming.pdf}
 }
 
+@inproceedings{armknechtSecurityFrameworkAnalysis2013,
+  title = {A Security Framework for the Analysis and Design of Software Attestation},
+  booktitle = {Proceedings of the 2013 {{ACM SIGSAC}} Conference on {{Computer}} \& Communications Security - {{CCS}} '13},
+  author = {Armknecht, Frederik and Sadeghi, Ahmad-Reza and Schulz, Steffen and Wachsmann, Christian},
+  year = {2013},
+  pages = {1--12},
+  publisher = {{ACM Press}},
+  address = {{Berlin, Germany}},
+  doi = {10.1145/2508859.2516650},
+  abstract = {Software attestation has become a popular and challenging research topic at many established security conferences with an expected strong impact in practice. It aims at verifying the software integrity of (typically) resource-constrained embedded devices. However, for practical reasons, software attestation cannot rely on stored cryptographic secrets or dedicated trusted hardware. Instead, it exploits side-channel information, such as the time that the underlying device needs for a specific computation. As traditional cryptographic solutions and arguments are not applicable, novel approaches for the design and analysis are necessary. This is certainly one of the main reasons why the security goals, properties and underlying assumptions of existing software attestation schemes have been only vaguely discussed so far, limiting the confidence in their security claims. Thus, putting software attestation on a solid ground and having a founded approach for designing secure software attestation schemes is still an important open problem.},
+  isbn = {978-1-4503-2477-9},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Armknecht et al\\armknecht_et_al_2013_a_security_framework_for_the_analysis_and_design_of_software_attestation.pdf}
+}
+
+@article{ARMSecurityTechnology,
+  title = {{{ARM Security Technology Building}} a {{Secure System}} Using {{TrustZone Technology}}},
+  pages = {108},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\_\\arm_security_technology_building_a_secure_system_using_trustzone_technology.pdf}
+}
+
 @article{ARMSecurityTechnology2009,
   title = {{{ARM Security Technology Building}} a {{Secure System}} Using {{TrustZone Technology}}},
   year = {2009},
@@ -1215,6 +1361,15 @@
   author = {Armstrong, Joe},
   year = {2003},
   file = {D\:\\GDrive\\zotero\\Armstrong\\armstrong_2003_making_reliable_distributed_systems_in_the_presence_of_sodware_errors_final.pdf}
+}
+
+@article{arnautovSCONESecureLinux,
+  title = {{{SCONE}}: {{Secure Linux Containers}} with {{Intel SGX}}},
+  author = {Arnautov, Sergei and Trach, Bohdan and Gregor, Franz and Knauth, Thomas and Martin, Andre and Priebe, Christian and Lind, Joshua and Muthukumaran, Divya and O'Keeffe, Dan and Stillwell, Mark L and Goltzsche, David and Eyers, David and Kapitza, Rudiger and Pietzuch, Peter and Fetzer, Christof},
+  pages = {17},
+  abstract = {In multi-tenant environments, Linux containers managed by Docker or Kubernetes have a lower resource footprint, faster startup times, and higher I/O performance compared to virtual machines (VMs) on hypervisors. Yet their weaker isolation guarantees, enforced through software kernel mechanisms, make it easier for attackers to compromise the confidentiality and integrity of application data within containers.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Arnautov et al\\arnautov_et_al_scone.pdf}
 }
 
 @book{arpaci-dusseauOperatingSystemsThree2018,
@@ -1957,6 +2112,22 @@
   file = {D\:\\GDrive\\zotero\\Bauer\\bauer_programming_with_algebraic_effects_and_handlers.pdf}
 }
 
+@article{baumannShieldingApplicationsUntrusted2015,
+  title = {Shielding {{Applications}} from an {{Untrusted Cloud}} with {{Haven}}},
+  author = {Baumann, Andrew and Peinado, Marcus and Hunt, Galen},
+  year = {2015},
+  month = sep,
+  journal = {ACM Transactions on Computer Systems},
+  volume = {33},
+  number = {3},
+  pages = {1--26},
+  issn = {0734-2071, 1557-7333},
+  doi = {10.1145/2799647},
+  abstract = {Today's cloud computing infrastructure requires substantial trust. Cloud users rely on both the provider's staff and its globally distributed software/hardware platform not to expose any of their private data.             We introduce the notion of shielded execution, which protects the confidentiality and integrity of a program and its data from the platform on which it runs (i.e., the cloud operator's OS, VM, and firmware). Our prototype, Haven, is the first system to achieve shielded execution of unmodified legacy applications, including SQL Server and Apache, on a commodity OS (Windows) and commodity hardware. Haven leverages the hardware protection of Intel SGX to defend against privileged code and physical attacks such as memory probes, and also addresses the dual challenges of executing unmodified legacy binaries and protecting them from a malicious host. This work motivated recent changes in the SGX specification.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Baumann et al\\baumann_et_al_2015_shielding_applications_from_an_untrusted_cloud_with_haven.pdf}
+}
+
 @techreport{bauSecurityEvaluationDNSSEC,
   title = {A {{Security Evaluation}} of {{DNSSEC}} with {{NSEC3}}},
   author = {Bau, Jason and Mitchell, John C},
@@ -2255,6 +2426,16 @@
   file = {D\:\\GDrive\\zotero\\Benjamin\\benjamin_1972_management-_on_the_implementation_of_security_measures_in_information_systems.pdf}
 }
 
+@misc{benProjectZeroTrust2017,
+  title = {Project {{Zero}}: {{Trust Issues}}: {{Exploiting TrustZone TEEs}}},
+  shorttitle = {Project {{Zero}}},
+  author = {Ben},
+  year = {2017},
+  month = jul,
+  journal = {Project Zero},
+  file = {C\:\\Users\\Admin\\Zotero\\storage\\HKYTXYDY\\trust-issues-exploiting-trustzone-tees.html}
+}
+
 @incollection{bensonKBDHAssumptionFamily2013,
   title = {The K-{{BDH Assumption Family}}: {{Bilinear Map Cryptography}} from {{Progressively Weaker Assumptions}}},
   shorttitle = {The K-{{BDH Assumption Family}}},
@@ -2348,6 +2529,23 @@
   abstract = {ChaCha8 is a 256-bit stream cipher based on the 8-round cipher Salsa20/8. The changes from Salsa20/8 to ChaCha8 are designed to improve diffusion per round, conjecturally increasing resistance to cryptanalysis, while preserving\textemdash and often improving\textemdash time per round. ChaCha12 and ChaCha20 are analogous modifications of the 12-round and 20-round ciphers Salsa20/12 and Salsa20/20. This paper presents the ChaCha family and explains the differences between Salsa20 and ChaCha.},
   keywords = {ss},
   file = {D\:\\GDrive\\zotero\\Bernstein\\bernstein_chacha,_a_variant_of_salsa20.pdf}
+}
+
+@article{bernsteinContainersCloudLXC2014,
+  title = {Containers and {{Cloud}}: {{From LXC}} to {{Docker}} to {{Kubernetes}}},
+  shorttitle = {Containers and {{Cloud}}},
+  author = {Bernstein, David},
+  year = {2014},
+  month = sep,
+  journal = {IEEE Cloud Computing},
+  volume = {1},
+  number = {3},
+  pages = {81--84},
+  issn = {2325-6095},
+  doi = {10.1109/MCC.2014.51},
+  abstract = {This issue's "Cloud Tidbit" focuses on container technology and how it's emerging as an important part of the cloud computing infrastructure. It looks at Docker, an open source project that automates the faster deployment of Linux applications, and Kubernetes, an open source cluster manager for Docker containers.},
+  keywords = {cloud,Cloud computing,containers,Containers,dockers,Google,Home appliances,Linux,Runtime,Virtual machine monitors,virtual machines},
+  file = {D\:\\GDrive\\zotero\\Bernstein\\bernstein_2014_containers_and_cloud.pdf;C\:\\Users\\Admin\\Zotero\\storage\\B457FBEC\\7036275.html}
 }
 
 @techreport{bernsteinNTRUPrime,
@@ -2631,6 +2829,22 @@
   pages = {331--359},
   abstract = {The Take Grant Protection Model is a theoretic model of access control that captures the notion of information flow throughout the modelled system. This paper analyzes the problem of sharing information in the context of paths along which information can flow, and presents the number of actors necessary and sufficient to share information, in this model. The results are applied to information flow in a network to reduce the size of the set of actors who could have participated in the theft.},
   file = {D\:\\GDrive\\zotero\\Bishop\\bishop_1996_conspiracy_and_information_flow_in_the_take-grant_protection_model.pdf}
+}
+
+@article{bishopPenetrationTesting2007,
+  title = {About {{Penetration Testing}}},
+  author = {Bishop, Matt},
+  year = {2007},
+  month = nov,
+  journal = {IEEE Security Privacy},
+  volume = {5},
+  number = {6},
+  pages = {84--87},
+  issn = {1558-4046},
+  doi = {10.1109/MSP.2007.159},
+  abstract = {Students generally learn red teaming, sometimes called penetration testing or ethical hacking, as "breaking into your own system to see how hard it is to do so". Contrary to this simplistic view, a penetration test requires a detailed analysis of the threats and potential attackers in order to be most valuable. Using the results of penetration testing requires proper interpretation. Neither testers nor sponsors should assert that the penetration test has found all possible flaws, or that the failure to find flaws means that the system is secure. All types of testing can show only the presence of flaws and never the absence of them. The best that testers can say is that the specific flaws they looked for and failed to find aren't present: this can give some idea of the overall security of the system's design and implementation.},
+  keywords = {Computer crime,Degradation,education,ethical hacking,hacking,Information security,penetration testing,Permission,Privacy,Protection,red teams,System testing,Vehicles},
+  file = {D\:\\GDrive\\zotero\\Bishop\\bishop_2007_about_penetration_testing.pdf;C\:\\Users\\Admin\\Zotero\\storage\\DLY4BKIQ\\4402456.html}
 }
 
 @techreport{biswasExOROpportunisticMultiHop2005,
@@ -3036,6 +3250,23 @@
   file = {D\:\\GDrive\\zotero\\Brain_Rosenblatt\\brain_rosenblatt_1958_the_perceptron.pdf;C\:\\Users\\Admin\\Zotero\\storage\\9HXDUN6X\\download.html}
 }
 
+@inproceedings{brasserDRSGXAutomated2019,
+  title = {{{DR}}.{{SGX}}: Automated and Adjustable Side-Channel Protection for {{SGX}} Using Data Location Randomization},
+  shorttitle = {{{DR}}.{{SGX}}},
+  booktitle = {Proceedings of the 35th {{Annual Computer Security Applications Conference}}},
+  author = {Brasser, Ferdinand and Capkun, Srdjan and Dmitrienko, Alexandra and Frassetto, Tommaso and Kostiainen, Kari and Sadeghi, Ahmad-Reza},
+  year = {2019},
+  month = dec,
+  pages = {788--800},
+  publisher = {{ACM}},
+  address = {{San Juan Puerto Rico USA}},
+  doi = {10.1145/3359789.3359809},
+  abstract = {Recent research has demonstrated that Intel's SGX is vulnerable to software-based side-channel attacks. In a common attack, the adversary monitors CPU caches to infer secret-dependent data accesses patterns. Known defenses have major limitations, as they require either error-prone developer assistance, incur extremely high runtime overhead, or prevent only specific attacks.},
+  isbn = {978-1-4503-7628-0},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2019_dr.pdf}
+}
+
 @article{brasserEnclaveComputingParadigm2020,
   title = {Enclave {{Computing Paradigm}}: {{Hardware}}-Assisted {{Security Architectures}} \&amp; {{Applications}}},
   shorttitle = {Enclave {{Computing Paradigm}}},
@@ -3047,6 +3278,22 @@
   copyright = {Creative Commons Attribution Non Commercial No Derivatives 4.0 International},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Brasser\\brasser_2020_enclave_computing_paradigm.pdf}
+}
+
+@inproceedings{brasserRegulatingARMTrustZone2016,
+  title = {Regulating {{ARM TrustZone Devices}} in {{Restricted Spaces}}},
+  booktitle = {Proceedings of the 14th {{Annual International Conference}} on {{Mobile Systems}}, {{Applications}}, and {{Services}}},
+  author = {Brasser, Ferdinand and Kim, Daeyoung and Liebchen, Christopher and Ganapathy, Vinod and Iftode, Liviu and Sadeghi, Ahmad-Reza},
+  year = {2016},
+  month = jun,
+  pages = {413--425},
+  publisher = {{ACM}},
+  address = {{Singapore Singapore}},
+  doi = {10.1145/2906388.2906390},
+  abstract = {Smart personal devices equipped with a wide range of sensors and peripherals can potentially be misused in various environments. They can be used to exfiltrate sensitive information from enterprises and federal offices or be used to smuggle unauthorized information into classrooms and examination halls. One way to prevent these situations is to regulate how smart devices are used in such restricted spaces. In this paper, we present an approach that robustly achieves this goal for ARM TrustZone-based personal devices. In our approach, restricted space hosts use remote memory operations to analyze and regulate guest devices within the restricted space. We show that the ARM TrustZone allows our approach to obtain strong security guarantees while only requiring a small trusted computing base to execute on guest devices.},
+  isbn = {978-1-4503-4269-8},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2016_regulating_arm_trustzone_devices_in_restricted_spaces.pdf}
 }
 
 @inproceedings{brasserRemoteAttestationLowend2016,
@@ -3063,6 +3310,21 @@
   file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2016_remote_attestation_for_low-end_embedded_devices.pdf;C\:\\Users\\Admin\\Zotero\\storage\\S422NRKL\\7544334.html}
 }
 
+@inproceedings{brasserSANCTUARYARMingTrustZone2019,
+  title = {{{SANCTUARY}}: {{ARMing TrustZone}} with {{User}}-Space {{Enclaves}}},
+  shorttitle = {{{SANCTUARY}}},
+  booktitle = {Proceedings 2019 {{Network}} and {{Distributed System Security Symposium}}},
+  author = {Brasser, Ferdinand and Gens, David and Jauernig, Patrick and Sadeghi, Ahmad-Reza and Stapf, Emmanuel},
+  year = {2019},
+  publisher = {{Internet Society}},
+  address = {{San Diego, CA}},
+  doi = {10.14722/ndss.2019.23448},
+  abstract = {ARM TrustZone is one of the most widely deployed security architecture providing Trusted Execution Environments (TEEs). Unfortunately, its usage and potential benefits for application developers and end users are largely limited due to restricted deployment policies imposed by device vendors. Restriction is enforced since every Trusted App (TA) increases the TEE's attack surface: any vulnerable or malicious TA can compromise the system's security. Hence, deploying a TA requires mutual trust between device vendor and application developer, incurring high costs for both. Vendors work around this by offering interfaces to selected TEE functionalities, however, these are not sufficient to securely implement advanced mobile services like banking. Extensive discussion of Intel's SGX technology in academia and industry has unveiled the demand for an unrestricted use of TEEs, yet no comparable security architecture for mobile devices exists to this day.},
+  isbn = {978-1-891562-55-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2019_sanctuary.pdf}
+}
+
 @article{brasserSoftwareGrandExposure2017,
   title = {Software Grand Exposure: {{SGX}} Cache Attacks Are Practical},
   author = {Brasser, Ferdinand and M{\"u}ller, Urs and Dmitrienko, Alexandra and Kostiainen, Kari and Capkun, Srdjan and Sadeghi, Ahmad Reza},
@@ -3070,6 +3332,16 @@
   journal = {11th USENIX Workshop on Offensive Technologies, WOOT 2017, co-located with USENIX Security 2017},
   abstract = {Intel SGX isolates the memory of security-critical applications from the untrusted OS. However, it has been speculated that SGX may be vulnerable to side-channel attacks through shared caches. We developed new cache attack techniques customized for SGX. Our attack differs from other SGX cache attacks in that it is easy to deploy and avoids known detection approaches. We demonstrate the effectiveness of our attack on two case studies: RSA decryption and genomic processing. While cache timing attacks against RSA and other cryptographic operations can be prevented by using appropriately hardened crypto libraries, the same cannot be easily done for other computations, such as genomic processing. Our second case study therefore shows that attacks on non-cryptographic but privacy sensitive operations are a serious threat. We analyze countermeasures and show that none of the known defenses eliminates the attack.},
   file = {D\:\\GDrive\\zotero\\Brasser\\brasser_2017_software_grand_exposure.pdf}
+}
+
+@article{brasserSoftwareGrandExposure2017a,
+  title = {Software {{Grand Exposure}}: {{SGX Cache Attacks Are Practical}}},
+  author = {Brasser, Ferdinand and Muller, Urs and Dmitrienko, Alexandra and Kostiainen, Kari and Capkun, Srdjan and Sadeghi, Ahmad-Reza},
+  year = {2017},
+  pages = {12},
+  abstract = {Intel SGX isolates the memory of security-critical applications from the untrusted OS. However, it has been speculated that SGX may be vulnerable to side-channel attacks through shared caches. We developed new cache attack techniques customized for SGX. Our attack differs from other SGX cache attacks in that it is easy to deploy and avoids known detection approaches. We demonstrate the effectiveness of our attack on two case studies: RSA decryption and genomic processing. While cache timing attacks against RSA and other cryptographic operations can be prevented by using appropriately hardened crypto libraries, the same cannot be easily done for other computations, such as genomic processing. Our second case study therefore shows that attacks on noncryptographic but privacy sensitive operations are a serious threat. We analyze countermeasures and show that none of the known defenses eliminates the attack.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2017_software_grand_exposure.pdf}
 }
 
 @article{brasserTyTANTinyTrust2015,
@@ -3084,6 +3356,21 @@
   abstract = {Embedded systems are at the core of many security-sensitive and safety-critical applications, including automotive, industrial control systems, and critical infrastructures. Existing protection mechanisms against (software-based) malware are inflexible, too complex, expensive, or do not meet real-time requirements. We present TyTAN, which, to the best of our knowledge, is the first security architecture for embedded systems that provides (1) hardware-assisted strong isolation of dynamically configurable tasks and (2) real-time guarantees. We implemented TyTAN on the Intel\textregistered{} Siskiyou Peak embedded platform and demonstrate its efficiency and effectiveness through extensive evaluation.},
   isbn = {9781450335201},
   file = {D\:\\GDrive\\zotero\\Brasser\\brasser_2015_tytan.pdf}
+}
+
+@inproceedings{brasserVoiceGuardSecurePrivate2018,
+  title = {{{VoiceGuard}}: {{Secure}} and {{Private Speech Processing}}},
+  shorttitle = {{{VoiceGuard}}},
+  booktitle = {Interspeech 2018},
+  author = {Brasser, Ferdinand and Frassetto, Tommaso and Riedhammer, Korbinian and Sadeghi, Ahmad-Reza and Schneider, Thomas and Weinert, Christian},
+  year = {2018},
+  month = sep,
+  pages = {1303--1307},
+  publisher = {{ISCA}},
+  doi = {10.21437/Interspeech.2018-2032},
+  abstract = {With the advent of smart-home devices providing voice-based interfaces, such as Amazon Alexa or Apple Siri, voice data is constantly transferred to cloud services for automated speech recognition or speaker verification.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Brasser et al\\brasser_et_al_2018_voiceguard.pdf}
 }
 
 @techreport{breivoldAnalyzingSoftwareEvolvability,
@@ -3679,6 +3966,20 @@
   file = {D\:\\GDrive\\zotero\\Carpent et al\\carpent_et_al_2018_erasmus.pdf}
 }
 
+@inproceedings{carpentInvitedReconcilingRemote2018,
+  title = {Invited: {{Reconciling Remote Attestation}} and {{Safety}}-{{Critical Operation}} on {{Simple IoT Devices}}},
+  shorttitle = {Invited},
+  booktitle = {2018 55th {{ACM}}/{{ESDA}}/{{IEEE Design Automation Conference}} ({{DAC}})},
+  author = {Carpent, Xavier and Eldefrawy, Karim and Rattanavipanon, Norrathep and Sadeghi, Ahmad-Reza and Tsudik, Gene},
+  year = {2018},
+  month = jun,
+  pages = {1--6},
+  doi = {10.1109/DAC.2018.8465928},
+  abstract = {Remote attestation (RA) is a means of malware detection, typically realized as an interaction between a trusted verifier and a potentially compromised remote device (prover). RA is especially relevant for low-end embedded devices that are incapable of protecting themselves against malware infection. Most current RA techniques require on-demand and uninterruptible (atomic) operation. The former fails to detect transient malware that enters and leaves between successive RA instances; the latter involves performing potentially time-consuming computation over prover's memory and/or storage, which can be harmful to the device's safety-critical functionality and general availability. However, relaxing either on-demand or atomic RA operation is tricky and prone to vulnerabilities. This paper identifies some issues that arise in reconciling requirements of safety-critical operation with those of secure remote attestation, including detection of transient and self-relocating malware. It also investigates mitigation techniques, including periodic self-measurements as well as interruptible attestation modality that involves shuffled memory traversals and various memory locking mechanisms.},
+  keywords = {Computer architecture,Hardware,Malware,Performance evaluation,Security,Transient analysis},
+  file = {D\:\\GDrive\\zotero\\Carpent et al\\carpent_et_al_2018_invited.pdf;C\:\\Users\\Admin\\Zotero\\storage\\VMAC7CR5\\8465928.html}
+}
+
 @inproceedings{carpentLightweightSwarmAttestation2017,
   title = {Lightweight {{Swarm Attestation}}: {{A Tale}} of {{Two LISA}}-s},
   shorttitle = {Lightweight {{Swarm Attestation}}},
@@ -3711,6 +4012,22 @@
   isbn = {978-1-5386-4731-8},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Carpent et al\\carpent_et_al_2018_remote_attestation_of_iot_devices_via_smarm.pdf}
+}
+
+@article{carpentRemoteAttestationSelfMeasurement2019,
+  title = {Remote {{Attestation}} via {{Self}}-{{Measurement}}},
+  author = {Carpent, Xavier and Rattanavipanon, Norrathep and Tsudik, Gene},
+  year = {2019},
+  month = jan,
+  journal = {ACM Transactions on Design Automation of Electronic Systems},
+  volume = {24},
+  number = {1},
+  pages = {1--15},
+  issn = {1084-4309, 1557-7309},
+  doi = {10.1145/3279950},
+  abstract = {Remote attestation (RA) is a popular means of detecting malware in embedded and IoT devices. RA is usually realized as an interactive protocol, whereby a trusted party (               verifier               ) measures software integrity of a potentially compromised remote device (               prover)               . Early work focused on purely software-based and fully hardware-based techniques, neither of which is ideal for low-end embedded devices. More recent results yielded hybrid (SW/HW) architectures with a minimal set of features to support efficient and secure RA on low-end devices.                                         All prior techniques require               on-demand operation               , i.e., RA is performed in               real time               . We identify some drawbacks of this general approach in the context of unattended devices: First, it fails to detect               mobile malware               that enters and leaves prover between successive RA instances. Second, it requires prover to engage in a potentially expensive (in terms of time and energy) computation, which can be harmful for mission-critical or real-time devices.                                         To address these drawbacks, we introduce the concept of               self-measurement               , whereby prover periodically and securely measures and records its own software state, based on a pre-established schedule. A (possibly untrusted) verifier occasionally collects and verifies these measurements. We present the design of a concrete technique, called Efficient Remote Attestation via Self-Measurement for Unattended Settings, (ERASMUS), justify its features and evaluate its performance. In the process, we also define a new metric,               Quality of Attestation               (QoA). We believe that ERASMUS is well suited for time-sensitive and/or safety-critical applications that are not served well by on-demand RA. Finally, we show that ERASMUS is a promising stepping stone toward handling attestation of multiple devices (i.e., a group or swarm) with high mobility.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Carpent et al\\carpent_et_al_2019_remote_attestation_via_self-measurement.pdf}
 }
 
 @misc{CaseCSMaster,
@@ -3748,12 +4065,37 @@
   file = {D\:\\GDrive\\zotero\\Castellanos\\castellanos_2018_finding_depen-dencies_between_cyber-physical_domains_for_security_testing_of.pdf;D\:\\GDrive\\zotero\\Castellanos\\castellanos_2018_finding_dependencies_between_cyber-physical_domains_for_security_testing_of.pdf}
 }
 
+@inproceedings{castellucciaDifficultySoftwarebasedAttestation2009,
+  title = {On the Difficulty of Software-Based Attestation of Embedded Devices},
+  booktitle = {Proceedings of the 16th {{ACM}} Conference on {{Computer}} and Communications Security - {{CCS}} '09},
+  author = {Castelluccia, Claude and Francillon, Aur{\'e}lien and Perito, Daniele and Soriente, Claudio},
+  year = {2009},
+  pages = {400},
+  publisher = {{ACM Press}},
+  address = {{Chicago, Illinois, USA}},
+  doi = {10.1145/1653662.1653711},
+  abstract = {Device attestation is an essential feature in many security protocols and applications. The lack of dedicated hardware and the impossibility to physically access devices to be attested, makes attestation of embedded devices, in applications such as Wireless Sensor Networks, a prominent challenge. Several software-based attestation techniques have been proposed that either rely on tight time constraints or on the lack of free space to store malicious code. This paper investigates the shortcomings of existing software-based attestation techniques. We first present two generic attacks, one based on a return-oriented rootkit and the other on code compression. We further describe specific attacks on two existing proposals, namely SWATT and ICE-based schemes, and argue about the difficulty of fixing them. All attacks presented in this paper were implemented and validated on commodity sensors.},
+  isbn = {978-1-60558-894-0},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Castelluccia et al\\castelluccia_et_al_2009_on_the_difficulty_of_software-based_attestation_of_embedded_devices.pdf}
+}
+
 @techreport{castroPracticalByzantineFault1999,
   title = {Practical {{Byzantine Fault Tolerance}}},
   author = {Castro, Miguel and Liskov, Barbara},
   year = {1999},
   abstract = {This paper describes a new replication algorithm that is able to tolerate Byzantine faults. We believe that Byzantine-fault-tolerant algorithms will be increasingly important in the future because malicious attacks and software errors are increasingly common and can cause faulty nodes to exhibit arbitrary behavior. Whereas previous algorithms assumed a synchronous system or were too slow to be used in practice, the algorithm described in this paper is practical: it works in asynchronous environments like the Internet and incorporates several important optimizations that improve the response time of previous algorithms by more than an order of magnitude. We implemented a Byzantine-fault-tolerant NFS service using our algorithm and measured its performance. The results show that our service is only 3\% slower than a standard unreplicated NFS.},
   file = {D\:\\GDrive\\zotero\\Castro\\castro_1999_practical_byzantine_fault_tolerance.pdf}
+}
+
+@article{castroSecuringSoftwareEnforcing2006,
+  title = {Securing Software by Enforcing Data-Flow Integrity},
+  author = {Castro, Miguel and Costa, Manuel and Harris, Tim},
+  year = {2006},
+  pages = {14},
+  abstract = {Software attacks often subvert the intended data-flow in a vulnerable program. For example, attackers exploit buffer overflows and format string vulnerabilities to write data to unintended locations. We present a simple technique that prevents these attacks by enforcing data-flow integrity. It computes a data-flow graph using static analysis, and it instruments the program to ensure that the flow of data at runtime is allowed by the data-flow graph. We describe an efficient implementation of data-flow integrity enforcement that uses static analysis to reduce instrumentation overhead. This implementation can be used in practice to detect a broad class of attacks and errors because it can be applied automatically to C and C++ programs without modifications, it does not have false positives, and it has low overhead.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Castro et al\\castro_et_al_2006_securing_software_by_enforcing_data-ﬂow_integrity.pdf}
 }
 
 @techreport{cavallaroLimitsInformationFlow,
@@ -4518,6 +4860,20 @@
   keywords = {features,software product lines,specification}
 }
 
+@inproceedings{clemensRuntimeStateVerification2018,
+  title = {Runtime {{State Verification}} on {{Resource}}-{{Constrained Platforms}}},
+  booktitle = {{{MILCOM}} 2018 - 2018 {{IEEE Military Communications Conference}} ({{MILCOM}})},
+  author = {Clemens, John and Pal, Raj and Sherrell, Branden},
+  year = {2018},
+  month = oct,
+  pages = {1--6},
+  issn = {2155-7586},
+  doi = {10.1109/MILCOM.2018.8599862},
+  abstract = {Verifying the integrity of multi-component cyber and cyber-physical systems remains a crucial and necessary precondition for trust. The edge components of such systems, those that interact directly with the user or physical world, are typically resource-constrained - with minimal CPU, memory, and power - and do not support traditional mechanisms for trustworthy integrity verification. Yet the integrity of all components of a system, including resource-constrained edge devices, is essential to guard against compromise and to ensure user confidence. In this paper we present IoTA, an extensible, open source, agent-based framework for trustworthy runtime integrity verification on resource-constrained platforms. We define IoTA's system architecture, compare it with existing integrity measurement frameworks, and discuss the necessary trade-offs to achieve trust within these constraints. Further, we present a prototype implementation of IoTA to explore both the feasibility and impact of agent-based measurement.},
+  keywords = {Computer architecture,Computer security,Hardware,Prototypes,Runtime,Sensors,Software},
+  file = {D\:\\GDrive\\zotero\\Clemens et al\\clemens_et_al_2018_runtime_state_verification_on_resource-constrained_platforms.pdf;C\:\\Users\\Admin\\Zotero\\storage\\A2QVRL4F\\8599862.html}
+}
+
 @techreport{clementMakingByzantineFault2009,
   title = {Making {{Byzantine Fault Tolerant Systems Tolerate Byzantine Faults}}},
   author = {Clement, Allen and Wong, Edmund and Alvisi, Lorenzo and Dahlin, Mike and Marchetti, Mirco},
@@ -4525,6 +4881,15 @@
   pages = {153},
   abstract = {This paper argues for a new approach to building Byzan-tine fault tolerant replication systems. We observe that although recently developed BFT state machine replica-tion protocols are quite fast, they don't tolerate Byzantine faults very well: a single faulty client or server is capable of rendering PBFT, Q/U, HQ, and Zyzzyva virtually unusable. In this paper, we (1) demonstrate that existing protocols are dangerously fragile, (2) define a set of principles for constructing BFT services that remain useful even when Byzantine faults occur, and (3) apply these principles to construct a new protocol, Aardvark. Aardvark can achieve peak performance within 40\% of that of the best existing protocol in our tests and provide a significant fraction of that performance when up to f servers and any number of clients are faulty. We observe useful throughputs between 11706 and 38667 requests per second for a broad range of injected faults.},
   file = {D\:\\GDrive\\zotero\\Clement et al\\clement_et_al_2009_making_byzantine_fault_tolerant_systems_tolerate_byzantine_faults.pdf}
+}
+
+@article{clercqSurveyHardwarebasedControl2017,
+  title = {A Survey of {{Hardware}}-Based {{Control Flow Integrity}} ({{CFI}})},
+  author = {Clercq, Ruan De and Verbauwhede, Ingrid},
+  year = {2017},
+  pages = {27},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Clercq_Verbauwhede\\clercq_verbauwhede_2017_a_survey_of_hardware-based_control_flow_integrity_(cfi).pdf}
 }
 
 @article{ClosingGapLlvm2020,
@@ -4623,6 +4988,23 @@
   doi = {10.1080/18335330.2012.653198},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Collins_McCombie\\collins_mccombie_2012_stuxnet.pdf}
+}
+
+@article{combeDockerNotDocker2016,
+  title = {To {{Docker}} or {{Not}} to {{Docker}}: {{A Security Perspective}}},
+  shorttitle = {To {{Docker}} or {{Not}} to {{Docker}}},
+  author = {Combe, Theo and Martin, Antony and Di Pietro, Roberto},
+  year = {2016},
+  month = sep,
+  journal = {IEEE Cloud Computing},
+  volume = {3},
+  number = {5},
+  pages = {54--62},
+  issn = {2325-6095},
+  doi = {10.1109/MCC.2016.100},
+  abstract = {The need for ever-shorter development cycles, continuous delivery, and cost savings in cloud-based infrastructures led to the rise of containers, which are more flexible than virtual machines and provide near-native performance. Among all container solutions, Docker, a complete packaging and software delivery tool, currently leads the market. This article gives an overview of the container ecosystem and discusses the Docker environment's security implications through realistic use cases. The authors define an adversary model, point out several vulnerabilities affecting current Docker usage, and discuss further research directions.},
+  keywords = {cloud computing,Cloud computing,Computer security,containers,Containers,Cost benefit analysis,Docker,Linux,Product life cycle management,security,Virtual networks,virtualization},
+  file = {D\:\\GDrive\\zotero\\Combe et al\\combe_et_al_2016_to_docker_or_not_to_docker.pdf;C\:\\Users\\Admin\\Zotero\\storage\\ZBBTCN4Q\\7742298.html}
 }
 
 @techreport{ComprehensivePictureGreat,
@@ -5000,6 +5382,20 @@
   isbn = {978-1-4503-3245-3},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Dang et al\\dang_et_al_2015_the_performance_cost_of_shadow_stacks_and_stack_canaries.pdf}
+}
+
+@book{dangPracticalReverseEngineering2014,
+  title = {Practical Reverse Engineering: X86, X64, {{ARM}}, {{Windows Kernel}}, Reversing Tools, and Obfuscation},
+  shorttitle = {Practical Reverse Engineering},
+  author = {Dang, Bruce and Gazet, Alexandre and Bachaalany, Elias and Josse, S{\'e}bastien},
+  year = {2014},
+  publisher = {{Wiley}},
+  address = {{Indianapolis, Indiana}},
+  isbn = {978-1-118-78731-1},
+  lccn = {QA76.76.D57 D36 2014},
+  keywords = {Computer security,Data processing,Disassemblers (Computer programs),Reverse engineering},
+  annotation = {OCLC: ocn858361554},
+  file = {D\:\\GDrive\\zotero\\Dang et al\\dang_et_al_2014_practical_reverse_engineering.pdf}
 }
 
 @article{danielVerifiableMutabilityBlockchains2021,
@@ -5393,6 +5789,22 @@
   isbn = {978-1-72812-350-9},
   language = {en},
   file = {D\:\\GDrive\\zotero\\de Oliveira Nunes et al\\de_oliveira_nunes_et_al_2019_pure.pdf}
+}
+
+@inproceedings{deoliveiranunesSystematicDesignCollective2019,
+  title = {Towards {{Systematic Design}} of {{Collective Remote Attestation Protocols}}},
+  booktitle = {2019 {{IEEE}} 39th {{International Conference}} on {{Distributed Computing Systems}} ({{ICDCS}})},
+  author = {De Oliveira Nunes, Ivan and Dessouky, Ghada and Ibrahim, Ahmad and Rattanavipanon, Norrathep and Sadeghi, Ahmad-Reza and Tsudik, Gene},
+  year = {2019},
+  month = jul,
+  pages = {1188--1198},
+  publisher = {{IEEE}},
+  address = {{Dallas, TX, USA}},
+  doi = {10.1109/ICDCS.2019.00120},
+  abstract = {Networks of and embedded (IoT) devices are becoming increasingly popular, particularly, in settings such as smart homes, factories and vehicles. These networks can include numerous (potentially diverse) devices that collectively perform certain tasks. In order to guarantee overall safety and privacy, especially in the face of remote exploits, software integrity of each device must be continuously assured. This can be achieved by Remote Attestation (RA) \textendash{} a security service for reporting current software state of a remote and untrusted device. While RA of a single device is well understood, collective RA of large numbers of networked embedded devices poses new research challenges. In particular, unlike single-device RA, collective RA has not benefited from any systematic treatment. Thus, unsurprisingly, prior collective RA schemes are designed in an ad hoc fashion.},
+  isbn = {978-1-72812-519-0},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\De Oliveira Nunes et al\\de_oliveira_nunes_et_al_2019_towards_systematic_design_of_collective_remote_attestation_protocols.pdf}
 }
 
 @techreport{derrinRunningManualApproach,
@@ -5804,6 +6216,19 @@
   file = {D\:\\GDrive\\zotero\\Duntemann\\duntemann_2009_assembly_language_step-by-step.pdf}
 }
 
+@book{duntemannAssemblyLanguageStepbystep2009a,
+  title = {Assembly Language Step-by-Step: Programming with {{Linux}}},
+  shorttitle = {Assembly Language Step-by-Step},
+  author = {Duntemann, Jeff},
+  year = {2009},
+  edition = {3. ed},
+  publisher = {{Wiley}},
+  address = {{Indianapolis, Ind}},
+  isbn = {978-0-470-49702-9},
+  language = {eng},
+  file = {D\:\\GDrive\\zotero\\Duntemann\\duntemann_2009_assembly_language_step-by-step2.pdf}
+}
+
 @article{dupontDeAnonymizingBitcoinMapping2015,
   title = {Toward {{De}}-{{Anonymizing Bitcoin}} by {{Mapping Users Location}}},
   author = {Dupont, Jules and Squicciarini, Anna C},
@@ -5927,6 +6352,20 @@
   file = {D\:\\GDrive\\zotero\\Eide_Regehr\\eide_regehr_2008_volatiles_are_miscompiled,_and_what_to_do_about_it.pdf}
 }
 
+@book{eilamReversingSecretsReverse2005,
+  title = {Reversing: Secrets of Reverse Engineering},
+  shorttitle = {Reversing},
+  author = {Eilam, Eldad and Chikofsky, Elliot J.},
+  year = {2005},
+  publisher = {{Wiley}},
+  address = {{Indianapolis, IN}},
+  isbn = {978-0-7645-7481-8},
+  lccn = {QA76.758 .E35 2005},
+  keywords = {Computer security,Reverse engineering,Software engineering},
+  annotation = {OCLC: ocm60359199},
+  file = {D\:\\GDrive\\zotero\\Eilam_Chikofsky\\eilam_chikofsky_2005_reversing.pdf}
+}
+
 @techreport{einsteinELECTRODYNAMICSMOVINGBODIES1905,
   title = {{{ON THE ELECTRODYNAMICS OF MOVING BODIES}}},
   author = {Einstein, A},
@@ -5972,6 +6411,39 @@
   year = {2010},
   howpublished = {https://www.cs.jhu.edu/\textasciitilde jason/advice/write-the-paper-first.html},
   file = {C\:\\Users\\Admin\\Zotero\\storage\\9T4VCA7D\\write-the-paper-first.html}
+}
+
+@article{ekbergUntappedPotentialTrusted2014,
+  title = {The {{Untapped Potential}} of {{Trusted Execution Environments}} on {{Mobile Devices}}},
+  author = {Ekberg, Jan-Erik and Kostiainen, Kari and Asokan, N.},
+  year = {2014},
+  month = jul,
+  journal = {IEEE Security Privacy},
+  volume = {12},
+  number = {4},
+  pages = {29--37},
+  issn = {1558-4046},
+  doi = {10.1109/MSP.2014.38},
+  abstract = {Hardware-based trusted execution environments (TEEs) have been available in mobile devices for more than a decade, but their use has been limited. The On-board Credential system safely opens up TEEs so application developers can use their functionality to improve security and usability.},
+  keywords = {Computer security,Cryptography,Mobile communication,mobile devices,Mobile handsets,Program processors,Secure storage,security,Smart phones,Trust management,trusted execution environments},
+  file = {D\:\\GDrive\\zotero\\Ekberg et al\\ekberg_et_al_2014_the_untapped_potential_of_trusted_execution_environments_on_mobile_devices.pdf;C\:\\Users\\Admin\\Zotero\\storage\\X5M6ZHCD\\6799152.html}
+}
+
+@inproceedings{eldefrawyAdvancingRemoteAttestation2019,
+  title = {Advancing Remote Attestation via Computer-Aided Formal Verification of Designs and Synthesis of Executables: Opinion},
+  shorttitle = {Advancing Remote Attestation via Computer-Aided Formal Verification of Designs and Synthesis of Executables},
+  booktitle = {Proceedings of the 12th {{Conference}} on {{Security}} and {{Privacy}} in {{Wireless}} and {{Mobile Networks}}},
+  author = {Eldefrawy, Karim and Tsudik, Gene},
+  year = {2019},
+  month = may,
+  pages = {45--48},
+  publisher = {{ACM}},
+  address = {{Miami Florida}},
+  doi = {10.1145/3317549.3323403},
+  abstract = {Remote Attestation (RA) of embedded/smart/IoT devices is a very important issue on today's security landscape. RA enables a verifier to measures the current internal memory state of an untrusted remote device (prover). RA helps the verifier establish a static or dynamic root of trust in prover. Despite much prior work, state-ofthe-art RA techniques unfortunately still lack any solid foundation and offer no ironclad security, safety or robustness guarantees. This paper argues that computer-aided formal verification, and synthesis of executables, of RA protocols and hybrid (software-hardware) architectures is required and currently unaddressed. We believe that this is achievable with current (computer-aided) formal methods frameworks and tools, and that this can help advance and mature RA research if used to establish more rigorous and clear security arguments. To support our opinion, we highlight several examples where subtle issues were missed in the design and security analysis of RA techniques. Despite deceptive simplicity of such protocols, manual analyses and ad hoc implementations often lead to oversimplification of (and subsequent glossing over) important details in the underlying processor and system architectures. Computeraided formal verification forces a more scrupulous and disciplined consideration of such details, since, otherwise, verification simply fails. The key objective of the research direction we propose is to increase confidence in correctness and security guarantees of current and future RA techniques and their implementations.},
+  isbn = {978-1-4503-6726-4},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Eldefrawy_Tsudik\\eldefrawy_tsudik_2019_advancing_remote_attestation_via_computer-aided_formal_verification_of_designs.pdf}
 }
 
 @inproceedings{eldefrawyHYDRAHybridDesign2017,
@@ -6091,6 +6563,20 @@
   abstract = {Today's smartphone operating systems frequently fail to provide users with adequate control over and visibility into how third-party applications use their private data. We address these shortcomings with TaintDroid, an efficient, system-wide dynamic taint tracking and analysis system capable of simultaneously tracking multiple sources of sensitive data. TaintDroid provides realtime analysis by leveraging Android's virtualized execution environment. TaintDroid incurs only 14\% performance overhead on a CPU-bound micro-benchmark and imposes negligible overhead on interactive third-party applications. Using TaintDroid to monitor the behavior of 30 popular third-party Android applications, we found 68 instances of potential misuse of users' private information across 20 applications. Monitoring sensitive data with TaintDroid provides informed use of third-party applications for phone users and valuable input for smartphone security service firms seeking to identify misbehaving applications.},
   isbn = {9781931971799},
   file = {D\:\\GDrive\\zotero\\Enck\\enck_2019_taintdroid.pdf}
+}
+
+@article{enckUnderstandingAndroidSecurity2009,
+  title = {Understanding {{Android Security}}},
+  author = {Enck, William and Ongtang, Machigar and McDaniel, Patrick},
+  year = {2009},
+  month = jan,
+  journal = {IEEE Security \& Privacy Magazine},
+  volume = {7},
+  number = {1},
+  pages = {50--57},
+  issn = {1540-7993},
+  doi = {10.1109/MSP.2009.26},
+  file = {D\:\\GDrive\\zotero\\Enck et al\\enck_et_al_2009_understanding_android_security.pdf}
 }
 
 @article{enckwilliamStudyAndroidApplication2011,
@@ -6259,6 +6745,23 @@
   abstract = {In many computer operating systems a user authenticates himself by entering a secret password known solely to himself and the system. The system compares this password with one recorded in a Password Table which is available to only the authentication program. The integrity of the system depends on keeping the table secret. In this paper a password scheme is presented which does not require secrecy in the computer. All aspects of the system, including all relevant code and data bases, may be known by anyone attempting to intrude. The scheme is based on using a function H which the would-be intruder is unable to invert. This function is applied to the user's password and the result compared to a table entry, a match being interpreted as authentication of the user. The intruder may know all about H and have access to the table, but he can penetrate the system only if he can invert H to determine an input that produces a given output. This paper discusses issues surrounding selection of a suitable H. Two different plausible arguments are given that penetration would be exceedingly difficult, and it is then argued that more rigorous results are unlikely. Finally, some human engineering problems relating to the scheme are discussed. \textcopyright{} 1974, ACM. All rights reserved.},
   keywords = {authentication,cryptology,one-way encryption,operating system security,passwords,security},
   file = {D\:\\GDrive\\zotero\\Evans\\evans_1974_a_user_authentication_scheme_not_requiring_secrecy_in_the_computer.pdf;D\:\\GDrive\\zotero\\Evans\\evans_1974_a_user_authentication_scheme_not_requiring_secrecy_in_the_computer2.pdf}
+}
+
+@inproceedings{evtyushkinBranchScopeNewSideChannel2018,
+  title = {{{BranchScope}}: {{A New Side}}-{{Channel Attack}} on {{Directional Branch Predictor}}},
+  shorttitle = {{{BranchScope}}},
+  booktitle = {Proceedings of the {{Twenty}}-{{Third International Conference}} on {{Architectural Support}} for {{Programming Languages}} and {{Operating Systems}}},
+  author = {Evtyushkin, Dmitry and Riley, Ryan and {Abu-Ghazaleh}, Nael CSE {and} ECE and Ponomarev, Dmitry},
+  year = {2018},
+  month = mar,
+  pages = {693--707},
+  publisher = {{ACM}},
+  address = {{Williamsburg VA USA}},
+  doi = {10.1145/3173162.3173204},
+  abstract = {We present BranchScope \textemdash{} a new side-channel attack where the attacker infers the direction of an arbitrary conditional branch instruction in a victim program by manipulating the shared directional branch predictor. The directional component of the branch predictor stores the prediction on a given branch (taken or not-taken) and is a different component from the branch target buffer (BTB) attacked by previous work. BranchScope is the first fine-grained attack on the directional branch predictor, expanding our understanding of the side channel vulnerability of the branch prediction unit. Our attack targets complex hybrid branch predictors with unknown organization. We demonstrate how an attacker can force these predictors to switch to a simple 1-level mode to simplify the direction recovery. We carry out BranchScope on several recent Intel CPUs and also demonstrate the attack against an SGX enclave.},
+  isbn = {978-1-4503-4911-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Evtyushkin et al\\evtyushkin_et_al_2018_branchscope.pdf}
 }
 
 @article{evtyushkinJumpASLRAttacking2016,
@@ -6800,6 +7303,24 @@
   file = {D\:\\GDrive\\zotero\\Frigo et al\\frigo_et_al_1998_the_implementation_of_the_cilk-5_multithreaded_language.pdf;C\:\\Users\\Admin\\Zotero\\storage\\PCGX7YQD\\summary.html}
 }
 
+@incollection{fuhryHardIDXPracticalSecure2017,
+  title = {{{HardIDX}}: {{Practical}} and {{Secure Index}} with {{SGX}}},
+  shorttitle = {{{HardIDX}}},
+  booktitle = {Data and {{Applications Security}} and {{Privacy XXXI}}},
+  author = {Fuhry, Benny and Bahmani, Raad and Brasser, Ferdinand and Hahn, Florian and Kerschbaum, Florian and Sadeghi, Ahmad-Reza},
+  editor = {Livraga, Giovanni and Zhu, Sencun},
+  year = {2017},
+  volume = {10359},
+  pages = {386--408},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10.1007/978-3-319-61176-1_22},
+  abstract = {Software-based approaches for search over encrypted data are still either challenged by lack of proper, low-leakage encryption or slow performance. Existing hardware-based approaches do not scale well due to hardware limitations and software designs that are not specifically tailored to the hardware architecture, and are rarely well analyzed for their security (e.g., the impact of side channels). Additionally, existing hardware-based solutions often have a large code footprint in the trusted environment susceptible to software compromises. In this paper we present HardIDX: a hardware-based approach, leveraging Intel's SGX, for search over encrypted data. It implements only the security critical core, i.e., the search functionality, in the trusted environment and resorts to untrusted software for the remainder. HardIDX is deployable as a highly performant encrypted database index: it is logarithmic in the size of the index and searches are performed within a few milliseconds. We formally model and prove the security of our scheme showing that its leakage is equivalent to the best known searchable encryption schemes.},
+  isbn = {978-3-319-61175-4 978-3-319-61176-1},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Fuhry et al\\fuhry_et_al_2017_hardidx.pdf}
+}
+
 @article{Functionalreactiveanimation,
   title = {Functional-Reactive-Animation},
   file = {C\:\\Users\\Admin\\Zotero\\storage\\LVNA65VR\\functional-reactive-animation.pdf}
@@ -6924,6 +7445,22 @@
   abstract = {Title from The ACM Digital Library.},
   isbn = {978-1-60558-096-8},
   file = {D\:\\GDrive\\zotero\\Garcia-Luna-Aceves\\garcia-luna-aceves_2008_cabernet.pdf}
+}
+
+@article{gardnerDetectingCodeAlteration2009,
+  title = {Detecting {{Code Alteration}} by {{Creating}} a {{Temporary Memory Bottleneck}}},
+  author = {Gardner, Ryan W. and Garera, Sujata and Rubin, Aviel D.},
+  year = {2009},
+  month = dec,
+  journal = {IEEE Transactions on Information Forensics and Security},
+  volume = {4},
+  number = {4},
+  pages = {638--650},
+  issn = {1556-6021},
+  doi = {10.1109/TIFS.2009.2033231},
+  abstract = {We develop a new technique whereby a poll worker can determine whether the software executing on electronic voting machines on election day has been altered from its factory version. Our generalized approach allows a human, using a known challenge-response pair, to detect attacks that involve modification or replacement of software on a computer based on the time it takes the computer to provide a correct response to a challenge. We exploit the large difference between main memory access times and cache memory access or CPU clock cycle times to significantly increase the time required to compute the right response when the software has been changed.},
+  keywords = {Cache memory,Clocks,Computer security,computer viruses,Computer viruses,Electronic voting systems,Hardware,Humans,Nominations and elections,Production facilities,Software,software protection,software verification and validation},
+  file = {D\:\\GDrive\\zotero\\Gardner et al\\gardner_et_al_2009_detecting_code_alteration_by_creating_a_temporary_memory_bottleneck.pdf;C\:\\Users\\Admin\\Zotero\\storage\\K4FSMFF7\\5272307.html}
 }
 
 @techreport{garfinkelOstiaDelegatingArchitecture,
@@ -7305,6 +7842,20 @@
   file = {D\:\\GDrive\\zotero\\Giuffrida et al\\giuffrida_et_al_2012_enhanced_operating_system_security_through_efﬁcient_and_fine-grained_address.pdf}
 }
 
+@inproceedings{gligorEstablishingSoftwareRoot2019,
+  title = {Establishing {{Software Root}} of {{Trust Unconditionally}}},
+  booktitle = {Proceedings 2019 {{Network}} and {{Distributed System Security Symposium}}},
+  author = {Gligor, Virgil D. and Woo, Maverick S. L.},
+  year = {2019},
+  publisher = {{Internet Society}},
+  address = {{San Diego, CA}},
+  doi = {10.14722/ndss.2019.23170},
+  abstract = {Root-of-Trust (RoT) establishment ensures either that the state of an untrusted system contains all and only content chosen by a trusted local verifier and the system code begins execution in that state, or that the verifier discovers the existence of unaccounted for content. This ensures program booting into system states that are free of persistent malware. An adversary can no longer retain undetected control of one's local system.},
+  isbn = {978-1-891562-55-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Gligor_Woo\\gligor_woo_2019_establishing_software_root_of_trust_unconditionally.pdf}
+}
+
 @techreport{godefroidAutomatedWhiteboxFuzz2008,
   title = {Automated {{Whitebox Fuzz Testing}}},
   author = {Godefroid, Patrice and Levin Microsoft, Michael Y and Molnar, David},
@@ -7484,6 +8035,22 @@
   file = {D\:\\GDrive\\zotero\\Gosling_Noordam\\gosling_noordam_2011_mastering_your_phd.pdf}
 }
 
+@inproceedings{gotzfriedCacheAttacksIntel2017,
+  title = {Cache {{Attacks}} on {{Intel SGX}}},
+  booktitle = {Proceedings of the 10th {{European Workshop}} on {{Systems Security}}},
+  author = {G{\"o}tzfried, Johannes and Eckert, Moritz and Schinzel, Sebastian and M{\"u}ller, Tilo},
+  year = {2017},
+  month = apr,
+  pages = {1--6},
+  publisher = {{ACM}},
+  address = {{Belgrade Serbia}},
+  doi = {10.1145/3065913.3065915},
+  abstract = {For the first time, we practically demonstrate that Intel SGX enclaves are vulnerable against cache-timing attacks. As a case study, we present an access-driven cache-timing attack on AES when running inside an Intel SGX enclave. Using Neve and Seifert's elimination method, as well as a cache probing mechanism relying on Intel PMC, we are able to extract the AES secret key in less than 10 seconds by investigating 480 encrypted blocks on average. The AES implementation we attack is based on a Gladman AES implementation taken from an older version of OpenSSL, which is known to be vulnerable to cache-timing attacks. In contrast to previous works on cache-timing attacks, our attack is executed with root privileges running on the same host as the vulnerable enclave. Intel SGX, however, was designed to precisely protect applications against such root-level attacks. As a consequence, we show that SGX cannot withstand its designated attacker model when it comes to side-channel vulnerabilities. To the contrary, the attack surface for sidechannels increases dramatically in the scenario of SGX due to the power of root-level attackers, for example, by exploiting the accuracy of PMC, which is restricted to kernel code.},
+  isbn = {978-1-4503-4935-2},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Götzfried et al\\götzfried_et_al_2017_cache_attacks_on_intel_sgx.pdf}
+}
+
 @article{grasASLRLinePractical2017,
   title = {{{ASLR}} on the {{Line}}: {{Practical Cache Attacks}} on the {{MMU}}},
   author = {Gras, Ben and Razavi, Kaveh and Bosman, Erik and Bos, Herbert and Giuffrida, Cristiano},
@@ -7492,6 +8059,15 @@
   doi = {10.14722/ndss.2017.23271},
   abstract = {\textemdash Address space layout randomization (ASLR) is an important first line of defense against memory corruption attacks and a building block for many modern countermeasures. Existing attacks against ASLR rely on software vulnerabilities and/or on repeated (and detectable) memory probing. In this paper, we show that neither is a hard requirement and that ASLR is fundamentally insecure on modern cache-based architectures, making ASLR and caching conflicting requirements (ASLR{$\oplus$}Cache, or simply AnC). To support this claim, we describe a new EVICT+TIME cache attack on the virtual address translation performed by the memory management unit (MMU) of modern processors. Our AnC attack relies on the property that the MMU's page-table walks result in caching page-table pages in the shared last-level cache (LLC). As a result, an attacker can derandomize virtual addresses of a victim's code and data by locating the cache lines that store the page-table entries used for address translation. Relying only on basic memory accesses allows AnC to be implemented in JavaScript without any specific instructions or software features. We show our JavaScript implementation can break code and heap ASLR in two major browsers running on the latest Linux operating system with 28 bits of entropy in 150 seconds. We further verify that the AnC attack is applicable to every modern architecture that we tried, including Intel, ARM and AMD. Mitigating this attack without naively disabling caches is hard, since it targets the low-level operations of the MMU. We conclude that ASLR is fundamentally flawed in sandboxed environments such as JavaScript and future defenses should not rely on randomized virtual addresses as a building block.},
   file = {D\:\\GDrive\\zotero\\Gras\\gras_2017_aslr_on_the_line.pdf}
+}
+
+@article{grasTranslationLeakasideBuffer,
+  title = {Translation {{Leak}}-aside {{Buffer}}: {{Defeating Cache Side}}-Channel {{Protections}} with {{TLB Attacks}}},
+  author = {Gras, Ben and Razavi, Kaveh and Bos, Herbert and Giuffrida, Cristiano},
+  pages = {19},
+  abstract = {To stop side channel attacks on CPU caches that have allowed attackers to leak secret information and break basic security mechanisms, the security community has developed a variety of powerful defenses that effectively isolate the security domains. Of course, other shared hardware resources exist, but the assumption is that unlike cache side channels, any channel offered by these resources is insufficiently reliable and too coarse-grained to leak general-purpose information.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Gras et al\\gras_et_al_translation_leak-aside_buffer.pdf}
 }
 
 @book{grattonAchievingSuccessEngineering2020,
@@ -7822,6 +8398,24 @@
   file = {D\:\\GDrive\\zotero\\Gurfinkel et al\\gurfinkel_et_al_2015_the_seahorn_verification_framework.pdf}
 }
 
+@incollection{gyselinckOffLimitsAbusingLegacy2018,
+  title = {Off-{{Limits}}: {{Abusing Legacy}} X86 {{Memory Segmentation}} to {{Spy}} on {{Enclaved Execution}}},
+  shorttitle = {Off-{{Limits}}},
+  booktitle = {Engineering {{Secure Software}} and {{Systems}}},
+  author = {Gyselinck, Jago and Van Bulck, Jo and Piessens, Frank and Strackx, Raoul},
+  editor = {Payer, Mathias and Rashid, Awais and Such, Jose M.},
+  year = {2018},
+  volume = {10953},
+  pages = {44--60},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10.1007/978-3-319-94496-8_4},
+  abstract = {Enclaved execution environments, such as Intel SGX, enable secure, hardware-enforced isolated execution of critical application components without having to trust the underlying operating system or hypervisor. A recent line of research, however, explores innovative controlled-channel attacks mounted by untrusted system software to partially compromise the confidentiality of enclave programs. Apart from exploiting relatively well-known side-channels like the CPU cache and branch predictor, these attacks have so far focused on tracking sideeffects from enclaved address translations via the paging unit.},
+  isbn = {978-3-319-94495-1 978-3-319-94496-8},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Gyselinck et al\\gyselinck_et_al_2018_off-limits.pdf}
+}
+
 @article{haasBringingWebSpeed2017,
   title = {Bringing the {{Web}} up to {{Speed}} with {{WebAssembly}}},
   author = {Haas, Andreas and Rossberg, Andreas and Schuff, Derek L and Titzer, Ben L and Holman, Michael and Gohman, Dan and Wagner, Luke and Zakai, Alon and Bastien, JF},
@@ -7841,6 +8435,15 @@
   pages = {999111},
   abstract = {The prospect of a world in which all text, audio, picture, and video documents are in digital form on easily modiiable media raises the issue of how to certify when a document was created or last changed. The problem is to time-stamp the data, not the medium. We propose computationally practical procedures for digital time-stamping of such documents so that it is infeasible for a user either to backdate or to forward-date his document, even with the collusion of a time-stamping service. Our procedures maintain complete privacy of the documents themselves, and require no record-keeping by the time-stamping service.},
   file = {D\:\\GDrive\\zotero\\Haber\\haber_1991_how_to_time-stamp_a_digital_document.pdf}
+}
+
+@article{hahnelHighResolutionSideChannels,
+  title = {High-{{Resolution Side Channels}} for {{Untrusted Operating Systems}}},
+  author = {Hahnel, Marcus and Cui, Weidong and Peinado, Marcus},
+  pages = {15},
+  abstract = {Feature-rich mass-market operating systems have large trusted computing bases (TCBs) and a long history of vulnerabilities. Systems like Overshadow, InkTag or Haven attempt to remove the operating system (OS) from the TCB of applications while retaining its functionality. However, the untrusted OS's control of most physical resources puts it in a much better position to launch sidechannel attacks than traditional unprivileged side-channel attackers. Initial attacks focused on the page-fault channel, demonstrating significant information leakage for three legacy applications. We present two new side channels for an untrusted OS which use timer interrupts and cache misses to achieve higher temporal and spatial resolution than the page-fault channel. We leverage the untrusted OS's control over hardware to reduce noise in the side channels to enable successful attacks in just a single run of the target. We demonstrate that our side channels enable attacks against new SGX applications such as VC3 that were designed not to trust the OS. We also show a new attack against libjpeg that extracts images with two orders of magnitude more information than the page-fault channel attack.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Hahnel et al\\hahnel_et_al_high-resolution_side_channels_for_untrusted_operating_systems.pdf}
 }
 
 @techreport{haldarSemanticRemoteAttestationA2004,
@@ -8467,6 +9070,16 @@
   file = {D\:\\GDrive\\zotero\\Hoffman\\hoffman_the_formulary_model_for_flexible_privacy_and_access_controls.pdf}
 }
 
+@book{hohlARMAssemblyLanguage2016,
+  title = {{{ARM Assembly Language}}, 2nd {{Edition}}},
+  author = {Hohl, William and Hinds, Christopher and Safari, an O'Reilly Media Company},
+  year = {2016},
+  abstract = {Delivering a solid introduction to assembly language and embedded systems, ARM Assembly Language: Fundamentals and Techniques, Second Edition continues to support the popular ARM7TDMI, but also addresses the latest architectures from ARM, including Cortex-A, Cortex-R, and Cortex-M processors - all of which have slightly different instruction sets, programmer's models, and exception handling. Featuring three brand-new chapters, a new appendix, and expanded coverage of the ARM7, this edition: Discusses IEEE 754 floating-point arithmetic and explains how to program with the IEEE standard notation Contains step-by-step directions for the use of Keil MDK-ARM and Texas Instruments (TI) Code Composer Studio Provides a resource to be used alongside a variety of hardware evaluation modules, such as TI's Tiva Launchpad, STMicroelectronics' iNemo and Discovery, and NXP Semiconductors' Xplorer boards Written by experienced ARM processor designers, ARM Assembly Language: Fundamentals and Techniques, Second Edition covers the topics essential to writing meaningful assembly programs, making it an ideal textbook and professional reference.},
+  language = {English},
+  annotation = {OCLC: 1105789048},
+  file = {D\:\\GDrive\\zotero\\Hohl et al\\hohl_et_al_2016_arm_assembly_language,_2nd_edition.pdf}
+}
+
 @article{holtTypeAwareProgrammingModels2016,
   title = {Type-{{Aware Programming Models}} for {{Distributed Applications}}},
   author = {Holt, Brandon},
@@ -8658,6 +9271,16 @@
   abstract = {As defense solutions against control-flow hijacking attacks gain wide deployment, control-oriented exploits from memory errors become difficult. As an alternative, attacks targeting non-control data do not require diverting the application's control flow during an attack. Although it is known that such data-oriented attacks can mount significant damage, no systematic methods to automatically construct them from memory errors have been developed. In this work, we develop a new technique called data-flow stitching, which systematically finds ways to join data flows in the program to generate data-oriented exploits. We build a prototype embodying our technique in a tool called FLOWSTITCH that works directly on Windows and Linux binaries. In our experiments, we find that FLOWSTITCH automatically constructs 16 previously unknown and three known data-oriented attacks from eight real-world vulnerable programs. All the automatically-crafted exploits respect fine-grained CFI and DEP constraints, and 10 out of the 19 exploits work with standard ASLR defenses enabled. The constructed exploits can cause significant damage, such as disclosure of sensitive information (e.g., passwords and encryption keys) and escalation of privilege.},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Hu et al\\hu_et_al_2015_automatic_generation_of_data-oriented_exploits.pdf}
+}
+
+@article{huaVTZVirtualizingARM2017,
+  title = {{{vTZ}}: {{Virtualizing ARM TrustZone}}},
+  author = {Hua, Zhichao and Gu, Jinyu and Xia, Yubin and Guan, Haibing and Chen, Haibo and Zang, Binyu},
+  year = {2017},
+  pages = {17},
+  abstract = {ARM TrustZone, a security extension that provides a secure world, a trusted execution environment (TEE), to run security-sensitive code, has been widely adopted in mobile platforms. With the increasing momentum of ARM64 being adopted in server markets like cloud, it is likely to see TrustZone being adopted as a key pillar for cloud security. Unfortunately, TrustZone is not designed to be virtualizable as there is only one TEE provided by the hardware, which prevents it from being securely shared by multiple virtual machines (VMs). This paper conducts a study on variable approaches to virtualizing TrustZone in virtualized environments and then presents vTZ, a solution that securely provides each guest VM with a virtualized guest TEE using existing hardware. vTZ leverages the idea of separating functionality from protection by maintaining a secure co-running VM to serve as a guest TEE, while using the hardware TrustZone to enforce strong isolation among guest TEEs and the untrusted hypervisor. Specifically, vTZ uses a tiny monitor running within the physical TrustZone that securely interposes and virtualizes memory mapping and world switching. vTZ further leverages a few pieces of protected, self-contained code running in a Constrained Isolated Execution Environment (CIEE) to provide secure virtualization and isolation among multiple guest TEEs. We have implemented vTZ on Xen 4.8 on both ARMv7 and ARMv8 development boards. Evaluation using two common TEE-kernels (secure kernel running in TEE) such as seL4 1 and OP-TEE shows that vTZ provides strong security with small performance overhead.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Hua et al\\hua_et_al_2017_vtz.pdf}
 }
 
 @techreport{huDataOrientedProgrammingExpressiveness2016,
@@ -8865,6 +9488,23 @@
   file = {D\:\\GDrive\\zotero\\Hyde_Safari\\hyde_safari_2020_write_great_code,_volume_2,_2nd_edition.pdf}
 }
 
+@inproceedings{ibrahimDARPADeviceAttestation2016,
+  title = {{{DARPA}}: {{Device Attestation Resilient}} to {{Physical Attacks}}},
+  shorttitle = {{{DARPA}}},
+  booktitle = {Proceedings of the 9th {{ACM Conference}} on {{Security}} \& {{Privacy}} in {{Wireless}} and {{Mobile Networks}}},
+  author = {Ibrahim, Ahmad and Sadeghi, Ahmad-Reza and Tsudik, Gene and Zeitouni, Shaza},
+  year = {2016},
+  month = jul,
+  pages = {171--182},
+  publisher = {{ACM}},
+  address = {{Darmstadt Germany}},
+  doi = {10.1145/2939918.2939938},
+  abstract = {As embedded devices (under the guise of ''smart-whatever'') rapidly proliferate into many domains, they become attractive targets for malware. Protecting them from software and physical attacks becomes both important and challenging. Remote attestation is a basic tool for mitigating such attacks. It allows a trusted party (verifier) to remotely assess software integrity of a remote, untrusted, and possibly compromised, embedded device (prover). Prior remote attestation methods focus on software (malware) attacks in a one-verifier/one-prover setting. Physical attacks on provers are generally ruled out as being either unrealistic or impossible to mitigate. In this paper, we argue that physical attacks must be considered, particularly, in the context of many provers, e.g., a network, of devices. Assuming that physical attacks require capture and subsequent temporary disablement of the victim device(s), we propose DARPA, a light-weight protocol that takes advantage of absence detection to identify suspected devices. DARPA is resilient against a very strong adversary and imposes minimal additional hardware requirements. We justify and identify DARPA's design goals and evaluate its security and costs.},
+  isbn = {978-1-4503-4270-4},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Ibrahim et al\\ibrahim_et_al_2016_darpa.pdf}
+}
+
 @inproceedings{ibrahimSeEDSecureNoninteractive2017,
   title = {{{SeED}}: Secure Non-Interactive Attestation for Embedded Devices},
   shorttitle = {{{SeED}}},
@@ -8879,6 +9519,21 @@
   isbn = {978-1-4503-5084-6},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Ibrahim et al\\ibrahim_et_al_2017_seed.pdf}
+}
+
+@inproceedings{ibrahimUSAIDUnattendedScalable2018,
+  title = {{{US}}-{{AID}}: {{Unattended Scalable Attestation}} of {{IoT Devices}}},
+  shorttitle = {{{US}}-{{AID}}},
+  booktitle = {2018 {{IEEE}} 37th {{Symposium}} on {{Reliable Distributed Systems}} ({{SRDS}})},
+  author = {Ibrahim, Ahmad and Sadeghi, Ahmad-Reza and Tsudik, Gene},
+  year = {2018},
+  month = oct,
+  pages = {21--30},
+  issn = {2575-8462},
+  doi = {10.1109/SRDS.2018.00013},
+  abstract = {Embedded devices, personal gadgets and networks thereof are becoming increasingly pervasive, mainly due the advent of, and hype surrounding, the so-called Internet of Things (IoT). Such devices often perform critical actuation tasks, as well as collect, store and process sensitive data. Therefore, as confirmed by recent examples (such as the Mirai botnet), they also represent very attractive attack targets. To mitigate attacks, remote attestation (RA) has emerged as a distinct security service that aims at detecting malware presence on an embedded device. Most prior RA schemes focus on attesting a single devices and do not scale. In recent years, schemes for collective (group or swarm) RA have been designed. However, none is applicable to autonomous and dynamic network settings. This paper presents US-AID - the first collective attestation schemes for large autonomous dynamic networks of embedded devices. AID verifies overall network integrity by combining continuous in-network attestation with a key exchange mechanism and Proofs-of-non-Absence. Using device absence detection US-AID defends against physical attacks that require disconnecting attacked devices form the network for a non-negligible time. We demonstrate feasibility of US-AID with proof-of-concept implementation on state-of-the-art security architectures for low-end embedded devices and on an autonomous testbed formed of six drones. We also assess its scalability and practicality via extensive simulations.},
+  keywords = {Attesation,Embedded Devices,Hardware,Heart beat,IoT,Malware,Performance evaluation,Protocols,Security},
+  file = {D\:\\GDrive\\zotero\\Ibrahim et al\\ibrahim_et_al_2018_us-aid.pdf;C\:\\Users\\Admin\\Zotero\\storage\\3MXHB82Q\\8613950.html}
 }
 
 @article{Idsevasionptaceknewsham,
@@ -8975,6 +9630,13 @@
   year = {2000},
   abstract = {Advances in processor, memory and radio technology will enable small arid cheap nodes capable of sensing, communication and computation. Networks of such nodes can coordinate to perform distributed sensing of environmental phenomena. In this paper, we explore the directed diffusion paradigm for such coordination. Directed diffusion is data-centric in that all communication is for named data. All nodes in a directed diffusion-based network are application-aware. This enables diffusion to achieve energy savings by selecting empirically good paths and by caching and processing data in-network. We explore and evaluate the use of directed diffusion for a simple remote-surveillance sensor network.},
   file = {D\:\\GDrive\\zotero\\Intanagonwiwat\\intanagonwiwat_2000_directed_diffusion.pdf}
+}
+
+@article{Intel64IA32,
+  title = {{{Intel}}\textregistered{} 64 and {{IA}}-32 {{Architectures Software Developer}}'s {{Manual}}, {{Volume}} 1: {{Basic Architecture}}},
+  pages = {482},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\_\\intel®_64_and_ia-32_architectures_software_developer’s_manual,_volume_1.pdf}
 }
 
 @article{intelIntelAnalysisSpeculative2018,
@@ -9227,6 +9889,23 @@
   year = {2017},
   keywords = {None provided},
   file = {D\:\\GDrive\\zotero\\Jan Goldberg\\jan_goldberg_2017_the_design_of_a_custom_32-bit_risc_cpu_and_llvm_compiler_the_design_of_a_custom.pdf}
+}
+
+@inproceedings{jangSGXBombLockingProcessor2017,
+  title = {{{SGX}}-{{Bomb}}: {{Locking Down}} the {{Processor}} via {{Rowhammer Attack}}},
+  shorttitle = {{{SGX}}-{{Bomb}}},
+  booktitle = {Proceedings of the 2nd {{Workshop}} on {{System Software}} for {{Trusted Execution}}},
+  author = {Jang, Yeongjin and Lee, Jaehyuk and Lee, Sangho and Kim, Taesoo},
+  year = {2017},
+  month = oct,
+  pages = {1--6},
+  publisher = {{ACM}},
+  address = {{Shanghai China}},
+  doi = {10.1145/3152701.3152709},
+  abstract = {Intel Software Guard Extensions (SGX) provides a strongly isolated memory space, known as an enclave, for a user process, ensuring confidentiality and integrity against software and hardware attacks. Even the operating system and hypervisor cannot access the enclave because of the hardware-level isolation. Further, hardware attacks are neither able to disclose plaintext data from the enclave because its memory is always encrypted nor modify it because its integrity is always verified using an integrity tree. When the processor detects any integrity violation, it locks itself to prevent further damages; that is, a system reboot is necessary. The processor lock seems a reasonable solution against such a powerful hardware attacker; however, if a software attacker has a way to trigger integrity violation, the lock could result in a severe denial-of-service (DoS) attack.},
+  isbn = {978-1-4503-5097-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Jang et al\\jang_et_al_2017_sgx-bomb.pdf}
 }
 
 @article{javadiDiscoveringStatisticalModels2011,
@@ -9567,6 +10246,19 @@
   file = {D\:\\GDrive\\zotero\\Kamp\\kamp_jails.pdf}
 }
 
+@inproceedings{kandukuriCloudSecurityIssues2009,
+  title = {Cloud {{Security Issues}}},
+  booktitle = {2009 {{IEEE International Conference}} on {{Services Computing}}},
+  author = {Kandukuri, Balachandra Reddy and V., Ramakrishna Paturi and Rakshit, Atanu},
+  year = {2009},
+  month = sep,
+  pages = {517--520},
+  doi = {10.1109/SCC.2009.84},
+  abstract = {In past three decades, the world of computation has changed from centralized (client-server not web-based) to distributed systems and now we are getting back to the virtual centralization (Cloud Computing). Location of data and processes makes the difference in the realm of computation. On one hand, an individual has full control on data and processes in his/her computer. On the other hand, we have the cloud computing wherein, the service and data maintenance is provided by some vendor which leaves the client/customer unaware of where the processes are running or where the data is stored. So, logically speaking, the client has no control over it. The cloud computing uses the internet as the communication media. When we look at the security of data in the cloud computing, the vendor has to provide some assurance in service level agreements (SLA) to convince the customer on security issues. Organizations use cloud computing as a service infrastructure, critically like to examine the security and confidentiality issues for their business critical insensitive applications. Yet, guaranteeing the security of corporate data in the "cloud" is difficult, if not impossible, as they provide different services like Software as a service (SaaS), Platform as a service (PaaS), and Infrastructure as a service (IaaS). Each service has their own security issues. So the SLA has to describe different levels of security and their complexity based on the services to make the customer understand the security policies that are being implemented. There has to be a standardized way to prepare the SLA irrespective to the providers. This can help some of the enterprises to look forward in using the cloud services. In this paper, we put forward some security issues that have to be included in SLA.},
+  keywords = {Application software,Automation,Cloud computing,Cloud Computing,Cloud computing Security,Computer architecture,Conference management,Costs,Data security,Marketing and sales,Service Level Agreement (SLA),Software as a Service (SaaS),Subscriptions,Usability},
+  file = {D\:\\GDrive\\zotero\\Kandukuri et al\\kandukuri_et_al_2009_cloud_security_issues.pdf;C\:\\Users\\Admin\\Zotero\\storage\\SEJY5P3H\\5283911.html}
+}
+
 @article{kandulaSocialNetworkDatacenter,
   title = {Inside the {{Social Network}}'s ({{Datacenter}}) {{Network}} \textendash{} {{Public Review}}},
   author = {Kandula, Srikanth},
@@ -9739,6 +10431,22 @@
   isbn = {9780769546810},
   keywords = {authentication,passwords,user study},
   file = {D\:\\GDrive\\zotero\\Kelley et al\\kelley_et_al_2012_guess_again_(and_again_and_again).pdf}
+}
+
+@misc{kennellEstablishingGenuinityRemote,
+  title = {Establishing the {{Genuinity}} of {{Remote Computer Systems}}},
+  author = {Kennell, Rick and Jamieson, Leah H.},
+  abstract = {A fundamental problem in distributed computing environments involves determining whether a remote computer system can be trusted to autonomously access secure resources via a network. In this paper, we describe a means by which a remote computer system can be challenged to demonstrate that it is genuine and trustworthy. Upon passing a test, it can be granted access to distributed resources and can serve as a general-purpose host for distributed computation so long as it remains in contact with some certifying authority. The test we describe is applicable to consumer-grade computer systems with a conventional network interface and requires no additional hardware. The results of the test can be conveyed over an unsecured network; no trusted human intermediary is needed to relay the results. We examine potential attacks and weaknesses of the system and show how they can be avoided. Finally, we describe an implementation of a genuinity test for a representative set of computer systems.},
+  howpublished = {https://www.usenix.org/legacy/publications/library/proceedings/sec03/tech/full\_papers/home/staff/alex/export/twycross/kennell/kennell\_html/},
+  file = {C\:\\Users\\Admin\\Zotero\\storage\\BBSTQE52\\kennell_html.html}
+}
+
+@misc{kennellEstablishingGenuinityRemote2003,
+  title = {Establishing the {{Genuinity}} of {{Remote Computer Systems}}},
+  author = {Kennell, Rick and Jamieson, Leah H.},
+  year = {2003},
+  abstract = {A fundamental problem in distributed computing environments involves determining whether a remote computer system can be trusted to autonomously access secure resources via a network. In this paper, we describe a means by which a remote computer system can be challenged to demonstrate that it is genuine and trustworthy. Upon passing a test, it can be granted access to distributed resources and can serve as a general-purpose host for distributed computation so long as it remains in contact with some certifying authority. The test we describe is applicable to consumer-grade computer systems with a conventional network interface and requires no additional hardware. The results of the test can be conveyed over an unsecured network; no trusted human intermediary is needed to relay the results. We examine potential attacks and weaknesses of the system and show how they can be avoided. Finally, we describe an implementation of a genuinity test for a representative set of computer systems. 1},
+  file = {D\:\\GDrive\\zotero\\Kennell_Jamieson\\kennell_jamieson_2003_establishing_the_genuinity_of_remote_computer_systems.pdf;C\:\\Users\\Admin\\Zotero\\storage\\98DWQ9VR\\download.html}
 }
 
 @techreport{kentSecureBorderGateway2000,
@@ -10150,6 +10858,21 @@
   file = {D\:\\GDrive\\zotero\\Kocher\\kocher_2018_spectre_attacks.pdf}
 }
 
+@inproceedings{kocherSpectreAttacksExploiting2019,
+  title = {Spectre {{Attacks}}: {{Exploiting Speculative Execution}}},
+  shorttitle = {Spectre {{Attacks}}},
+  booktitle = {2019 {{IEEE Symposium}} on {{Security}} and {{Privacy}} ({{SP}})},
+  author = {Kocher, Paul and Horn, Jann and Fogh, Anders and Genkin, Daniel and Gruss, Daniel and Haas, Werner and Hamburg, Mike and Lipp, Moritz and Mangard, Stefan and Prescher, Thomas and Schwarz, Michael and Yarom, Yuval},
+  year = {2019},
+  month = may,
+  pages = {1--19},
+  issn = {2375-1207},
+  doi = {10.1109/SP.2019.00002},
+  abstract = {Modern processors use branch prediction and speculative execution to maximize performance. For example, if the destination of a branch depends on a memory value that is in the process of being read, CPUs will try to guess the destination and attempt to execute ahead. When the memory value finally arrives, the CPU either discards or commits the speculative computation. Speculative logic is unfaithful in how it executes, can access the victim's memory and registers, and can perform operations with measurable side effects. Spectre attacks involve inducing a victim to speculatively perform operations that would not occur during correct program execution and which leak the victim's confidential information via a side channel to the adversary. This paper describes practical attacks that combine methodology from side channel attacks, fault attacks, and return-oriented programming that can read arbitrary memory from the victim's process. More broadly, the paper shows that speculative execution implementations violate the security assumptions underpinning numerous software security mechanisms, including operating system process separation, containerization, just-in-time (JIT) compilation, and countermeasures to cache timing and side-channel attacks. These attacks represent a serious threat to actual systems since vulnerable speculative execution capabilities are found in microprocessors from Intel, AMD, and ARM that are used in billions of devices. While makeshift processor-specific countermeasures are possible in some cases, sound solutions will require fixes to processor designs as well as updates to instruction set architectures (ISAs) to give hardware architects and software developers a common understanding as to what computation state CPU implementations are (and are not) permitted to leak.},
+  keywords = {Arrays,Hardware,microarchitectural-attack,Microarchitecture,microarchitecture-security,Program processors,Registers,Side-channel attacks,Spectre,speculative-execution,Transient analysis},
+  file = {D\:\\GDrive\\zotero\\Kocher et al\\kocher_et_al_2019_spectre_attacks.pdf;C\:\\Users\\Admin\\Zotero\\storage\\T3HCQSDI\\8835233.html}
+}
+
 @article{kocherTimingAttacksImplement1996,
   title = {Timing {{Attacks}} on {{Implement}} at Ions Of},
   author = {Kocher, Paul C},
@@ -10266,6 +10989,23 @@
   isbn = {978-1-4503-5576-6},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Kohnhäuser et al\\kohnhäuser_et_al_2018_salad.pdf}
+}
+
+@inproceedings{kohnhauserSCAPIScalableAttestation2017,
+  title = {{{SCAPI}}: A Scalable Attestation Protocol to Detect Software and Physical Attacks},
+  shorttitle = {{{SCAPI}}},
+  booktitle = {Proceedings of the 10th {{ACM Conference}} on {{Security}} and {{Privacy}} in {{Wireless}} and {{Mobile Networks}}},
+  author = {Kohnh{\"a}user, Florian and B{\"u}scher, Niklas and Gabmeyer, Sebastian and Katzenbeisser, Stefan},
+  year = {2017},
+  month = jul,
+  pages = {75--86},
+  publisher = {{ACM}},
+  address = {{Boston Massachusetts}},
+  doi = {10.1145/3098243.3098255},
+  abstract = {Interconnected embedded devices are increasingly used in various scenarios, including industrial control, building automation, or emergency communication. As these systems commonly process sensitive information or perform safety critical tasks, they become appealing targets for cyber attacks. A promising technique to remotely verify the safe and secure operation of networked embedded devices is remote attestation. However, existing attestation protocols only protect against software attacks, or show limited scalability and robustness. In this paper, we present the first scalable attestation protocol that detects physical attacks. Based on the assumption that physical attacks require an adversary to capture and disable devices for a noticeable amount of time, our protocol identifies devices with compromised hardware and software. Compared to existing solutions, our protocol reduces communication complexity and runtimes by orders of magnitude, precisely identifies compromised devices, and is robust against failures or network disruptions. We show the security of our protocol and evaluate its scalability and robustness. Our results demonstrate that our protocol is highly efficient in well-connected networks and operates robust in disruptive and very dynamic network topologies.},
+  isbn = {978-1-4503-5084-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Kohnhäuser et al\\kohnhäuser_et_al_2017_scapi.pdf}
 }
 
 @book{kohnoCryptographyEngineeringDesign2010,
@@ -10394,6 +11134,19 @@
   file = {D\:\\GDrive\\zotero\\Koscher et al\\koscher_et_al_2010_experimental_security_analysis_of_a_modern_automobile.pdf}
 }
 
+@inproceedings{koutroumpouchosSecureEdgeComputing2019,
+  title = {Secure {{Edge Computing}} with {{Lightweight Control}}-{{Flow Property}}-Based {{Attestation}}},
+  booktitle = {2019 {{IEEE Conference}} on {{Network Softwarization}} ({{NetSoft}})},
+  author = {Koutroumpouchos, Nikos and Ntantogian, Christoforos and Menesidou, Sofia-Anna and Liang, Kaitai and Gouvas, Panagiotis and Xenakis, Christos and Giannetsos, Thanassis},
+  year = {2019},
+  month = jun,
+  pages = {84--92},
+  doi = {10.1109/NETSOFT.2019.8806658},
+  abstract = {The Internet of Things (IoT) is rapidly evolving, while introducing several new challenges regarding security, resilience and operational assurance. In the face of an increasing attack landscape, it is necessary to cater for the provision of efficient mechanisms to collectively verify software- and device-integrity in order to detect run-time modifications. Towards this direction, remote attestation has been proposed as a promising defense mechanism. It allows a third party, the verifier, to ensure the integrity of a remote device, the prover. However, this family of solutions do not capture the real-time requirements of industrial IoT applications and suffer from scalability and efficiency issues. In this paper, we present a lightweight dynamic control-flow property-based attestation architecture (CFPA) that can be applied on both resource-constrained edge and cloud devices and services. It is a first step towards a new line of security mechanisms that enables the provision of control-flow attestation of only those specific, critical software components that are comparatively small, simple and limited in function, thus, allowing for a much more efficient verification. Our goal is to enhance run-time software integrity and trustworthiness with a scalable and decentralized solution eliminating the need for federated infrastructure trust. Based on our findings, we posit open issues and challenges, and discuss possible ways to address them, so that security do not hinder the deployment of intelligent edge computing systems.},
+  keywords = {Cloud computing,Control-Flow Property-based Attestation,Hardware,Internet of Things,Protocols,Scalability,Security,Software,Software-based Attacks,Trusted Component},
+  file = {D\:\\GDrive\\zotero\\Koutroumpouchos et al\\koutroumpouchos_et_al_2019_secure_edge_computing_with_lightweight_control-flow_property-based_attestation.pdf;C\:\\Users\\Admin\\Zotero\\storage\\SCMYSJXL\\8806658.html}
+}
+
 @article{kovacsFindingLoopInvariants2009,
   title = {Finding Loop Invariants for Programs over Arrays Using a Theorem Prover},
   author = {Kov{\'a}cs, Laura and Voronkov, Andrei},
@@ -10407,6 +11160,20 @@
   abstract = {We present a new method for automatic generation of loop invariants for programs containing arrays. Unlike all previously known methods, our method allows one to generate first-order invariants containing alternations of quantifiers. The method is based on the automatic analysis of the so-called update predicates of loops. An update predicate for an array A expresses updates made to A. We observe that many properties of update predicates can be extracted automatically from the loop description and loop properties obtained by other methods such as a simple analysis of counters occurring in the loop, recurrence solving and quantifier elimination over loop variables. We run the theorem prover Vampire on some examples and show that non-trivial loop invariants can be generated.},
   isbn = {9783642005923},
   file = {D\:\\GDrive\\zotero\\Kovács\\kovács_2009_finding_loop_invariants_for_programs_over_arrays_using_a_theorem_prover.pdf}
+}
+
+@inproceedings{kovahNewResultsTimingBased2012,
+  title = {New {{Results}} for {{Timing}}-{{Based Attestation}}},
+  booktitle = {2012 {{IEEE Symposium}} on {{Security}} and {{Privacy}}},
+  author = {Kovah, Xeno and Kallenberg, Corey and Weathers, Chris and Herzog, Amy and Albin, Matthew and Butterworth, John},
+  year = {2012},
+  month = may,
+  pages = {239--253},
+  issn = {2375-1207},
+  doi = {10.1109/SP.2012.45},
+  abstract = {In this paper we present a comprehensive timing-based attestation system suitable for typical enterprise use, and evidence of that system's performance. This system, similar to Pioneer [20] but built with relaxed assumptions, successfully detects attacks on code integrity over 10 links of an enterprise network, despite an average of just 1.7\% time overhead for the attacker. We also present the first implementation and evaluation of a Trusted Platform Module (TPM) hardware timing-based attestation protocol. We describe the design and results of a set of experiments showing the effectiveness of our timing-based system, thereby providing further evidence of the practicality of timing-based attestation in real-world settings. While system measurement itself is a worthwhile goal, and timing-based attestation systems can provide measurements that are equally as trustworthy as hardware-based attestation systems, we feel that Time Of Check, Time Of Use (TOCTOU) attacks have not received appropriate attention in the literature. To address this topic, we present the three conditions required to execute such an attack, and how past attacks and defenses relate to these conditions.},
+  keywords = {Coordinate measuring machines,Hardware,Kernel,Protocols,Radiation detectors,Registers,remote attestation,Servers,software-based attestation,timing-based attestation,TOCTOU attack,trusted platform module},
+  file = {D\:\\GDrive\\zotero\\Kovah et al\\kovah_et_al_2012_new_results_for_timing-based_attestation.pdf;C\:\\Users\\Admin\\Zotero\\storage\\V8N7E7ZA\\6234416.html}
 }
 
 @techreport{kowshikEnsuringCodeSafety2002,
@@ -10537,6 +11304,23 @@
   issn = {0002-9939},
   doi = {10.2307/2033241},
   file = {D\:\\GDrive\\zotero\\Kruskal\\kruskal_1956_on_the_shortest_spanning_subtree_of_a_graph_and_the_traveling_salesman_problem.pdf}
+}
+
+@article{kuangESDRAEfficientSecure2019,
+  title = {{{ESDRA}}: {{An Efficient}} and {{Secure Distributed Remote Attestation Scheme}} for {{IoT Swarms}}},
+  shorttitle = {{{ESDRA}}},
+  author = {Kuang, Boyu and Fu, Anmin and Yu, Shui and Yang, Guomin and Su, Mang and Zhang, Yuqing},
+  year = {2019},
+  month = oct,
+  journal = {IEEE Internet of Things Journal},
+  volume = {6},
+  number = {5},
+  pages = {8372--8383},
+  issn = {2327-4662},
+  doi = {10.1109/JIOT.2019.2917223},
+  abstract = {An Internet of Things (IoT) system generally contains thousands of heterogeneous devices which often operate in swarms-large, dynamic, and self-organizing networks. Remote attestation is an important cornerstone for the security of these IoT swarms, as it ensures the software integrity of swarm devices and protects them from attacks. However, current attestation schemes suffer from single point of failure verifier. In this paper, we propose an Efficient and Secure Distributed Remote Attestation (ESDRA) scheme for IoT swarms. We present the first many-to-one attestation scheme for device swarms, which reduces the possibility of single point of failure verifier. Moreover, we utilize distributed attestation to verify the integrity of each node and apply accusation mechanism to report the invaded nodes, which makes ESDRA much easier to feedback the certain compromised nodes and reduces the run-time of attestation. We analyze the security of ESDRA and do some simulation experiments to show its practicality and efficiency. Especially, ESDRA can significantly reduce the attestation time and has a better performance in the energy consumption comparing with list-based attestation schemes.},
+  keywords = {Energy consumption,Hardware,Internet of Things,Protocols,Real-time systems,Remote attestation,reputation management,Security,single point of failure,Software,swarms},
+  file = {D\:\\GDrive\\zotero\\Kuang et al\\kuang_et_al_2019_esdra.pdf;C\:\\Users\\Admin\\Zotero\\storage\\8VC9697N\\8716502.html}
 }
 
 @techreport{kumarExploitingUnderlyingStructure,
@@ -11119,6 +11903,15 @@
   file = {D\:\\GDrive\\zotero\\Lee\\lee_2011_gamification_in_education.pdf}
 }
 
+@article{leeInferringFinegrainedControl,
+  title = {Inferring {{Fine}}-Grained {{Control Flow Inside SGX Enclaves}} with {{Branch Shadowing}}},
+  author = {Lee, Sangho and Shih, Ming-Wei and Gera, Prasun and Kim, Taesoo and Kim, Hyesoon and Peinado, Marcus},
+  pages = {19},
+  abstract = {Intel has introduced a hardware-based trusted execution environment, Intel Software Guard Extensions (SGX), that provides a secure, isolated execution environment, or enclave, for a user program without trusting any underlying software (e.g., an operating system) or firmware. Researchers have demonstrated that SGX is vulnerable to a page-fault-based attack. However, the attack only reveals page-level memory accesses within an enclave.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Lee et al\\lee_et_al_inferring_fine-grained_control_flow_inside_sgx_enclaves_with_branch_shadowing.pdf}
+}
+
 @article{leeInferringFinegrainedControl2016,
   title = {Inferring {{Fine}}-Grained {{Control Flow Inside SGX Enclaves}} with {{Branch Shadowing}}},
   author = {Lee, Sangho and Shih, Ming-Wei and Gera, Prasun and Kim, Taesoo and Kim, Hyesoon and Peinado, Marcus},
@@ -11469,6 +12262,21 @@
   file = {D\:\\GDrive\\zotero\\Li\\li_2004_a_first-principles_approach_to_understanding_the_internet's_router-level.pdf}
 }
 
+@book{lighArtMemoryForensics2014,
+  title = {The Art of Memory Forensics: Detecting Malware and Threats in {{Windows}}, {{Linux}}, and {{Mac}} Memory},
+  shorttitle = {The Art of Memory Forensics},
+  author = {Ligh, Michael Hale and Case, Andrew and Levy, Jamie and Walters, Aaron},
+  year = {2014},
+  publisher = {{Wiley}},
+  address = {{Indianapolis, IN}},
+  abstract = {As a followup to the best-seller Malware Analyst's Cookbook, experts in IT security bring you a step-by-step guide to memory forensics-now the most sought after skill in the digital forensics and incident response fields. Beginning with introductory concepts and moving toward the advanced, The Art of Memory Forensics: Detecting Malware and Threats in Windows, Linux, and Mac Memory, teaches the art of analysing computer memory (RAM) to solve digital crimes. --},
+  isbn = {978-1-118-82509-9 978-1-118-82504-4 978-1-118-82499-3},
+  lccn = {QA76.9.A25 L54 2014},
+  keywords = {Computer crimes,Computer networks,Computer security,Délits informatiques,Malware (Computer software),Mémorisation des données,Réseaux informatiques,Sécurité informatique,Security measures},
+  annotation = {OCLC: ocn885319205},
+  file = {D\:\\GDrive\\zotero\\Ligh et al\\ligh_et_al_2014_the_art_of_memory_forensics.pdf}
+}
+
 @article{LightweightCrossprocedureTracing2003,
   title = {Lightweight, {{Cross}}-Procedure {{Tracing For Runtime Optimization}}},
   year = {2003},
@@ -11590,6 +12398,23 @@
   isbn = {978-1-939133-04-5},
   keywords = {ss},
   file = {D\:\\GDrive\\zotero\\Lipp\\lipp_2018_meltdown.pdf}
+}
+
+@article{lippMeltdownReadingKernel2020,
+  title = {Meltdown: Reading Kernel Memory from User Space},
+  shorttitle = {Meltdown},
+  author = {Lipp, Moritz and Schwarz, Michael and Gruss, Daniel and Prescher, Thomas and Haas, Werner and Horn, Jann and Mangard, Stefan and Kocher, Paul and Genkin, Daniel and Yarom, Yuval and Hamburg, Mike and Strackx, Raoul},
+  year = {2020},
+  month = may,
+  journal = {Communications of the ACM},
+  volume = {63},
+  number = {6},
+  pages = {46--56},
+  issn = {0001-0782, 1557-7317},
+  doi = {10.1145/3357033},
+  abstract = {The security of computer systems fundamentally relies on memory isolation, e.g., kernel address ranges are marked as non-accessible and are protected from user access. In this paper, we present Meltdown. Meltdown exploits side effects of out-of-order execution on modern processors to read arbitrary kernel-memory locations including personal data and passwords. Out-of-order execution is an indispensable performance feature and present in a wide range of modern processors. The attack is independent of the operating system, and it does not rely on any software vulnerabilities. Meltdown breaks all security guarantees provided by address space isolation as well as paravirtualized environments and, thus, every security mechanism building upon this foundation. On affected systems, Meltdown enables an adversary to read memory of other processes or virtual machines in the cloud without any permissions or privileges, affecting millions of customers and virtually every user of a personal computer. We show that the KAISER defense mechanism for KASLR has the important (but inadvertent) side effect of impeding Meltdown. We stress that KAISER must be deployed immediately to prevent largescale exploitation of this severe information leakage.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Lipp et al\\lipp_et_al_2020_meltdown.pdf}
 }
 
 @incollection{lippPracticalKeystrokeTiming2017,
@@ -11876,6 +12701,22 @@
   isbn = {978-1-4503-0948-6},
   keywords = {D46 [Software]: Operating Systems-Security and Pro-tection General Terms Security,Proxy Attack,Software-based Attestation,Verification Keywords Integrity of Peripherals' Firmware},
   file = {D\:\\GDrive\\zotero\\Li\\li_2011_viper.pdf}
+}
+
+@inproceedings{liVIPERVerifyingIntegrity2011a,
+  title = {{{VIPER}}: Verifying the Integrity of {{PERipherals}}' Firmware},
+  shorttitle = {{{VIPER}}},
+  booktitle = {Proceedings of the 18th {{ACM}} Conference on {{Computer}} and Communications Security - {{CCS}} '11},
+  author = {Li, Yanlin and McCune, Jonathan M. and Perrig, Adrian},
+  year = {2011},
+  pages = {3},
+  publisher = {{ACM Press}},
+  address = {{Chicago, Illinois, USA}},
+  doi = {10.1145/2046707.2046711},
+  abstract = {Recent research demonstrates that malware can infect peripherals' firmware in a typical x86 computer system, e.g., by exploiting vulnerabilities in the firmware itself or in the firmware update tools. Verifying the integrity of peripherals' firmware is thus an important challenge. We propose software-only attestation protocols to verify the integrity of peripherals' firmware, and show that they can detect all known software-based attacks. We implement our scheme using a Netgear GA620 network adapter in an x86 PC, and evaluate our system with known attacks.},
+  isbn = {978-1-4503-0948-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Li et al\\li_et_al_2011_viper.pdf}
 }
 
 @techreport{livshitsFindingSecurityVulnerabilities2005,
@@ -12180,6 +13021,22 @@
   file = {D\:\\GDrive\\zotero\\Maekawa\\maekawa_a_da-_algorithm_for_mutual_exclusion_in_decentralized_systems.pdf}
 }
 
+@article{maeneHardwareBasedTrustedComputing2018,
+  title = {Hardware-{{Based Trusted Computing Architectures}} for {{Isolation}} and {{Attestation}}},
+  author = {Maene, Pieter and G{\"o}tzfried, Johannes and {de Clercq}, Ruan and M{\"u}ller, Tilo and Freiling, Felix and Verbauwhede, Ingrid},
+  year = {2018},
+  month = mar,
+  journal = {IEEE Transactions on Computers},
+  volume = {67},
+  number = {3},
+  pages = {361--374},
+  issn = {1557-9956},
+  doi = {10.1109/TC.2017.2647955},
+  abstract = {Attackers target many different types of computer systems in use today, exploiting software vulnerabilities to take over the device and make it act maliciously. Reports of numerous attacks have been published, against the constrained embedded devices of the Internet of Things, mobile devices like smartphones and tablets, high-performance desktop and server environments, as well as complex industrial control systems. Trusted computing architectures give users and remote parties like software vendors guarantees about the behaviour of the software they run, protecting them against software-level attackers. This paper defines the security properties offered by them, and presents detailed descriptions of twelve hardware-based attestation and isolation architectures from academia and industry. We compare all twelve designs with respect to the security properties and architectural features they offer. The presented architectures have been designed for a wide range of devices, supporting different security properties.},
+  keywords = {attestation,Computer architecture,Computers,Encryption,Hardware,isolation,protected module architectures,security hardware,Software,Software measurement,Trusted computing},
+  file = {D\:\\GDrive\\zotero\\Maene et al\\maene_et_al_2018_hardware-based_trusted_computing_architectures_for_isolation_and_attestation.pdf;C\:\\Users\\Admin\\Zotero\\storage\\H99IQX6G\\7807249.html}
+}
+
 @article{maggioniLLVMDatastructuresOverview,
   title = {{{LLVM Data}}-Structures Overview},
   author = {Maggioni, Marcello},
@@ -12204,6 +13061,19 @@
   isbn = {978-1-59593-860-2},
   keywords = {D34 [Processors]: Code generation General Terms Algorithms,puzzle solving,register aliasing,Theory Keywords Register allocation},
   file = {D\:\\GDrive\\zotero\\Magno et al\\magno_et_al_2008_register_allocation_by_puzzle_solving.pdf}
+}
+
+@book{mahoutAssemblyLanguageProgramming2012,
+  title = {Assembly Language Programming: {{ARM Cortex}}-{{M3}}},
+  shorttitle = {Assembly Language Programming},
+  author = {Mahout, Vincent},
+  year = {2012},
+  publisher = {{ISTE Ltd. and John Wiley \& Sons}},
+  address = {{London ; Hoboken, NJ}},
+  isbn = {978-1-84821-329-6},
+  lccn = {TK7895.E42 M34 2012},
+  keywords = {ARM microprocessors,Assembly languages (Electronic computers),Embedded computer systems},
+  file = {D\:\\GDrive\\zotero\\Mahout\\mahout_2012_assembly_language_programming.pdf}
 }
 
 @techreport{maierDeprecatingObserverPattern,
@@ -12281,6 +13151,23 @@
   author = {Mansinghka, Vikash Kumar},
   year = {2009},
   file = {D\:\\GDrive\\zotero\\Mansinghka\\mansinghka_2009_natively_probabilistic_computation.pdf;D\:\\GDrive\\zotero\\Mansinghka\\mansinghka_2009_natively_probabilistic_computation2.pdf}
+}
+
+@inproceedings{mansouriFADIAFairnessdrivenCollaborative2021,
+  title = {{{FADIA}}: Fairness-Driven Collaborative Remote Attestation},
+  shorttitle = {{{FADIA}}},
+  booktitle = {Proceedings of the 14th {{ACM Conference}} on {{Security}} and {{Privacy}} in {{Wireless}} and {{Mobile Networks}}},
+  author = {Mansouri, Mohamad and Jaballah, Wafa Ben and {\"O}nen, Melek and Rabbani, Md Masoom and Conti, Mauro},
+  year = {2021},
+  month = jun,
+  pages = {60--71},
+  publisher = {{ACM}},
+  address = {{Abu Dhabi United Arab Emirates}},
+  doi = {10.1145/3448300.3468284},
+  abstract = {Internet of Things (IoT) technology promises to bring new value creation opportunities across all major industrial sectors. This will yield industries to deploy more devices into their networks. A key pillar to ensure the safety and security of the running services on these devices is remote attestation. Unfortunately,existing solutions fail to cope with the recent challenges raised by large IoT networks. In particular, the heterogeneity of the devices used in the network affects the performance of a remote attestation protocol. Another challenge in these networks is their dynamic nature: More IoT devices may be added gradually over time. This poses a problem in terms of key management in remote attestation.},
+  isbn = {978-1-4503-8349-3},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Mansouri et al\\mansouri_et_al_2021_fadia.pdf}
 }
 
 @phdthesis{mantriSecureDelegatedQuantum,
@@ -13006,12 +13893,40 @@
   file = {D\:\\GDrive\\zotero\\Mockapetris\\mockapetris_development_of_the_domain_name_system.pdf}
 }
 
+@book{ModernAssemblyLanguage2016,
+  title = {Modern {{Assembly Language Programming}} with the {{ARM Processor}}},
+  year = {2016},
+  publisher = {{Elsevier}},
+  doi = {10.1016/C2015-0-00180-0},
+  isbn = {978-0-12-803698-3},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\_\\2016_modern_assembly_language_programming_with_the_arm_processor.pdf}
+}
+
 @techreport{moghaddamWatchingYouWatch2019,
   title = {Watching {{You Watch}}: {{The Tracking Ecosystem}} of {{Over}}-the-{{Top TV Streaming Devices}}},
   author = {Moghaddam, Hooman Mohajeri and Acar, Gunes and Burgess, Ben and Mathur, Arunesh and Huang, Danny Yuxing and Feamster, Nick and Felten, Edward W and Mittal, Prateek and Narayanan, Arvind},
   year = {2019},
   abstract = {The number of Internet-connected TV devices has grown significantly in recent years, especially Over-the-Top ("OTT") streaming devices, such as Roku TV and Amazon Fire TV. OTT devices offer an alternative to multi-channel television subscription services, and are often monetized through behavioral advertising. To shed light on the privacy practices of such platforms, we developed a system that can automatically download OTT apps (also known as channels), and interact with them while intercepting the network traffic and performing best-effort TLS interception. We used this smart crawler to visit more than 2,000 channels on two popular OTT platforms, namely Roku and Amazon Fire TV. Our results show that tracking is pervasive on both OTT platforms, with traffic to known trackers present on 69\% of Roku channels and 89\% of Amazon Fire TV channels. We also discover widespread practice of collecting and transmitting unique identifiers, such as device IDs, serial numbers, WiFi MAC addresses and SSIDs, at times over un-encrypted connections. Finally, we show that the countermeasures available on these devices, such as limiting ad tracking options and adblocking, are practically ineffective. Based on our findings, we make recommendations for researchers, regulators, policy makers, and platform/app developers.},
   file = {D\:\\GDrive\\zotero\\Moghaddam\\moghaddam_2019_watching_you_watch.pdf}
+}
+
+@incollection{moghimiCacheZoomHowSGX2017,
+  title = {{{CacheZoom}}: {{How SGX Amplifies}} the {{Power}} of {{Cache Attacks}}},
+  shorttitle = {{{CacheZoom}}},
+  booktitle = {Cryptographic {{Hardware}} and {{Embedded Systems}} \textendash{} {{CHES}} 2017},
+  author = {Moghimi, Ahmad and Irazoqui, Gorka and Eisenbarth, Thomas},
+  editor = {Fischer, Wieland and Homma, Naofumi},
+  year = {2017},
+  volume = {10529},
+  pages = {69--90},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10.1007/978-3-319-66787-4_4},
+  abstract = {In modern computing environments, hardware resources are commonly shared, and parallel computation is widely used. Parallel tasks can cause privacy and security problems if proper isolation is not enforced. Intel proposed SGX to create a trusted execution environment within the processor. SGX relies on the hardware, and claims runtime protection even if the OS and other software components are malicious. However, SGX disregards side-channel attacks. We introduce a powerful cache side-channel attack that provides system adversaries a high resolution channel. Our attack tool named CacheZoom is able to virtually track all memory accesses of SGX enclaves with high spatial and temporal precision. As proof of concept, we demonstrate AES key recovery attacks on commonly used implementations including those that were believed to be resistant in previous scenarios. Our results show that SGX cannot protect critical data sensitive computations, and efficient AES key recovery is possible in a practical environment. In contrast to previous works which require hundreds of measurements, this is the first cache side-channel attack on a real system that can recover AES keys with a minimal number of measurements. We can successfully recover AES keys from T-Table based implementations with as few as ten measurements.},
+  isbn = {978-3-319-66786-7 978-3-319-66787-4},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Moghimi et al\\moghimi_et_al_2017_cachezoom.pdf}
 }
 
 @article{mooreCrammingMoreComponents1965,
@@ -13229,6 +14144,18 @@
   isbn = {978-0-7695-4977-4 978-1-4673-6166-8},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Mowery et al\\mowery_et_al_2013_welcome_to_the_entropics.pdf}
+}
+
+@book{muchnickAdvancedCompilerDesign1997,
+  title = {Advanced Compiler Design and Implementation},
+  author = {Muchnick, Steven S.},
+  year = {1997},
+  publisher = {{Morgan Kaufmann Publishers}},
+  address = {{San Francisco, Calif}},
+  isbn = {978-1-55860-320-2},
+  lccn = {QA76.76.C65 M8 1997},
+  keywords = {Compilers (Computer programs),Systems programming (Computer science)},
+  file = {D\:\\GDrive\\zotero\\Muchnick\\muchnick_1997_advanced_compiler_design_and_implementation.pdf}
 }
 
 @incollection{muschNewKidWeb2019,
@@ -13853,6 +14780,22 @@
   file = {D\:\\GDrive\\zotero\\Okasaki\\okasaki_1996_purely_functional_data_structures.pdf}
 }
 
+@article{okhraviCybersecurityMoonshot2021,
+  title = {A {{Cybersecurity Moonshot}}},
+  author = {Okhravi, Hamed},
+  year = {2021},
+  month = may,
+  journal = {IEEE Security Privacy},
+  volume = {19},
+  number = {3},
+  pages = {8--16},
+  issn = {1558-4046},
+  doi = {10.1109/MSEC.2021.3059438},
+  abstract = {Cybersecurity needs radical rethinking to change its current landscape. This article charts a vision for a cybersecurity moonshot based on radical but feasible technologies that can prevent the largest classes of vulnerabilities in modern systems.},
+  keywords = {Computer architecture,Computer bugs,Computer security,Program processors,Safety,Semantics},
+  file = {D\:\\GDrive\\zotero\\Okhravi\\okhravi_2021_a_cybersecurity_moonshot.pdf;C\:\\Users\\Admin\\Zotero\\storage\\7DV7ZQ6R\\9374753.html}
+}
+
 @misc{oladimejiSecurityThreatModeling2006,
   title = {Security Threat {{Modeling}} and {{Analysis}}: {{A}} Goal-Oriented Approach},
   shorttitle = {Security Threat {{Modeling}} and {{Analysis}}},
@@ -14266,6 +15209,23 @@
   file = {D\:\\GDrive\\zotero\\Park\\park_2012_carfast.pdf}
 }
 
+@incollection{parkSMATTSmartMeter2012,
+  title = {{{SMATT}}: {{Smart Meter ATTestation Using Multiple Target Selection}} and {{Copy}}-{{Proof Memory}}},
+  shorttitle = {{{SMATT}}},
+  booktitle = {Computer {{Science}} and Its {{Applications}}},
+  author = {Park, Haemin and Seo, Dongwon and Lee, Heejo and Perrig, Adrian},
+  editor = {Yeo, Sang-Soo and Pan, Yi and Lee, Yang Sun and Chang, Hang Bae},
+  year = {2012},
+  volume = {203},
+  pages = {875--887},
+  publisher = {{Springer Netherlands}},
+  address = {{Dordrecht}},
+  doi = {10.1007/978-94-007-5699-1_90},
+  isbn = {978-94-007-5698-4 978-94-007-5699-1},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Park et al\\park_et_al_2012_smatt.pdf}
+}
+
 @article{parnasCriteriaBeUsed1972,
   title = {On the {{Criteria To Be Used}} in {{Decomposing Systems}} into {{Modules}}},
   author = {Parnas, D L},
@@ -14323,6 +15283,52 @@
   author = {Pattabiraman, Karthik},
   year = {2009},
   file = {D\:\\GDrive\\zotero\\Pattabiraman\\pattabiraman_2009_automated_derivation_of_application-aware_error_and_attack_detectors.pdf}
+}
+
+@book{pattersonComputerOrganizationDesign2014,
+  title = {Computer Organization and Design: The Hardware/Software Interface},
+  shorttitle = {Computer Organization and Design},
+  author = {Patterson, David A. and Hennessy, John L.},
+  year = {2014},
+  series = {The {{Morgan Kaufmann}} Series in Computer Architecture and Design},
+  edition = {Fifth edition},
+  publisher = {{Elsevier/Morgan Kaufmann, Morgan Kaufmann is an imprint of Elsevier}},
+  address = {{Amsterdam ; Boston}},
+  abstract = {"Presents the fundamentals of hardware technologies, assembly language, computer arithmetic, pipelining, memory hierarchies and I/O"--Provided by publisher},
+  isbn = {978-0-12-407726-3},
+  lccn = {QA76.9.C643 P37 2014},
+  keywords = {Computer architecture,Computer organization,Data processing,System design},
+  annotation = {OCLC: ocn859555917},
+  file = {D\:\\GDrive\\zotero\\Patterson_Hennessy\\patterson_hennessy_2014_computer_organization_and_design.pdf}
+}
+
+@book{pattersonComputerOrganizationDesign2017,
+  title = {Computer Organization and Design: The Hardware/Software Interface},
+  shorttitle = {Computer Organization and Design},
+  author = {Patterson, David A. and Hennessy, John L. and Alexander, Perry},
+  year = {2017},
+  edition = {ARM\textregistered{} edition},
+  publisher = {{Elsevier/Morgan Kaufmann}},
+  address = {{Amsterdam ; Boston}},
+  abstract = {This book presents the fundamentals of hardware technologies, assembly language, computer arithmetic, pipelining, memory hierarchies and I/O. This edition is updated for mobile computing and the cloud!},
+  isbn = {978-0-12-801733-3},
+  lccn = {QA76.9.C643 P38 2017},
+  keywords = {Computer architecture,Computer organization,Data processing,System design},
+  annotation = {OCLC: ocn946041146},
+  file = {D\:\\GDrive\\zotero\\Patterson et al\\patterson_et_al_2017_computer_organization_and_design.pdf}
+}
+
+@book{pattersonComputerOrganizationDesign2021,
+  title = {Computer Organization and Design: The Hardware Software Interface},
+  shorttitle = {Computer Organization and Design},
+  author = {Patterson, David A. and Hennessy, John L.},
+  year = {2021},
+  edition = {RISC-V edition, second edition},
+  publisher = {{Elsvier}},
+  address = {{Cambridge, MA}},
+  isbn = {978-0-12-820331-6},
+  language = {eng},
+  file = {D\:\\GDrive\\zotero\\Patterson_Hennessy\\patterson_hennessy_2021_computer_organization_and_design.pdf}
 }
 
 @techreport{paulWhySecurityDefects2021,
@@ -14777,6 +15783,17 @@
   file = {D\:\\GDrive\\zotero\\Purdy\\purdy_1974_a_high_security_log-in_procedure.pdf;D\:\\GDrive\\zotero\\Purdy\\purdy_1974_a_high_security_log-in_procedure2.pdf}
 }
 
+@book{pyeattARM64BitAssembly2020,
+  title = {{{ARM}} 64-{{Bit Assembly Language}}},
+  author = {Pyeatt, Larry D. and Ughetta, William},
+  year = {2020},
+  publisher = {{Elsevier/Newnes}},
+  address = {{Oxford Cambridge, MA}},
+  isbn = {978-0-12-819221-4},
+  language = {eng},
+  file = {D\:\\GDrive\\zotero\\Pyeatt_Ughetta\\pyeatt_ughetta_2020_arm_64-bit_assembly_language.pdf}
+}
+
 @techreport{qianSimilarityEuclideanCosine2004,
   title = {Similarity between {{Euclidean}} and Cosine Angle Distance for Nearest Neighbor Queries},
   author = {Qian, Gang and Sural, Shamik and Gu, Yuelong},
@@ -14806,6 +15823,23 @@
   year = {2017},
   abstract = {Zcash is a fork of Bitcoin with optional anonymity features. While transparent transactions are fully linkable, shielded transactions use zero-knowledge proofs to obscure the parties and amounts of the transactions. First, we observe various metrics regarding the usage of shielded addresses. Moreover, we show that most coins sent to shielded addresses are later sent back to transparent addresses. We then search for round-trip transactions, where the same, or nearly the same number of coins are sent from a transparent address, to a shielded address, and back again to a transparent address. We argue that such behavior exhibits high linkability, especially when they occur nearby temporally. Using this heuristic our analysis matched 31.5\% of all coins sent to shielded addresses.},
   file = {D\:\\GDrive\\zotero\\Quesnelle\\quesnelle_2017_on_the_linkability_of_zcash_transactions.pdf}
+}
+
+@article{rabbaniSHeLAScalableHeterogeneous2019,
+  title = {{{SHeLA}}: {{Scalable Heterogeneous Layered Attestation}}},
+  shorttitle = {{{SHeLA}}},
+  author = {Rabbani, Md Masoom and Vliegen, Jo and Winderickx, Jori and Conti, Mauro and Mentens, Nele},
+  year = {2019},
+  month = dec,
+  journal = {IEEE Internet of Things Journal},
+  volume = {6},
+  number = {6},
+  pages = {10240--10250},
+  issn = {2327-4662},
+  doi = {10.1109/JIOT.2019.2936988},
+  abstract = {This article proposes a novel mechanism for swarm attestation, i.e., the remote attestation (RA) of a multitude of interconnected devices, also called a swarm of devices. Classical RA protocols work with one prover and one verifier. Swarm attestation protocols assume that the devices in the swarm act both as verifier and prover in order to attest the software integrity of all the devices to a root verifier, typically in a spanning-tree topology. We propose ``scalable heterogeneous layered attestation (SHeLA),'' a novel RA technique for swarms. Our approach consists of introducing an additional edge layer in between the root verifier and the swarm devices. The edge layer consists of geographically spread devices with a larger computational power and storage capacity than the swarm devices. The main challenges we address are related to the scalability of the swarm, the availability or visibility of the nodes (especially when they are mobile), the heterogeneity of the devices with respect to the wireless communication protocol and interface, and the granularity of the attestation in terms of detecting the sanity of individual swarm devices. We build a proof-of-concept network that allows us to evaluate the computational delay and the resource overhead of the edge and swarm devices, and to perform a thorough security analysis.},
+  keywords = {Configurable hardware,field-programmable gate array (FPGA),Internet of Things,Internet-of-Things (IoT),Performance evaluation,Protocols,remote attestation (RA),Scalability,Security,security and privacy,swarm attestation,Topology,Wireless communication},
+  file = {D\:\\GDrive\\zotero\\Rabbani et al\\rabbani_et_al_2019_shela.pdf;C\:\\Users\\Admin\\Zotero\\storage\\ZNK8J3DK\\8809870.html}
 }
 
 @article{racordonFuelCompilerFramework2021,
@@ -15162,21 +16196,6 @@
   title = {Okapi at {{TREC}}\{3\vphantom\}},
   author = {Robertson, S E and Walker, S and Jones, S and {Hancock-Beaulieu}, M M},
   file = {D\:\\GDrive\\zotero\\Robertson\\robertson_okapi_at_trec 3.pdf}
-}
-
-@article{robinsonUnderstandingAndroidSecurity2015,
-  title = {Understanding Android Security},
-  author = {Robinson, Gregor and Weir, George R.S.},
-  year = {2015},
-  journal = {Communications in Computer and Information Science},
-  volume = {534},
-  pages = {189--199},
-  issn = {18650929},
-  doi = {10.1007/978-3-319-23276-8_17},
-  abstract = {This paper details a survey of Android users in an attempt to shed light on how users perceive the risks associated with app permissions and in-built adware. A series of questions was presented in a Web survey, with results suggesting interesting differences between males and females in installation behaviour and attitudes toward security.},
-  isbn = {9783319232751},
-  keywords = {Android OS - user awareness,Mobile security},
-  file = {D\:\\GDrive\\zotero\\Robinson\\robinson_2015_understanding_android_security.pdf}
 }
 
 @article{rocchettoAttackerModelsProfiles2016,
@@ -15902,11 +16921,11 @@
   file = {D\:\\GDrive\\zotero\\Schubert\\schubert_2019_know_your_analysis.pdf}
 }
 
-@book{schubertPhASARInterproceduralStatic2019,
+@incollection{schubertPhASARInterproceduralStatic2019,
   title = {{{PhASAR}}: {{An Inter}}-Procedural {{Static Analysis Framework}} for {{C}}/{{C}}++},
+  booktitle = {{{PhASAR}}: {{An Inter}}-Procedural {{Static Analysis Framework}} for {{C}}/{{C}}++},
   author = {Schubert, Philipp Dominik and Hermann, Ben and Bodden, Eric},
   year = {2019},
-  journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
   volume = {11428 LNCS},
   publisher = {{Springer International Publishing}},
   issn = {16113349},
@@ -15932,6 +16951,21 @@
   isbn = {978-1-4673-6949-7},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Schuster et al\\schuster_et_al_2015_counterfeit_object-oriented_programming.pdf}
+}
+
+@inproceedings{schusterVC3TrustworthyData2015,
+  title = {{{VC3}}: {{Trustworthy Data Analytics}} in the {{Cloud Using SGX}}},
+  shorttitle = {{{VC3}}},
+  booktitle = {2015 {{IEEE Symposium}} on {{Security}} and {{Privacy}}},
+  author = {Schuster, Felix and Costa, Manuel and Fournet, C{\'e}dric and Gkantsidis, Christos and Peinado, Marcus and {Mainar-Ruiz}, Gloria and Russinovich, Mark},
+  year = {2015},
+  month = may,
+  pages = {38--54},
+  issn = {2375-1207},
+  doi = {10.1109/SP.2015.10},
+  abstract = {We present VC3, the first system that allows users to run distributed MapReduce computations in the cloud while keeping their code and data secret, and ensuring the correctness and completeness of their results. VC3 runs on unmodified Hadoop, but crucially keeps Hadoop, the operating system and the hyper visor out of the TCB, thus, confidentiality and integrity are preserved even if these large components are compromised. VC3 relies on SGX processors to isolate memory regions on individual computers, and to deploy new protocols that secure distributed MapReduce computations. VC3 optionally enforces region self-integrity invariants for all MapReduce code running within isolated regions, to prevent attacks due to unsafe memory reads and writes. Experimental results on common benchmarks show that VC3 performs well compared with unprotected Hadoop: VC3's average runtime overhead is negligible for its base security guarantees, 4.5\% with write integrity and 8\% with read/write integrity.},
+  keywords = {Encryption,Operating systems,Program processors,Protocols,Virtual machine monitors},
+  file = {D\:\\GDrive\\zotero\\Schuster et al\\schuster_et_al_2015_vc3.pdf;C\:\\Users\\Admin\\Zotero\\storage\\XDSI26RW\\7163017.html}
 }
 
 @inproceedings{schwartzAllYouEver2010,
@@ -15998,6 +17032,24 @@
   abstract = {In modern computer systems, user processes are isolated from each other by the operating system and the hardware. Additionally, in a cloud scenario it is crucial that the hypervisor isolates tenants from other tenants that are co-located on the same physical machine. However, the hypervisor does not protect tenants against the cloud provider and thus the supplied operating system and hardware. Intel SGX provides a mechanism that addresses this scenario. It aims at protecting user-level software from attacks from other processes, the operating system, and even physical attackers. In this paper, we demonstrate fine-grained software-based sidechannel attacks from a malicious SGX enclave targeting co-located enclaves. Our attack is the first malware running on real SGX hardware, abusing SGX protection features to conceal itself. Furthermore, we demonstrate our attack both in a native environment and across multiple Docker containers. We perform a Prime+Probe cache side-channel attack on a co-located SGX enclave running an up-to-date RSA implementation that uses a constant-time multiplication primitive. The attack works although in SGX enclaves there are no timers, no large pages, no physical addresses, and no shared memory. In a semi-synchronous attack, we extract 96\% of an RSA private key from a single trace. We extract the full RSA private key in an automated attack from 11 traces.},
   isbn = {9783319608754},
   file = {D\:\\GDrive\\zotero\\Schwarz\\schwarz_2017_malware_guard_extension.pdf}
+}
+
+@incollection{schwarzMalwareGuardExtension2017a,
+  title = {Malware {{Guard Extension}}: {{Using SGX}} to {{Conceal Cache Attacks}}},
+  shorttitle = {Malware {{Guard Extension}}},
+  booktitle = {Detection of {{Intrusions}} and {{Malware}}, and {{Vulnerability Assessment}}},
+  author = {Schwarz, Michael and Weiser, Samuel and Gruss, Daniel and Maurice, Cl{\'e}mentine and Mangard, Stefan},
+  editor = {Polychronakis, Michalis and Meier, Michael},
+  year = {2017},
+  volume = {10327},
+  pages = {3--24},
+  publisher = {{Springer International Publishing}},
+  address = {{Cham}},
+  doi = {10.1007/978-3-319-60876-1_1},
+  abstract = {In modern computer systems, user processes are isolated from each other by the operating system and the hardware. Additionally, in a cloud scenario it is crucial that the hypervisor isolates tenants from other tenants that are co-located on the same physical machine. However, the hypervisor does not protect tenants against the cloud provider and thus the supplied operating system and hardware. Intel SGX provides a mechanism that addresses this scenario. It aims at protecting user-level software from attacks from other processes, the operating system, and even physical attackers.},
+  isbn = {978-3-319-60875-4 978-3-319-60876-1},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Schwarz et al\\schwarz_et_al_2017_malware_guard_extension.pdf}
 }
 
 @article{schwittmannDomainImpersonationFeasible2019,
@@ -16114,6 +17166,16 @@
   abstract = {We propose a primitive, called Pioneer, as a first step towards verifiable code execution on untrusted legacy hosts. Pioneer does not require any hardware support such as secure co-processors or CPUarchitecture extensions. We implement Pioneer on an Intel Pentium IV Xeon processor. Pioneer can be used as a basic building block to build security systems. We demonstrate this by building a kernel rootkit detector.},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Seshadri et al\\seshadri_et_al_2005_pioneer2.pdf}
+}
+
+@article{seshadriSAKESoftwareAttestation2008,
+  title = {{{SAKE}}: {{Software Attestation}} for {{Key Establishment}} in {{Sensor Networks}}},
+  author = {Seshadri, Arvind and Luk, Mark and Perrig, Adrian},
+  year = {2008},
+  pages = {14},
+  abstract = {This paper presents a protocol called SAKE (Software Attestation for Key Establishment), for establishing a shared key between any two neighboring nodes of a sensor network. SAKE guarantees the secrecy and authenticity of the key that is established, without requiring any prior authentic or secret information in either node. In other words, the attacker can read and modify the entire memory contents of both nodes before SAKE executes. Further, to the best of our knowledge, SAKE is the only protocol that can perform key re-establishment after sensor nodes are compromised, because the presence of the attacker's code in the memory of either protocol participant does not compromise the security of SAKE. Also, the attacker can perform any active or passive attack using an arbitrary number of malicious, colluding nodes. SAKE does not require any hardware modification to the sensor nodes, human mediation, or secure side channels. However, we do assume the setting of a computationally-limited attacker that does not introduce its own computationally powerful nodes into the sensor network.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Seshadri et al\\seshadri_et_al_2008_sake.pdf}
 }
 
 @inproceedings{seshadriScubaSecureCode2006,
@@ -16425,6 +17487,21 @@
   file = {D\:\\GDrive\\zotero\\Shin\\shin_2013_avant-guard.pdf}
 }
 
+@inproceedings{shindePanoplyLowTCBLinux2017,
+  title = {Panoply: {{Low}}-{{TCB Linux Applications}} with {{SGX Enclaves}}},
+  shorttitle = {Panoply},
+  booktitle = {Proceedings 2017 {{Network}} and {{Distributed System Security Symposium}}},
+  author = {Shinde, Shweta and Le Tien, Dat and Tople, Shruti and Saxena, Prateek},
+  year = {2017},
+  publisher = {{Internet Society}},
+  address = {{San Diego, CA}},
+  doi = {10.14722/ndss.2017.23500},
+  abstract = {Intel SGX, a new security capability in emerging CPUs, allows user-level application code to execute in hardwareisolated enclaves. Enclave memory is isolated from all other software on the system, even from the privileged OS or hypervisor. While being a promising hardware-rooted building block, enclaves have severely limited capabilities, such as no native access to system calls and standard OS abstractions. These OS abstractions are used ubiquitously in real-world applications.},
+  isbn = {978-1-891562-46-4},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Shinde et al\\shinde_et_al_2017_panoply.pdf}
+}
+
 @techreport{shorPolynomialTimeAlgorithmsPrime,
   title = {Polynomial-{{Time Algorithms}} for {{Prime Factorization}} and {{Discrete Logarithms}} on a {{Quantum Computer}} *},
   author = {Shor, Peter W},
@@ -16549,6 +17626,19 @@
   file = {D\:\\GDrive\\zotero\\Sikeridis\\sikeridis_2020_post-quantum_authentication_in_tls_1.pdf}
 }
 
+@book{sikorskiPracticalMalwareAnalysis2012,
+  title = {Practical Malware Analysis: The Hands-on Guide to Dissecting Malicious Software},
+  shorttitle = {Practical Malware Analysis},
+  author = {Sikorski, Michael and Honig, Andrew},
+  year = {2012},
+  publisher = {{No Starch Press}},
+  address = {{San Francisco}},
+  isbn = {978-1-59327-290-6},
+  lccn = {QA76.76.C68 S534 2012},
+  keywords = {Computer security,Computer viruses,Debugging in computer science,Malware (Computer software)},
+  file = {D\:\\GDrive\\zotero\\Sikorski_Honig\\sikorski_honig_2012_practical_malware_analysis.pdf}
+}
+
 @article{silverMasteringChessShogi2017,
   title = {Mastering {{Chess}} and {{Shogi}} by {{Self}}-{{Play}} with a {{General Reinforcement Learning Algorithm}}},
   author = {Silver, David and Hubert, Thomas and Schrittwieser, Julian and Antonoglou, Ioannis and Lai, Matthew and Guez, Arthur and Lanctot, Marc and Sifre, Laurent and Kumaran, Dharshan and Graepel, Thore and Lillicrap, Timothy and Simonyan, Karen and Hassabis, Demis},
@@ -16603,6 +17693,22 @@
   abstract = {In this work, questions are tasks posed to secondary students to help them understand a subject, or to help educators assess their level of competency in it. Automated question generation is important today as content providers in education try to scale their efforts. In particular , MOOCs need a continuous supply of new questions in order to offer educational content to thousands of students, and to provide a fair assessment process. This paper innovates in three ways; (1) we describe question generation across domains, and, previous efforts as instances of a general framework; (2) we establish first-order logic as a suitable formal tool to describe question scenarios, questions and answers; and (3) we generalize a published question generation method based on logic programming and theorem proving to work across domains. We apply this approach to three domains in high school education-geometry, algebra and mechanics (physics)-and report initial results.},
   keywords = {automated deduction,axiomatic approach,Constraint Handling Rules (CHR),First-order logic,formal domains,pattern matching},
   file = {D\:\\GDrive\\zotero\\Singhal\\singhal_a_framework_for_automated_generation_of_questions_across_formal_domains.pdf}
+}
+
+@article{singhCloudSecurityIssues2017,
+  title = {Cloud Security Issues and Challenges: {{A}} Survey},
+  shorttitle = {Cloud Security Issues and Challenges},
+  author = {Singh, Ashish and Chatterjee, Kakali},
+  year = {2017},
+  month = feb,
+  journal = {Journal of Network and Computer Applications},
+  volume = {79},
+  pages = {88--115},
+  issn = {10848045},
+  doi = {10.1016/j.jnca.2016.11.027},
+  abstract = {The cloud computing provides on demand services over the Internet with the help of a large amount of virtual storage. The main features of cloud computing is that the user does not have any setup of expensive computing infrastructure and the cost of its services is less. In the recent years, cloud computing integrates with the industry and many other areas, which has been encouraging the researcher to research on new related technologies. Due to the availability of its services \& scalability for computing processes individual users and organizations transfer their application, data and services to the cloud storage server. Regardless of its advantages, the transformation of local computing to remote computing has brought many security issues and challenges for both consumer and provider. Many cloud services are provided by the trusted third party which arises new security threats. The cloud provider provides its services through the Internet and uses many web technologies that arise new security issues. This paper discussed about the basic features of the cloud computing, security issues, threats and their solutions. Additionally, the paper describes several key topics related to the cloud, namely cloud architecture framework, service and deployment model, cloud technologies, cloud security concepts, threats, and attacks. The paper also discusses a lot of open research issues related to the cloud security.},
+  language = {en},
+  file = {C\:\\Users\\Admin\\Zotero\\storage\\4WVGXWF5\\Singh and Chatterjee - 2017 - Cloud security issues and challenges A survey.pdf}
 }
 
 @article{singhJupiterRising2015,
@@ -16739,6 +17845,20 @@
   title = {Security {{Issues}} in {{OpenStack}}},
   author = {Slipetskyy, Rostyslav},
   file = {D\:\\GDrive\\zotero\\Slipetskyy, Rostyslav\\slipetskyy,_rostyslav_security_issues_in_openstack.pdf}
+}
+
+@book{slossARMSystemDeveloper2004,
+  title = {{{ARM}} System Developer's Guide: Designing and Optimizing System Software},
+  shorttitle = {{{ARM}} System Developer's Guide},
+  author = {Sloss, Andrew N. and Symes, Dominic and Wright, Chris},
+  year = {2004},
+  publisher = {{Elsevier/ Morgan Kaufman}},
+  address = {{Amsterdam ; Boston}},
+  isbn = {978-1-55860-874-0},
+  language = {en},
+  lccn = {QA76.76.D47 S565 2004},
+  keywords = {ARM microprocessors,Computer architecture,Computer software,Development,RISC microprocessors},
+  file = {D\:\\GDrive\\zotero\\Sloss et al\\sloss_et_al_2004_arm_system_developer's_guide.pdf}
 }
 
 @article{slowinskaBodyArmorBinaries2012,
@@ -17097,6 +18217,21 @@
   file = {D\:\\GDrive\\zotero\\Steinberger\\steinberger_scatteralloc.pdf}
 }
 
+@book{steinhartSecretLifePrograms2019,
+  title = {The Secret Life of Programs: Understand Computers--Craft Better Code},
+  shorttitle = {The Secret Life of Programs},
+  author = {Steinhart, Jon},
+  year = {2019},
+  publisher = {{No Starch Press, Inc}},
+  address = {{San Francisco}},
+  abstract = {"Presents essential information about how computers work, including many broad topics, such as how computers process languages, how programs manipulate data in memory, and how web browsers work"--},
+  isbn = {978-1-59327-970-7},
+  lccn = {QA76.6 .S735 2019},
+  keywords = {Browsers (Computer programs),Computer programming,Programming languages (Electronic computers)},
+  annotation = {OCLC: on1099540411},
+  file = {D\:\\GDrive\\zotero\\Steinhart\\steinhart_2019_the_secret_life_of_programs.pdf}
+}
+
 @article{stelliosSurveyIotenabledCyberattacks2018,
   title = {A Survey of Iot-Enabled Cyberattacks: {{Assessing}} Attack Paths to Critical Infrastructures and Services},
   author = {Stellios, Ioannis and Kotzanikolaou, Panayiotis and Psarakis, Mihalis and Alcaraz, Cristina and Lopez, Javier},
@@ -17265,6 +18400,23 @@
   abstract = {This paper forms the substance of a course of lectures given at the International Summer School in Computer Programming at Copenhagen in August, 1967. The lectures were originally given from notes and the paper was written after the course was finished. In spite of this, and only partly because of the shortage of time, the paper still retains many of the shortcomings of a lecture course. The chief of these are an uncertainty of aim-it is never quite clear what sort of audience there will be for such lectures-and an associated switching from formal to informal modes of presentation which may well be less acceptable in print than it is natural in the lecture room. For these (and other) faults, I apologise to the reader. There are numerous references throughout the course to CPL [1-3]. This is a programming language which has been under development since 1962 at Cambridge and London and Oxford. It has served as a vehicle for research into both programming languages and the design of compilers. Partial implementations exist at Cambridge and London. The language is still evolving so that there is no definitive manual available yet. We hope to reach another resting point in its evolution quite soon and to produce a compiler and reference manuals for this version. The compiler will probably be written in such a way that it is relatively easy to transfer it to another machine, and in the first instance we hope to establish it on three or four machines more or less at the same time. The lack of a precise formulation for CPL should not cause much difficulty in this course, as we are primarily concerned with the ideas and concepts involved rather than with their precise representation in a programming language.},
   keywords = {ad hoc polymorphism,binding mechanisms,CPL,foundations of computing,functions as data,L-values,para-meter passing,parametric polymorphism,programming languages,R-values,semantics,type completeness,variable binding},
   file = {D\:\\GDrive\\zotero\\Strachey\\strachey_2000_higher-order_and_symbolic_computation.pdf}
+}
+
+@incollection{strackxEfficientIsolationTrusted2010,
+  title = {Efficient {{Isolation}} of {{Trusted Subsystems}} in {{Embedded Systems}}},
+  booktitle = {Security and {{Privacy}} in {{Communication Networks}}},
+  author = {Strackx, Raoul and Piessens, Frank and Preneel, Bart},
+  editor = {Jajodia, Sushil and Zhou, Jianying},
+  year = {2010},
+  volume = {50},
+  pages = {344--361},
+  publisher = {{Springer Berlin Heidelberg}},
+  address = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-642-16161-2_20},
+  abstract = {Many embedded systems have relatively strong security requirements because they handle confidential data or support secure electronic transactions. A prototypical example are payment terminals. To ensure that sensitive data such as cryptographic keys cannot leak, security-critical parts of these systems are implemented as separate chips, and hence physically isolated from other parts of the system.},
+  isbn = {978-3-642-16160-5 978-3-642-16161-2},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Strackx et al\\strackx_et_al_2010_efficient_isolation_of_trusted_subsystems_in_embedded_systems.pdf}
 }
 
 @patent{straversTranslationLookasideBuffer,
@@ -17545,6 +18697,22 @@
   file = {D\:\\GDrive\\zotero\\undefined\\the_tail_at_scale.pdf}
 }
 
+@article{takabiSecurityPrivacyChallenges2010,
+  title = {Security and {{Privacy Challenges}} in {{Cloud Computing Environments}}},
+  author = {Takabi, Hassan and Joshi, James B.D. and Ahn, Gail-Joon},
+  year = {2010},
+  month = nov,
+  journal = {IEEE Security Privacy},
+  volume = {8},
+  number = {6},
+  pages = {24--31},
+  issn = {1558-4046},
+  doi = {10.1109/MSP.2010.186},
+  abstract = {Cloud computing is an evolving paradigm with tremendous momentum, but its unique aspects exacerbate security and privacy challenges. This article explores the roadblocks and solutions to providing a trustworthy cloud computing environment.},
+  keywords = {cloud computing,Cloud computing,Management,privacy,security,Strategic planning},
+  file = {D\:\\GDrive\\zotero\\Takabi et al\\takabi_et_al_2010_security_and_privacy_challenges_in_cloud_computing_environments.pdf;C\:\\Users\\Admin\\Zotero\\storage\\N9KFSBVT\\5655240.html}
+}
+
 @misc{TakingNotesResearch,
   title = {Taking {{Notes}} from {{Research Reading}} | {{Writing Advice}}},
   language = {en-US},
@@ -17569,6 +18737,20 @@
   abstract = {The need for power-and energy-efficient computing has resulted in aggressive cooperative hardware-software en-ergy management mechanisms on modern commodity devices. Most systems today, for example, allow soft-ware to control the frequency and voltage of the under-lying hardware at a very fine granularity to extend bat-tery life. Despite their benefits, these software-exposed energy management mechanisms pose grave security im-plications that have not been studied before. In this work, we present the CLKSCREW attack, a new class of fault attacks that exploit the security-obliviousness of energy management mechanisms to break security. A novel benefit for the attackers is that these fault attacks become more accessible since they can now be conducted without the need for physical access to the devices or fault injection equipment. We demonstrate CLKSCREW on commodity ARM/Android devices. We show that a malicious kernel driver (1) can extract secret cryptographic keys from Trustzone, and (2) can escalate its privileges by loading self-signed code into Trustzone. As the first work to show the security ramifications of en-ergy management mechanisms, we urge the community to re-examine these security-oblivious designs.},
   isbn = {9781931971409},
   file = {D\:\\GDrive\\zotero\\Tang\\tang_2017_clkscrew.pdf}
+}
+
+@inproceedings{tanMTRAMultipletierRemote2017,
+  title = {{{MTRA}}: {{Multiple}}-Tier Remote Attestation in {{IoT}} Networks},
+  shorttitle = {{{MTRA}}},
+  booktitle = {2017 {{IEEE Conference}} on {{Communications}} and {{Network Security}} ({{CNS}})},
+  author = {Tan, Hailun and Tsudik, Gene and Jha, Sanjay},
+  year = {2017},
+  month = oct,
+  pages = {1--9},
+  doi = {10.1109/CNS.2017.8228638},
+  abstract = {Large numbers of Internet of Things (IoT) devices are increasingly deployed in many aspects of modern life. Given their limited resources and computational power, verifying program integrity in such devices is a challenging issue. In this paper, we design MTRA, a Multiple-Tier Remote Attestation protocol, by exploiting differences in resources and computational power among various types of networked IoT devices. More powerful devices equipped with a Trusted Platform Module (TPM) are verified through trusted hardware while others are verified through software-based attestation. MTRA is a flexible means of program integrity verification for heterogeneous IoT devices.},
+  keywords = {Communication networks,Computer science,Conferences,Hardware,Malware,Protocols,Security},
+  file = {D\:\\GDrive\\zotero\\Tan et al\\tan_et_al_2017_mtra.pdf;C\:\\Users\\Admin\\Zotero\\storage\\TYNHWA9Q\\8228638.html}
 }
 
 @inproceedings{tanTPMenabledRemoteAttestation2011,
@@ -17609,6 +18791,23 @@
   abstract = {The value of depth-first search or "backtracking" as a technique for solving graph problems is illustrated by two examples. An algorithm for finding the biconnected components of an undirected graph and an improved version of an algorithm for finding the strongly connected components of a directed graph are presented. The space and time requirements of both algorithms are bounded by k1V + k2E + k3 for some constants k1, k2, and k3, where V is the number of vertices and E is the number of edges of the graph being examined.},
   keywords = {Chemistry,Computer science,Electrical engineering,Erbium,Information retrieval,Sociology,Tail,Tree graphs,TV},
   file = {D\:\\GDrive\\zotero\\Tarjan\\tarjan_1971_depth-first_search_and_linear_graph_algorithms.pdf}
+}
+
+@article{tataria6GWirelessSystems2021,
+  title = {{{6G Wireless Systems}}: {{Vision}}, {{Requirements}}, {{Challenges}}, {{Insights}}, and {{Opportunities}}},
+  shorttitle = {{{6G Wireless Systems}}},
+  author = {Tataria, Harsh and Shafi, Mansoor and Molisch, Andreas F. and Dohler, Mischa and Sj{\"o}land, Henrik and Tufvesson, Fredrik},
+  year = {2021},
+  month = jul,
+  journal = {Proceedings of the IEEE},
+  volume = {109},
+  number = {7},
+  pages = {1166--1199},
+  issn = {1558-2256},
+  doi = {10.1109/JPROC.2021.3061701},
+  abstract = {Mobile communications have been undergoing a generational change every ten years or so. However, the time difference between the so-called ``G's'' is also decreasing. While fifth-generation (5G) systems are becoming a commercial reality, there is already significant interest in systems beyond 5G, which we refer to as the sixth generation (6G) of wireless systems. In contrast to the already published papers on the topic, we take a top-down approach to 6G. More precisely, we present a holistic discussion of 6G systems beginning with lifestyle and societal changes driving the need for next-generation networks. This is followed by a discussion into the technical requirements needed to enable 6G applications, based on which we dissect key challenges and possibilities for practically realizable system solutions across all layers of the Open Systems Interconnection stack (i.e., from applications to the physical layer). Since many of the 6G applications will need access to an order-of-magnitude more spectrum, utilization of frequencies between 100 GHz and 1 THz becomes of paramount importance. As such, the 6G ecosystem will feature a diverse range of frequency bands, ranging from below 6 GHz up to 1 THz. We comprehensively characterize the limitations that must be overcome to realize working systems in these bands and provide a unique perspective on the physical and higher layer challenges relating to the design of next-generation core networks, new modulation and coding methods, novel multiple-access techniques, antenna arrays, wave propagation, radio frequency transceiver design, and real-time signal processing. We rigorously discuss the fundamental changes required in the core networks of the future, such as the redesign or significant reduction of the transport architecture that serves as a major source of latency for time-sensitive applications. This is in sharp contrast to the present hierarchical network architectures that are not suitable to realize many of the anticipated 6G services. While evaluating the strengths and weaknesses of key candidate 6G technologies, we differentiate what may be practically achievable over the next decade, relative to what is possible in theory. Keeping this in mind, we present concrete research challenges for each of the discussed system aspects, providing inspiration for what follows.},
+  keywords = {6G mobile communication,Array signal processing,Beamforming,Massive MIMO,Next generation working,next-generation core network,Physical layer,physical layer (PHY),Radio frequency,radio frequency (RF) transceivers,signal processing,Signal processing,sixth-generation (6G),terahertz (THz),Transceivers,ultramassive multiple-input multiple-output (MIMO),waveforms},
+  file = {D\:\\GDrive\\zotero\\Tataria et al\\tataria_et_al_2021_6g_wireless_systems.pdf;C\:\\Users\\Admin\\Zotero\\storage\\QUEE5BXL\\9390169.html}
 }
 
 @techreport{techtalkChrisLattnerClattner2007,
@@ -18292,6 +19491,26 @@
   file = {D\:\\GDrive\\zotero\\Van Renesse\\van_renesse_2011_paxos_made_moderately_complex.pdf}
 }
 
+@article{vanschaikCacheOutLeakingData2020,
+  title = {{{CacheOut}}: {{Leaking Data}} on {{Intel CPUs}} via {{Cache Evictions}}},
+  author = {{van Schaik}, Stephan and Minkin, Marina and Kwong, Andrew and Genkin, Daniel and Yarom, Yuval},
+  year = {2020},
+  pages = {16},
+  abstract = {Recent transient-execution attacks, such as RIDL, Fallout, and ZombieLoad, demonstrated that attackers can leak information while it transits through microarchitectural buffers. Named Microarchitectural Data Sampling (MDS) by Intel, these attacks are likened to ``drinking from the firehose'', as the attacker has little control over what data is observed and from what origin. Unable to prevent the buffers from leaking, Intel issued countermeasures via microcode updates that overwrite the buffers when the CPU changes security domains.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\van Schaik et al\\van_schaik_et_al_2020_cacheout.pdf}
+}
+
+@article{vanschaikSGAxeHowSGX2020,
+  title = {{{SGAxe}}: {{How SGX Fails}} in {{Practice}}},
+  author = {{van Schaik}, Stephan and Kwong, Andrew and Genkin, Daniel and Yarom, Yuval},
+  year = {2020},
+  pages = {14},
+  abstract = {Intel's Software Guard Extensions (SGX) promises an isolated execution environment, protected from all software running on the machine. A significant limitation of SGX is its lack of protection against side-channel attacks. In particular, recent works have shown that transient-execution attacks can leak arbitrary data from SGX, breaching SGX's confidentiality. However, less work has been done on the implications of such attacks on the SGX ecosystems.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\van Schaik et al\\van_schaik_et_al_2020_sgaxe.pdf}
+}
+
 @techreport{vanschieIntroductionImplementationResults2008a,
   title = {Introduction {{Implementation Results Conclusion Compiling Haskell}} to {{LLVM}}},
   author = {Van Schie, John},
@@ -18525,6 +19744,19 @@
   doi = {10.1145/1647300.1647302},
   abstract = {DNS is many things to many people - perhaps too many things to too many people. \textcopyright{} 2009 ACM.},
   file = {D\:\\GDrive\\zotero\\Vixie\\vixie_2009_what_dns_is_not.pdf}
+}
+
+@inproceedings{vlNovelMultiVerifier2018,
+  title = {A {{Novel Multi Verifier Device Attestation Scheme}} for {{Swarm}} of {{Devices}}},
+  booktitle = {2018 32nd {{International Conference}} on {{Advanced Information Networking}} and {{Applications Workshops}} ({{WAINA}})},
+  author = {VL, Shivraj and Singh Dilip Thakur, Meena and Ma, Rajan},
+  year = {2018},
+  month = may,
+  pages = {124--129},
+  doi = {10.1109/WAINA.2018.00074},
+  abstract = {How can I trust this device? This is an important concern among users in the digital world. In such a scenario a device needs to establish its credibility to its users and this is realized using Device Attestation schemes. Though attestation of single device is well studied, however for swarm of devices, lot needs to be done. Moreover, this is more relevant and fundamental requirement for IoT systems to establish trust among swarm of heterogeneous devices interacting with each other. In this direction, the first scheme to address the attestation of a swarm is Scalable Embedded Device Attestation (SEDA). However in SEDA a single device co-ordinates the attestation scheme. This makes scheme prone to frequent failures; specifically in swarm setup, where the probability of device failure is high. Hence to overcome this, we propose fault tolerant, Multi Verifier attestation scheme. Here we describe two approaches based on the trust levels of device operating environment. The first approach is for setup where the devices are semi-honest and second one is based on consensus paradigm for malicious environment. In addition to this, our attestation scheme supports attestation for multiple properties of device such as hash of the code, security parameters, device features, etc. Further, we extend our scheme for swarm-ofswarms. We implement and evaluate correctness and performance of proposed scheme analytically and experimentally.},
+  keywords = {Aggregates,Clustering algorithms,consensus,Device Attestation,Device-to-device communication,Digital certificates,Fault tolerance,Fault tolerant systems,Integity checking by hashing,Internet of things,Performance evaluation,Software,Swarm of devices},
+  file = {D\:\\GDrive\\zotero\\VL et al\\vl_et_al_2018_a_novel_multi_verifier_device_attestation_scheme_for_swarm_of_devices.pdf;C\:\\Users\\Admin\\Zotero\\storage\\P225VV4Z\\8418059.html}
 }
 
 @techreport{vmwareComparisonSoftwareHardware,
@@ -18854,6 +20086,23 @@
   file = {D\:\\GDrive\\zotero\\undefined\\web_search_for_a_planet.pdf}
 }
 
+@article{wedajDADSDecentralizedAttestation2019,
+  title = {{{DADS}}: {{Decentralized Attestation}} for {{Device Swarms}}},
+  shorttitle = {{{DADS}}},
+  author = {Wedaj, Samuel and Paul, Kolin and Ribeiro, Vinay J.},
+  year = {2019},
+  month = jul,
+  journal = {ACM Transactions on Privacy and Security},
+  volume = {22},
+  number = {3},
+  pages = {1--29},
+  issn = {2471-2566, 2471-2574},
+  doi = {10.1145/3325822},
+  abstract = {We present a novel scheme called Decentralized Attestation for Device Swarms (DADS), which is, to the best of our knowledge, the first to accomplish decentralized attestation in device swarms. Device swarms are smart, mobile, and interconnected devices that operate in large numbers and are likely to be part of emerging applications in Cyber-Physical Systems (CPS) and Industrial Internet of Things (IIoTs). Swarm devices process and exchange safety, privacy, and mission-critical information. Thus, it is important to have a good code verification technique that scales to device swarms and establishes trust among collaborating devices. DADS has several advantages over current state-of-the-art swarm attestation techniques: It is decentralized, has no single point of failure, and can handle changing topologies after nodes are compromised. DADS assures system resilience to node compromise/failure while guaranteeing only devices that execute genuine code remain part of the group. We conduct performance measurements of communication, computation, memory, and energy using the TrustLite embedded systems architecture in OMNeT++ simulation environment. We show that the proposed approach can significantly reduce communication cost and is very efficient in terms of computation, memory, and energy requirements. We also analyze security and show that DADS is very effective and robust against various attacks.},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Wedaj et al\\wedaj_et_al_2019_dads.pdf}
+}
+
 @techreport{weilRADOSScalableReliable,
   title = {{{RADOS}}: {{A Scalable}}, {{Reliable Storage Service}} for {{Petabyte}}-Scale {{Storage Clusters}}},
   author = {Weil, Sage A and Leung, Andrew W and Brandt, Scott A and Maltzahn, Carlos},
@@ -18911,6 +20160,22 @@
   isbn = {978-1-4503-0245-6},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Wei et al\\wei_et_al_2010_secure_dynamic_code_generation_against_spraying.pdf}
+}
+
+@inproceedings{weiserSingleTraceAttack2018,
+  title = {Single {{Trace Attack Against RSA Key Generation}} in {{Intel SGX SSL}}},
+  booktitle = {Proceedings of the 2018 on {{Asia Conference}} on {{Computer}} and {{Communications Security}}},
+  author = {Weiser, Samuel and Spreitzer, Raphael and Bodner, Lukas},
+  year = {2018},
+  month = may,
+  pages = {575--586},
+  publisher = {{ACM}},
+  address = {{Incheon Republic of Korea}},
+  doi = {10.1145/3196494.3196524},
+  abstract = {Microarchitectural side-channel attacks have received significant attention recently. However, while side-channel analyses on secret key operations such as decryption and signature generation are well established, the process of key generation did not receive particular attention so far. Especially due to the fact that microarchitectural attacks usually require multiple observations (more than one measurement trace) to break an implementation, one-time operations such as key generation routines are often considered as uncritical and out of scope. However, this assumption is no longer valid for shielded execution architectures, where sensitive code is executed\textemdash in the realm of a potential attacker\textemdash inside hardware enclaves. In such a setting, an untrusted operating system can conduct noiseless controlled-channel attacks by exploiting page access patterns.},
+  isbn = {978-1-4503-5576-6},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Weiser et al\\weiser_et_al_2018_single_trace_attack_against_rsa_key_generation_in_intel_sgx_ssl.pdf}
 }
 
 @article{weizenbaumELIZAComputerProgram1966,
@@ -19261,6 +20526,21 @@
   file = {D\:\\GDrive\\zotero\\Xhonneux et al\\xhonneux_et_al_2018_leveraging_ebpf_for_programmable_network_functions_with_ipv6_segment_routing_arxiv.pdf;D\:\\GDrive\\zotero\\Xhonneux et al\\xhonneux_et_al_2018_leveraging_ebpf_for_programmable_network_functions_with_ipv6_segment_routing2.pdf}
 }
 
+@inproceedings{xiaCFIMonDetectingViolation2012,
+  title = {{{CFIMon}}: {{Detecting}} Violation of Control Flow Integrity Using Performance Counters},
+  shorttitle = {{{CFIMon}}},
+  booktitle = {{{IEEE}}/{{IFIP International Conference}} on {{Dependable Systems}} and {{Networks}} ({{DSN}} 2012)},
+  author = {Xia, Yubin and Liu, Yutao and Chen, Haibo and Zang, Binyu},
+  year = {2012},
+  month = jun,
+  pages = {1--12},
+  issn = {2158-3927},
+  doi = {10.1109/DSN.2012.6263958},
+  abstract = {Many classic and emerging security attacks usually introduce illegal control flow to victim programs. This paper proposes an approach to detecting violation of control flow integrity based on hardware support for performance monitoring in modern processors. The key observation is that the abnormal control flow in security breaches can be precisely captured by performance monitoring units. Based on this observation, we design and implement a system called CFIMon, which is the first non-intrusive system that can detect and reason about a variety of attacks violating control flow integrity without any changes to applications (either source or binary code) or requiring special-purpose hardware. CFIMon combines static analysis and runtime training to collect legal control flow transfers, and leverages the branch tracing store mechanism in commodity processors to collect and analyze runtime traces on-the-fly to detect violation of control flow integrity. Security evaluation shows that CFIMon has low false positives or false negatives when detecting several realistic security attacks. Performance results show that CFIMon incurs only 6.1\% performance overhead on average for a set of typical server applications.},
+  keywords = {Law,Monitoring,Program processors,Radiation detectors,Runtime,Security},
+  file = {D\:\\GDrive\\zotero\\Xia et al\\xia_et_al_2012_cfimon.pdf;C\:\\Users\\Admin\\Zotero\\storage\\L72W5IWP\\6263958.html}
+}
+
 @article{xiaSurveySoftwareDefinedNetworking2015,
   title = {A {{Survey}} on {{Software}}-{{Defined Networking}}},
   author = {Xia, Wenfeng and Wen, Yonggang and Member, Senior and Heng Foh, Chuan and Niyato, Dusit and Xie, Haiyong and Foh, C H},
@@ -19288,6 +20568,19 @@
   file = {D\:\\GDrive\\zotero\\Xin\\xin_graphx.pdf}
 }
 
+@inproceedings{xinPropertyBasedRemoteAttestation2011,
+  title = {Property-{{Based Remote Attestation Oriented}} to {{Cloud Computing}}},
+  booktitle = {2011 {{Seventh International Conference}} on {{Computational Intelligence}} and {{Security}}},
+  author = {Xin, SiYuan and Zhao, Yong and Li, Yu},
+  year = {2011},
+  month = dec,
+  pages = {1028--1032},
+  doi = {10.1109/CIS.2011.229},
+  abstract = {As the new computing service pattern of cloud computing develops rapidly, the security problem of cloud computing has become a hot research topic. Before the user passes important data or computing task to the cloud, the user of the cloud may want to verify the trusted status of the platform which actually carries out the computing task in the cloud. And the remote attestation mechanism in Trusted Computing is suited for the cloud user's verification need. In this paper, the property-based remote attestation mechanism in Trusted Computing is imported into clouding computing, and a property-based remote attestation method oriented to cloud computing is designed based on the characteristics of cloud computing. In this method, through the attestation proxy, the remote attestation of the computing platform's security property is realized without disclosing the platform's configuration, and users can validate the security property of the actual computing platform in the virtual cloud computing environment.},
+  keywords = {attestation proxy,cloud computing,Cloud computing,Computers,Concrete,Mechanical factors,property-based remote attestation,Protocols,Public key,security property},
+  file = {D\:\\GDrive\\zotero\\Xin et al\\xin_et_al_2011_property-based_remote_attestation_oriented_to_cloud_computing.pdf;C\:\\Users\\Admin\\Zotero\\storage\\9SXC98CL\\6128280.html}
+}
+
 @article{xinSharkSQLRich2013,
   title = {Shark: {{SQL}} and Rich Analytics at Scale},
   author = {Xin, Reynold S and Rosen, Josh and Zaharia, Matei and Franklin, Michael J and Shenker, Scott and Stoica, Ion},
@@ -19310,6 +20603,21 @@
   doi = {10.1016/j.cose.2019.03.010},
   language = {en},
   file = {D\:\\GDrive\\zotero\\Xiong_Lagerström\\xiong_lagerström_2019_threat_modeling_–_a_systematic_literature_review.pdf}
+}
+
+@inproceedings{xuControlledChannelAttacksDeterministic2015,
+  title = {Controlled-{{Channel Attacks}}: {{Deterministic Side Channels}} for {{Untrusted Operating Systems}}},
+  shorttitle = {Controlled-{{Channel Attacks}}},
+  booktitle = {2015 {{IEEE Symposium}} on {{Security}} and {{Privacy}}},
+  author = {Xu, Yuanzhong and Cui, Weidong and Peinado, Marcus},
+  year = {2015},
+  month = may,
+  pages = {640--656},
+  issn = {2375-1207},
+  doi = {10.1109/SP.2015.45},
+  abstract = {The presence of large numbers of security vulnerabilities in popular feature-rich commodity operating systems has inspired a long line of work on excluding these operating systems from the trusted computing base of applications, while retaining many of their benefits. Legacy applications continue to run on the untrusted operating system, while a small hyper visor or trusted hardware prevents the operating system from accessing the applications' memory. In this paper, we introduce controlled-channel attacks, a new type of side-channel attack that allows an untrusted operating system to extract large amounts of sensitive information from protected applications on systems like Overshadow, Ink Tag or Haven. We implement the attacks on Haven and Ink Tag and demonstrate their power by extracting complete text documents and outlines of JPEG images from widely deployed application libraries. Given these attacks, it is unclear if Over shadow's vision of protecting unmodified legacy applications from legacy operating systems running on off-the-shelf hardware is still tenable.},
+  keywords = {Control systems,Data mining,Hardware,Monitoring,Operating systems,Resource management,SGX,side-channel attack,untrusted operating system,Virtual machine monitors,virtualization},
+  file = {D\:\\GDrive\\zotero\\Xu et al\\xu_et_al_2015_controlled-channel_attacks.pdf;C\:\\Users\\Admin\\Zotero\\storage\\MFBFRFJB\\7163052.html}
 }
 
 @techreport{xuMIROMultipathInterdomain2006,
@@ -19603,6 +20911,14 @@
   file = {D\:\\GDrive\\zotero\\Yu\\yu_manufacturing_compromise.pdf}
 }
 
+@article{yurichevReverseEngineeringBeginners,
+  title = {Reverse {{Engineering}} for {{Beginners}}},
+  author = {Yurichev, Dennis},
+  pages = {1387},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Yurichev\\yurichev_reverse_engineering_for_beginners.pdf}
+}
+
 @article{yurichevSATSMTExample2019,
   title = {{{SAT}}/{{SMT}} by {{Example}}},
   author = {Yurichev, Dennis},
@@ -19815,6 +21131,21 @@
   file = {D\:\\GDrive\\zotero\\Zhang\\zhang_2019_all_your_clicks_belong_to_me.pdf}
 }
 
+@inproceedings{zhangAnomalousPathDetection2005,
+  title = {Anomalous Path Detection with Hardware Support},
+  booktitle = {Proceedings of the 2005 International Conference on {{Compilers}}, Architectures and Synthesis for Embedded Systems  - {{CASES}} '05},
+  author = {Zhang, Tao and Zhuang, Xiaotong and Pande, Santosh and Lee, Wenke},
+  year = {2005},
+  pages = {43},
+  publisher = {{ACM Press}},
+  address = {{San Francisco, California, USA}},
+  doi = {10.1145/1086297.1086305},
+  abstract = {Embedded systems are being deployed as a part of critical infrastructures and are vulnerable to malicious attacks due to internet accessibility. Intrusion detection systems have been proposed to protect computer systems from unauthorized penetration. Detecting an attack early on pays off since further damage is avoided and in some cases, resilient recovery could be adopted. This is especially important for embedded systems deployed in critical infrastructures such as Power Grids etc. where a timely intervention could save catastrophes. An intrusion detection system monitors dynamic program behavior against normal program behavior and raises an alert when an anomaly is detected. The normal behavior is learnt by the system through training and profiling.},
+  isbn = {978-1-59593-149-8},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Zhang et al\\zhang_et_al_2005_anomalous_path_detection_with_hardware_support.pdf}
+}
+
 @techreport{zhangAttributeBasedAccessMatrix2005,
   title = {An {{Attribute}}-{{Based Access Matrix Model}}},
   author = {Zhang, Xinwen and Li, Yingjiu and Nalla, Divya},
@@ -19970,6 +21301,23 @@
   author = {Zhao, Jianzhou},
   year = {2013},
   file = {D\:\\GDrive\\zotero\\Zhao\\zhao_2013_formalizing_the_ssa-based_compiler_for_verified.pdf}
+}
+
+@inproceedings{zhaoSecTEESoftwarebasedApproach2019,
+  title = {{{SecTEE}}: {{A Software}}-Based {{Approach}} to {{Secure Enclave Architecture Using TEE}}},
+  shorttitle = {{{SecTEE}}},
+  booktitle = {Proceedings of the 2019 {{ACM SIGSAC Conference}} on {{Computer}} and {{Communications Security}}},
+  author = {Zhao, Shijun and Zhang, Qianying and Qin, Yu and Feng, Wei and Feng, Dengguo},
+  year = {2019},
+  month = nov,
+  pages = {1723--1740},
+  publisher = {{ACM}},
+  address = {{London United Kingdom}},
+  doi = {10.1145/3319535.3363205},
+  abstract = {Secure enclaves provide a practical solution to secure computation, and current approaches to secure enclaves are implemented by extending hardware security mechanisms to the CPU architecture. Therefore, it is hard for a platform to offer secure computation if its CPU architecture is not equipped with any secure enclave features. Unfortunately, ARM CPUs, dominating mobile devices and having increasing momentum in cloud markets, do not provide any security mechanisms achieving the security equivalent to modern secure enclave architectures. In this paper, we propose SecTEE, a softwarebased secure enclave architecture which is based on the CPU's isolation mechanism and does not require specialized security hardware of the CPU architecture such as memory encryption engines. SecTEE achieves a high level of security even compared with hardware-based secure enclave architectures: resistance to privileged host software attacks, lightweight physical attacks, and memory access based side-channel attacks. Besides, SecTEE provides rich trusted computing primitives for enclaves: integrity measurement, remote attestation, data sealing, secrets provisioning, and life cycle management. We implement a SecTEE prototype based on the ARM TrustZone technology, but our approach can be applied to other CPU architectures with isolation mechanisms. The evaluation results show that most overhead comes from the software encryption and the runtime overhead imposed by trusted computing primitives is acceptable.},
+  isbn = {978-1-4503-6747-9},
+  language = {en},
+  file = {D\:\\GDrive\\zotero\\Zhao et al\\zhao_et_al_2019_sectee.pdf}
 }
 
 @techreport{zhengBlockchainChallengesOpportunities2018,
