@@ -34,28 +34,42 @@ program's CFG.
 
 \vspace{0.5cm}
 \noindent \textbf{Defender capabilities:} The prover uses kernel as trusted
-anchor and has common memory corruption attack mitigations such as \( W
-\bigoplus R \) and ASLR.  
+anchor, has common memory corruption attack mitigations such as \( W
+\bigoplus R \) and ASLR.
+\ft{Finally, the defender can statically measure the integrity of the Prover's 
+code (\ie has an hash representation of the Prover's code).}
 
-\section{Overview of The Offline Measurement}\
+\section{Overview}\
 \label{sec:overview}
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 \centerline{\includegraphics[scale=.75]{Figures/04/scarr-overview.png}}
-\caption{Generating Offline Measurement}
+\caption{Generating Offline Measurement\ft{you can draw this better! \eg 
+smaller font (and centered in the box), show the input (\ie the source code of 
+a C program), and the output (\ie \#LoA, \#checkpoint, \#measurements)} \ft{and 
+btw, why do you use ``htbp'' as figure option? just use ``t'', or ``h'' at 
+most}}
 \label{fig:scarr-overview}
 \end{figure}
 
+\ft{just Overview}
 The goal of the offline measurement is to get the information to be used in the
 remote attestation. In this research we implement ScaRR Control-flow model
 \cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the Section
 \ref{sec:scarr-model}. Figure \ref{fig:scarr-overview} shows the step on
 generating the offline measurement.
 
+\ft{in this part, you just describe Figure~\ref{fig:scarr-overview}. And 
+connect its blocks with the following sections 
+(Section~\ref{sec:code-flattening}, Section~\ref{sec:scarr-checkpoint-marker} , 
+and Section~\ref{sec:scarr-loa-collector}).}
+
+\ft{try to move this into Section~\ref{sec:code-flattening}}
 We start with flattening the CFG into basic block. The CFG is structured as
 graph that can contains branches and cycles. The flattening process will
 traverse each and every graph once into a list of basic block. 
 
+\ft{not clear what you wanna convey with this paragraph..}
 Consider the program in listing \ref{listing:simple-loop}. The CFG is shown in
 the figure \ref{fig:simple-loop-cfg}. The first step of the offline measurement
 is to flatten the CFG to get all the basic block list. We can flatten the CFG
@@ -99,6 +113,13 @@ $$(cp_A, cp_B, H(LoA)) \Rightarrow [(BBL_{s1}, BBL_{d1}), ..., (BBL_{sn},
 BBL_{dn})]$$
 
 The offline measurement is consulted by verifier during remote attestation.
+
+\section{Code Flattening}
+\label{sec:code-flattening}
+
+\ft{explain here code flattening. In particular, explain (1) why do you need 
+it, (2) how you implement, (3) give an example (even only text, or with a 
+pseude code, you decide)}
 
 \section{ScaRR Checkpoint Marker} 
 \label{sec:scarr-checkpoint-marker}
@@ -229,7 +250,10 @@ block is a loop header, LLVM provide it in LoopInfoBase API. See Listing
 \label{fig:simple-loop-checkpoints}
 \end{figure}
 
-\section{ScaRR LoA Collector} \label{sec:scarr-loa-collector} After we mark
+\section{ScaRR LoA Collector}
+\label{sec:scarr-loa-collector}
+
+After we mark
 checkpoints in the CFG, now we can find list of actions. The step of finding LoA
 is traversing path between two checkpoints and add significant basic block that
 traverse the path between the two checkpoints. The detail of this step is
@@ -263,6 +287,8 @@ checkpoint basic block. Interested readers can refer to the implementation of
 this pass to see the detail.
 
 \section{Running The Pass}
+
+\ft{this part goes at the beginning of result chapter.}
 
 To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as shown in
 listing \ref{listing:mark-cp-in-cfg}.
