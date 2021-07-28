@@ -37,6 +37,53 @@ For each of program, we are collecting the following measurements:
 
 \section{ScaRR Control Flow Result}
 
+
+
+\begin{table}[t]
+	\centering
+	\begin{tabular}{lrrrrrr}
+		\toprule 
+		
+		\multirow{2}{*}{Use case} &
+		\multirow{2}{*}{\# functions} & 
+		\multicolumn{2}{c}{\emph{action}} & 
+		\multicolumn{2}{c}{edge} & 
+		\multicolumn{1}{c}{\% \emph{action}} \\ 
+		
+		& & \multicolumn{1}{c}{$\mu$} & \multicolumn{1}{c}{$\sigma$} & 
+		\multicolumn{1}{c}{$\mu$} & \multicolumn{1}{c}{$\sigma$} & 
+		\multicolumn{1}{c}{explored} \\
+		
+		\midrule	
+		\textsf{Contact} & $71$ & $12.77$ & $12.59$ & $15.09$ 
+		& 
+		$17.64$ & $96.4\%$ \\
+		\textsf{libdvdcss} & $47$ & $25.40$ & $22.05$ & 
+		$34.44$ 
+		& $31.50$ & $92.8\%$ \\
+		\textsf{StealthDB} & $44$ & $18.29$ & $13.53$ & 
+		$21.97$ & $18.05$ & $96.6\%$ \\
+		\textsf{SGX-Biniax2} & $49$ & $8.55$ & 
+		$8.75$ & $9.29$ & $11.71$ & $91.6\%$ \\
+		\textsf{Unit-test} & $17$ & $6.88$ & $7.47$ & $7.17$ & $10.52$ & 
+		$94.0\%$ \\ 
+		\midrule
+		\emph{total} & $228$ & - & - & - & - & - \\ 
+		\bottomrule
+	\end{tabular} 
+	\caption{\ft{this is a style example. Important things: no vertical 
+	lines, numbers right aligned, keep a consistent number of decimal place (at 
+	least per column), no horizontal lines besides top, bottom, and a few 
+	middle after the header. 
+	Extra point 1, for very long table pls consider to use alternative row 
+	colors 
+	https://tex.stackexchange.com/questions/5363/how-to-create-alternating-rows-in-a-table
+	 . Extra point 2, to span a table over multiple pages check this 
+	https://tex.stackexchange.com/questions/26462/make-a-table-span-multiple-pages
+	 }}
+	\label{tbl:example}
+\end{table}
+
 \xt{Elaborate the results, add charts for better visualization than just table.}
 \xt{TODO: remove this long table and use simpler visualization}
 
