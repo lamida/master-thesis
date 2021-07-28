@@ -35,25 +35,20 @@ program's CFG.
 
 \vspace{0.5cm}
 \noindent \textbf{Defender capabilities:} The prover uses kernel as trusted
-anchor, has common memory corruption attack mitigations such as \( W
-\bigoplus R \) and ASLR.
-\ft{Finally, the defender can statically measure the integrity of the Prover's 
-code (\ie has an hash representation of the Prover's code).}
+anchor, has common memory corruption attack mitigations such as \( W \bigoplus R
+\) and ASLR. Finally, the defender can statically measure the integrity of the
+Prover's code (\ie has an hash representation of the Prover's code).
+
 
 \section{Overview}\
 \label{sec:overview}
 
 \begin{figure}[t]
-\centerline{\includegraphics[scale=.75]{Figures/04/scarr-overview.png}}
-\caption{Generating Offline Measurement\ft{you can draw this better! \eg 
-smaller font (and centered in the box), show the input (\ie the source code of 
-a C program), and the output (\ie \#LoA, \#checkpoint, \#measurements)} \ft{and 
-btw, why do you use ``htbp'' as figure option? just use ``t'', or ``h'' at 
-most}}
-\label{fig:scarr-overview}
+    \centerline{\includegraphics[scale=.70]{Figures/04/scarr-overview.png}}
+    \caption{Generating Offline Measurement.}
+    \label{fig:scarr-overview}
 \end{figure}
 
-\ft{just Overview}
 The goal of the offline measurement is to get the information to be used in the
 remote attestation. In this research we implement ScaRR Control-flow
 model~\cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the
