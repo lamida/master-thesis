@@ -2,24 +2,25 @@
 
 \chapter{Methodology} % Main chapter title
 
-\label{Chapter4} % For referencing the chapter elsewhere, use \ref{Chapter4} 
+\label{Chapter4} % For referencing the chapter elsewhere, use~\ref{Chapter4} 
 
 In this chapter, we present the methodology of the research. First we present
-the threat model in section \ref{sec:threat-model}.  After that, we show the
+the threat model in section~\ref{sec:threat-model}.  After that, we show the
 overview of ScaRR algorithm to extract checkpoint and list of action in section
-\ref{sec:overview}. Section \ref{sec:scarr-checkpoint-marker} discusses the LLVM
-implementation to get checkpoints. Section \ref{sec:scarr-loa-collector}
+\ref{sec:overview}. Section~\ref{sec:scarr-checkpoint-marker} discusses the LLVM
+implementation to get checkpoints. Section~\ref{sec:scarr-loa-collector}
 discusses on methodology of getting list of actions.  
-Checkpoints and list of actions are collected to build offline measurement 
-database that is used for the remote attestation. The last section shows how to run the LLVM passes to 
-get the result which is presented in Chapter \ref{Chapter5}.
+Checkpoints and list of actions are collected to build offline measurement
+database that is used for the remote attestation. The last section shows how to
+run the LLVM passes to get the result which is presented in
+Chapter~\ref{Chapter5}.
 
 \section{Threat Model}
 \label{sec:threat-model}
 
-The threat model in this research is taken from ScaRR
-\cite{toffaliniScaRRScalableRuntime2019}. There are two parties: attacker and
-prover. 
+The threat model in this research is taken from
+ScaRR~\cite{toffaliniScaRRScalableRuntime2019}. There are two parties: attacker
+and prover. 
 
 \vspace{0.5cm}
 \noindent \textbf{Attacker capabilities:} The attacker aims to control remote
@@ -27,8 +28,8 @@ service using various method such as memory attack or any attack in user-space.
 The attacker has bypassed memory attack protection such as Control Flow
 Integrity (CFI) or \( W \bigoplus R \) or ASLR using techniques like
 Return-Oriented Programming
-(ROP)\cite{roemerReturnorientedProgrammingSystems2012} or Jump-Oriented
-Programming (JOP) \cite{bletschJumpOrientedProgrammingNew2011}. We do not
+(ROP)~\cite{roemerReturnorientedProgrammingSystems2012} or Jump-Oriented
+Programming (JOP)~\cite{bletschJumpOrientedProgrammingNew2011}. We do not
 consider physical attack and also non-control data attack which does not alter
 program's CFG.
 
@@ -54,9 +55,9 @@ most}}
 
 \ft{just Overview}
 The goal of the offline measurement is to get the information to be used in the
-remote attestation. In this research we implement ScaRR Control-flow model
-\cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the Section
-\ref{sec:scarr-model}. Figure \ref{fig:scarr-overview} shows the step on
+remote attestation. In this research we implement ScaRR Control-flow
+model~\cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the
+Section~\ref{sec:scarr-model}. Figure~\ref{fig:scarr-overview} shows the step on
 generating the offline measurement.
 
 \ft{in this part, you just describe Figure~\ref{fig:scarr-overview}. And 
@@ -70,12 +71,12 @@ graph that can contains branches and cycles. The flattening process will
 traverse each and every graph once into a list of basic block. 
 
 \ft{not clear what you wanna convey with this paragraph..}
-Consider the program in listing \ref{listing:simple-loop}. The CFG is shown in
-the figure \ref{fig:simple-loop-cfg}. The first step of the offline measurement
+Consider the program in listing~\ref{listing:simple-loop}. The CFG is shown in
+the figure~\ref{fig:simple-loop-cfg}. The first step of the offline measurement
 is to flatten the CFG to get all the basic block list. We can flatten the CFG
 into basic block with one out of some graph traversal algorithm in LLVM. The
-result of flattened graph is in the right side of figure
-\ref{fig:simple-loop-cfg}
+result of flattened graph is in the right side of
+figure~\ref{fig:simple-loop-cfg}
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -101,9 +102,9 @@ result of flattened graph is in the right side of figure
 \end{figure}
 
 After flattening the CFG we will have to pass the CFG for two times. First, to
-mark the checkpoints (section \ref{sec:scarr-checkpoint-marker}). Second, to
-find all list of actions between the checkpoint (section
-\ref{sec:scarr-loa-collector}).
+mark the checkpoints (section~\ref{sec:scarr-checkpoint-marker}). Second, to
+find all list of actions between the checkpoint
+(section~\ref{sec:scarr-loa-collector}).
 
 Checkpoints and list of actions are used to for offline measurements which is
 represented as triplet of first and second checkpoint; and hash of the list of
@@ -125,7 +126,7 @@ pseude code, you decide)}
 \label{sec:scarr-checkpoint-marker}
 
 After we flatten CFG into basic block, we will check each of basic block to find
-different kind of checkpoints. In Chapter \ref{Chapter3} we list these four
+different kind of checkpoints. In Chapter~\ref{Chapter3} we list these four
 types of checkpoints: \textbf{Thread Begin}, \textbf{Thread End}, \textbf{Exit
 Point} and \textbf{Virtual Checkpoint}. Now we will present the heuristic on how
 we will mark as a checkpoint when appropriate.  The logic of checkpoint marker
@@ -133,7 +134,7 @@ is to traverse the whole control flow graph at least once. For each basic block,
 we have to check whether the basic block can be considered as any of checkpoint
 type mentioned above. To allow marking additional information about ScaRR
 checkpoint, we are modifying the BasicBlock class to add checkpoint instance
-variable as shown in listing \ref{listing:checkpoint}.
+variable as shown in listing~\ref{listing:checkpoint}.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -178,7 +179,7 @@ hence we will mark this as an exit point and stop. If none of instruction is a
 \texttt{call} instruction or all \texttt{call} instruction in this basic block
 call function with non empty basic block, it means this basic block calls
 internal function, therefore this basic block is not an exit point. Please refer
-to Listing \ref{listing:exit-point-cp}.
+to Listing~\ref{listing:exit-point-cp}.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -208,8 +209,8 @@ recursion. We will discuss only for loop case in this thesis. Virtual checkpoint
 in a loop is basically a loop header. The heuristic to find a loop header is to
 use \texttt{DominatorTree} to find a loop. After we find a loop, then we just
 need to get the header. Although there is no direct API to check whether a basic
-block is a loop header, LLVM provide it in LoopInfoBase API. See Listing
-\ref{listing:virtual-cp}
+block is a loop header, LLVM provide it in LoopInfoBase API. See
+Listing~\ref{listing:virtual-cp}
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -219,23 +220,24 @@ block is a loop header, LLVM provide it in LoopInfoBase API. See Listing
         fontsize=\footnotesize,
         linenos
     ]{c++}
-        void findVirtualCheckpoint(DominatorTree &DT, Function &F) {
-            DT.recalculate(F);
-            // generate the LoopInfoBase for the current function
-            LoopInfoBase<BasicBlock, Loop>* KLoop = new LoopInfoBase<BasicBlock, Loop>();
-            KLoop->releaseMemory();
-            KLoop->analyze(DT);
-            for (auto &bb : F) {
-                // Since the BasicBlock would have been inlined, just traverse from main function
-                if (F.getName() == "main") {
+    void findVirtualCheckpoint(DominatorTree &DT, Function &F) {
+        DT.recalculate(F);
+        // generate the LoopInfoBase for the current function
+        LoopInfoBase<BasicBlock, Loop>* KLoop = new LoopInfoBase<BasicBlock, Loop>();
+        KLoop->releaseMemory();
+        KLoop->analyze(DT);
+        for (auto &bb : F) {
+            // Since the BasicBlock would have been inlined, 
+            // just traverse from main function
+            if (F.getName() == "main") {
                 auto loop = KLoop->getLoopFor(&bb);
                 if (loop != nullptr) {
                     // found VirtualCheckpoint
-                            loop->getHeader()->setCheckpoint(Checkpoint::Virtual);
-                }
+                    loop->getHeader()->setCheckpoint(Checkpoint::Virtual);
                 }
             }
         }
+    }
     \end{minted}
     \caption{Getting Virtual Checkpoint\ft{every caption add a dot ``.'' to 
     each caption ending + be careful of line 8, make it to new line.}}
@@ -245,9 +247,9 @@ block is a loop header, LLVM provide it in LoopInfoBase API. See Listing
 
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[scale=.70]{Figures/04/simple-loop-checkpoints.png}}
-\caption{Loop CFG}
-\label{fig:simple-loop-checkpoints}
+    \centerline{\includegraphics[scale=.70]{Figures/04/simple-loop-checkpoints.png}}
+    \caption{Loop CFG}
+    \label{fig:simple-loop-checkpoints}
 \end{figure}
 
 \section{ScaRR LoA Collector}
@@ -257,7 +259,7 @@ After we mark
 checkpoints in the CFG, now we can find list of actions. The step of finding LoA
 is traversing path between two checkpoints and add significant basic block that
 traverse the path between the two checkpoints. The detail of this step is
-explained in section \ref{sec:scarr-loa-collector}.
+explained in section~\ref{sec:scarr-loa-collector}.
 
 \xt{TODO: summarize the algorithm in a pseudocude fashion? you should link the
 lines in the pseudo code and describe it step by step.}
@@ -291,7 +293,7 @@ this pass to see the detail.
 \ft{this part goes at the beginning of result chapter.}
 
 To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as shown in
-listing \ref{listing:mark-cp-in-cfg}.
+listing~\ref{listing:mark-cp-in-cfg}.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -322,11 +324,11 @@ LLVM dot-cfg pass.
     \label{listing:cp-to-cfg}
 \end{listing}
 
-The commands in listing \ref{listing:cp-to-cfg} generates different dot files
+The commands in listing~\ref{listing:cp-to-cfg} generates different dot files
 per function. We can use xdot command line from graphiz to see the graph. 
 
 To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt}
-as shown in Listing \ref{listing:get-loa}
+as shown in Listing~\ref{listing:get-loa}
 
 \begin{listing}
     \begin{minted}[

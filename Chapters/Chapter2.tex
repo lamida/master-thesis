@@ -38,35 +38,6 @@ To sum up, the main contributions of this thesis are:
 	\item verify the scalability of ScaRR's offline measurement algorithm.
 	\item study the algorithm limitation.
 \end{enumerate}
-%ScaRR system as
-%shown in figure \ref{fig:scarr-system-overview}, consists of offline program
-%analysis and online program verification. 
-%This thesis will focus on the offline program analysis, specifically on the 
-%offline measurements generator as shown in the red box in the figure 
-%\ref{fig:scarr-system-overview}.
-
-% NO NEED THIS PART
-%The offline measurement is information that will be used in runtime remote
-%attesttion. We write the offline measurement as LLVM passes
-%\cite{lattnerLLVMINFRASTRUCTUREMULTISTAGE2002} using LLVM 13.0.0. We designed
-%the algorithm based on the description in the original paper. 
-
-
-%We tested the model implementation using different programs that is written in
-%C. Since the LLVM pass is running against the intermediate representation (IR),
-%we should get consistent result on any programming language that compiles to 
-%IR.
-
-% NO NEED!
-%\section{Analysis}
-%\label{sec:analysis}
-%
-%We analyze the control-flow model extracted against different programs with
-%various size and complexities. In this thesis, we are only analyzing program
-%written in C. The analysis is comparing the program size with different
-%measurements defined by the ScaRR control-flow model. We present the detail of
-%the methodology in chapter \ref{Chapter4} and show the analysis result in
-%chapter \ref{Chapter5}.
 
 \section{Outline}
 \label{sec:outline}
