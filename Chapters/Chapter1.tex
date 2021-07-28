@@ -58,24 +58,17 @@ In this thesis we want to answer these questions.
 
 \section{Related Works}
 
-\ft{too many images, it is not a comics! -- remove the images}
 In this section, we discuss on the different runtime remote attestation
 model. Specifically we discuss how different attestation scheme encode the
 offline program representations.
 
 C-Flat~\cite{aberaCFLATControlFlowAttestation2016} is the first remote
 attestation scheme to detect runtime control flow attack for embedded systems.
-Figure~\ref{fig:c-flat} shows how C-Flat generates offline measurement by
-traversing all possible path of program from start node to the termination node.
-In each node, C-Flat hashes the node ID and the hash of previous node. In the
-first node, since there is no previous hash, we pass 0. This creates hash chains
-which is stored as offline measurement database.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/01/cflat-overview.png}}
-\caption{C-Flat}
-\label{fig:c-flat}
-\end{figure}
+C-Flat generates offline measurement by traversing all possible path of program
+from start node to the termination node. In each node, C-Flat hashes the node ID
+and the hash of previous node. In the first node, since there is no previous
+hash, we pass 0. This creates hash chains which is stored as offline measurement
+database.
 
 With that control-flow model, C-Flat can attest the exact control-flow path of
 the program. C-Flat also doesn't need source code because the offline
@@ -84,19 +77,12 @@ measurement can be run on the binary program. However, C-Flat has one limitation
 to explore all possible path from program control flow
 graph~\cite{aberaCFLATControlFlowAttestation2016}.
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/01/lofat-overview.png}}
-\caption{Lo-Fat}
-\label{fig:lo-fat}
-\end{figure}
-
 Lo-Fat~\cite{dessoukyLOFATLowOverheadControl2017} improves C-Flat by using
-hardware support for control flow attestation. See Figure~\ref{fig:lo-fat} for
-the Lo-Fat architecture. The hardware will intercept the instructions and
-process it in the components called branch filter and loop monitor. With this
-hardware support, Lo-Fat incurs no performance overhead. However, Lo-Fat
-control-flow representation still inherits C-Flat approach, therefore it still
-induce high verification cost.
+hardware support for control flow attestation. The hardware will intercept the
+instructions and process it in the components called branch filter and loop
+monitor. With this hardware support, Lo-Fat incurs no performance overhead.
+However, Lo-Fat control-flow representation still inherits C-Flat approach,
+therefore it still induce high verification cost.
 
 Atrium~\cite{zeitouniATRIUMRuntimeAttestation2017} is remote attestation scheme
 that can provide resiliency against physical memory attack where adversaries can
@@ -104,12 +90,6 @@ exploit the property of Time of Check Time of Use (TOCTOU) during attestation.
 In this paper author are describing memory bank attack where adversary can
 control instruction fetches to benign memory area when attestation is running
 and direct the fetch to the malicious area otherwise.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.5]{Figures/01/atrium-overview.png}}
-\caption{Atrium Architecture}
-\label{fig:atrium}
-\end{figure}
 
 The offline measurement are calculated slightly different compared with C-Flat
 and Lo-Fat. In Atrium, the verifier perform one-time pre-processing to generate
@@ -133,14 +113,7 @@ phase of LiteHax are only generates program CFG without calculating any hash
 over all control flow and data flow events. However, in the online prover-side
 verification time, prover are still computing hash and sending it as report to
 the verifier. Verifier runs symbolic execution and incremental forward data-flow
-analysis without doing any lookup to offline measurement database. LiteHAX
-architecture can be seen in figure~\ref{fig:litehax}.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=0.75]{Figures/01/litehax-overview.png}}
-\caption{LiteHAX Architecture}
-\label{fig:litehax}
-\end{figure}
+analysis without doing any lookup to offline measurement database.
 
 Diat~\cite{aberaDIATDataIntegrity2019} is remote attestation scheme that can
 attest data integrity and control-flow of autonomous collaborative network
@@ -148,28 +121,14 @@ systems. To improve efficiency of attestation, the program attested must be
 decomposed into small interacting modules. Data-flow monitoring is to be setup
 between critical modules. Control path attestation is being done against novel
 execution path representation using multiset has (MSH)
-function~\cite{clarkeIncrementalMultisetHash2003}. See the control flow monitor
-logic in figure~\ref{fig:diat}. The use of MSH makes some execution order of the
-program cannot be reconstucted.
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/01/diat-cfmonitort.png}}
-\caption{Diat CFMonitor Logic}
-\label{fig:diat}
-\end{figure}
-
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.85]{Figures/01/oat.png}}
-\caption{OAT Control-Flow Attestation}
-\label{fig:oat}
-\end{figure}
+function~\cite{clarkeIncrementalMultisetHash2003}. The use of MSH makes some
+execution order of the program cannot be reconstucted.
 
 OAT~\cite{sunOATAttestingOperation2020} is remote attestation scheme to attest
 operation integrity of embedded device. OAT defines two type of measurements for
 control flow attestation: a trace (for recording branches and jumps) and a hash
 (for encoding returns). These two measurements are encoded as $H = Hash(H
-\bigoplus RetAddr)$ which called as attestation blob. Figure~\ref{fig:oat} shows
-the OAT control-flow attestation.
+\bigoplus RetAddr)$ which called as attestation blob.
 
 During verification, verifier reconstruct paths from the attestation blob. The
 control flow violation is identified when CFI check against an address is failed
