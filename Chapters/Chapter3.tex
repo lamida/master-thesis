@@ -116,9 +116,15 @@ LoA is defined through the following notation:
 $$[(BBL_{s1},BBL_{d1}),...,(BBL_{sn},BBL_{dn})]$$
 
 Consider again the CFG in the Figure~\ref{fig:simple-loop-checkpoints}. The LoA
-between node 3 (Checkpoint Virtual) and node 10 (checkpoint ThreadEnd) is
-$[(BBL_3, BBL_{10})]$. However, the LoA between node 0 and node 3 is $[]$ (empty
+between $N_3$ (Checkpoint Virtual) and $N_{10}$ (checkpoint ThreadEnd) is
+$[(BBL_3, BBL_{10})]$. However, the LoA between $N_0$ and $N_3$ is $[]$ (empty
 set).
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[scale=.70]{Figures/03/simple-loop-checkpoints.png}}
+    \caption{Loop CFG.}
+    \label{fig:simple-loop-checkpoints}
+\end{figure}
 
 
 \section{LLVM}

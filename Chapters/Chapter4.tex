@@ -51,55 +51,72 @@ Prover's code (\ie has an hash representation of the Prover's code).
 
 The goal of the offline measurement is to get the information to be used in the
 remote attestation. In this research we implement ScaRR Control-flow
-model~\cite{toffaliniScaRRScalableRuntime2019} which we also elaborate in the
-Section~\ref{sec:scarr-model}. Figure~\ref{fig:scarr-overview} shows the step on
-generating the offline measurement.
+model~\cite{toffaliniScaRRScalableRuntime2019} which we present in the
+Section~\ref{sec:scarr-model}. 
 
-\ft{in this part, you just describe Figure~\ref{fig:scarr-overview}. And 
-connect its blocks with the following sections 
-(Section~\ref{sec:code-flattening}, Section~\ref{sec:scarr-checkpoint-marker} , 
-and Section~\ref{sec:scarr-loa-collector}).}
+Figure~\ref{fig:scarr-overview} shows the high level step on generating the
+offline measurement. First, we inline the source code input (which could be in
+an intermediate representation form). Section \ref{sec:code-inlining} describes
+the inlining process. Next, we mark the checkpoints from inline code,
+particularly marking in the basic block of the code. Section
+\ref{sec:scarr-checkpoint-marker} discusses this checkpoint marking step. Last,
+for each checkpoint we collect list of actions which indicates how process
+traverses to move from one checkpoint to another. Section
+\ref{sec:scarr-loa-collector} talks about the process of getting list of
+actions.
 
-\ft{try to move this into Section~\ref{sec:code-flattening}}
-We start with flattening the CFG into basic block. The CFG is structured as
-graph that can contains branches and cycles. The flattening process will
-traverse each and every graph once into a list of basic block. 
 
-\ft{not clear what you wanna convey with this paragraph..}
-Consider the program in listing~\ref{listing:simple-loop}. The CFG is shown in
-the figure~\ref{fig:simple-loop-cfg}. The first step of the offline measurement
-is to flatten the CFG to get all the basic block list. We can flatten the CFG
-into basic block with one out of some graph traversal algorithm in LLVM. The
-result of flattened graph is in the right side of
-figure~\ref{fig:simple-loop-cfg}
 
-\begin{listing}[htbp]
-    \begin{minted}[
-        frame=lines,
-        framesep=2mm,
-        baselinestretch=1.2,
-        fontsize=\footnotesize
-        ]{c++}
-        int main() {
-            for (int i = 0; i < 10; i++) {
-                // do nothing
-            }
-        }
-    \end{minted}
-    \caption{Simple Loop}    
-    \label{listing:simple-loop}
+\section{Code Inlining}
+\label{sec:code-inlining}
+
+\begin{listing}[h]
+    \inputminted[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+    ]{c}{Code/04/factorial.c}
+    \caption{Program to calculate factorial.}    
+    \label{listing:inlining}
 \end{listing}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.70]{Figures/04/flatten-cfg.png}}
-\caption{Simple Loop CFG\ft{not clear what the lbls on right what means.}}
-\label{fig:simple-loop-cfg}
+Source code for most applications consist of high level abstraction such as
+module, class and function. Programmers write codes in different source files or
+also known as translation units for ease of maintenance. In analysing program
+control-flow graph, we need to know that the program representation of the
+control-flow is correct. Once we compile the program into intermediate
+representation, one of high level abstraction that is intact is function.
+Function can call another function within the same translation unit or can call
+also external function in library. Function can hide additional control-flow in
+the function being called. In ScaRR control-flow model, external function call
+is one type of checkpoint that needs to be marked. Hence, inlining most internal
+function call is important to generate accurate offline measurement. 
+
+Fortunately, inlining is a common optimization process in compiler. In LLVM, we
+can use an inlining pass that inlines internal function within the same
+translation unit.
+
+
+Consider a program in listing \ref{listing:inlining}. The main function calls
+another internal function. Without inlining, the main function control-flow
+graph show no branches and the detail of logic in the factorial function. We
+can't generate accurate offline measurement with this original form. However,
+after we inline, we can see branches in the control-flow graph which represent
+the loop in the code. In this inlined representation we can generate more
+accurate offline measurement. Figure \ref{fig:inlining} show the factorial CFG
+without inlining and with inlining.
+
+
+\begin{figure}[h]
+    \centerline{\includegraphics[scale=.80]{Figures/04/inlining-function.png}}
+    \caption{Original and Inlined Factorial Program.}
+    \label{fig:inlining}
 \end{figure}
 
-After flattening the CFG we will have to pass the CFG for two times. First, to
-mark the checkpoints (section~\ref{sec:scarr-checkpoint-marker}). Second, to
-find all list of actions between the checkpoint
-(section~\ref{sec:scarr-loa-collector}).
+\section{ScaRR Checkpoint Marker} 
+\label{sec:scarr-checkpoint-marker}
 
 Checkpoints and list of actions are used to for offline measurements which is
 represented as triplet of first and second checkpoint; and hash of the list of
@@ -110,26 +127,16 @@ BBL_{dn})]$$
 
 The offline measurement is consulted by verifier during remote attestation.
 
-\section{Code Flattening}
-\label{sec:code-flattening}
-
-\ft{explain here code flattening. In particular, explain (1) why do you need 
-it, (2) how you implement, (3) give an example (even only text, or with a 
-pseude code, you decide)}
-
-\section{ScaRR Checkpoint Marker} 
-\label{sec:scarr-checkpoint-marker}
-
-After we flatten CFG into basic block, we will check each of basic block to find
-different kind of checkpoints. In Chapter~\ref{Chapter3} we list these four
-types of checkpoints: \textbf{Thread Begin}, \textbf{Thread End}, \textbf{Exit
-Point} and \textbf{Virtual Checkpoint}. Now we will present the heuristic on how
-we will mark as a checkpoint when appropriate.  The logic of checkpoint marker
-is to traverse the whole control flow graph at least once. For each basic block,
-we have to check whether the basic block can be considered as any of checkpoint
-type mentioned above. To allow marking additional information about ScaRR
-checkpoint, we are modifying the BasicBlock class to add checkpoint instance
-variable as shown in listing~\ref{listing:checkpoint}.
+After we inline the code and get program CFG, we will check each of basic block
+in CFG to find different kind of checkpoints. In Chapter~\ref{Chapter3} we list
+these four types of checkpoints: \textbf{Thread Begin}, \textbf{Thread End},
+\textbf{Exit Point} and \textbf{Virtual Checkpoint}. Now we will present the
+heuristic on how we will mark as a checkpoint when appropriate.  The logic of
+checkpoint marker is to traverse the whole control flow graph at least once. For
+each basic block, we have to check whether the basic block can be considered as
+any of checkpoint type mentioned above. To allow marking additional information
+about ScaRR checkpoint, we are modifying the BasicBlock class to add checkpoint
+instance variable as shown in listing~\ref{listing:checkpoint}.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -155,17 +162,20 @@ variable as shown in listing~\ref{listing:checkpoint}.
     \label{listing:checkpoint}
 \end{listing}
 
-Thread begin identifies the beginning of a thread or start of program. In this
-thesis we mark this checkpoint to first basic block in main function. If a
-program is is a multithreaded program, we will mark the thread begin for each
-basic block that starts the thread.
+\vspace{0.5cm}
+\noindent \textbf{Thread begin} identifies the beginning of a thread or start of
+program. In this thesis we mark this checkpoint to first basic block in main
+function. If a program is is a multithreaded program, we will mark the thread
+begin for each basic block that starts the thread.
 
-In the other side, thread end marks the end of a thread or end of program. In a
+\vspace{0.5cm}
+\noindent \textbf{Thread end} marks the end of a thread or end of program. In a
 multiple-threaded program, we will mark the thread end for each of basic block
 that terminates a thread. In this thesis, we mark thread end checkpoint for last
 basic block that has no more successors.
 
-Exit point marks that a basic block is calling function outside of translation
+\vspace{0.5cm}
+\noindent \textbf{Exit point} marks that a basic block is calling function outside of translation
 unit. The heuristic of marking this type of basic block is we iterate all
 instructions in a basic block. For each instruction, if the instruction is a
 \texttt{call} instruction, we check whether the called function has any basic
@@ -199,13 +209,14 @@ to Listing~\ref{listing:exit-point-cp}.
     \label{listing:exit-point-cp}
 \end{listing}
 
-Virtual checkpoint is a checkpoint that marks special cases such as loop or
-recursion. We will discuss only for loop case in this thesis. Virtual checkpoint
-in a loop is basically a loop header. The heuristic to find a loop header is to
-use \texttt{DominatorTree} to find a loop. After we find a loop, then we just
-need to get the header. Although there is no direct API to check whether a basic
-block is a loop header, LLVM provide it in LoopInfoBase API. See
-Listing~\ref{listing:virtual-cp}
+\vspace{0.5cm}
+\noindent \textbf{Virtual checkpoint} is a checkpoint that marks special cases
+such as loop or recursion. We will discuss only for loop case in this thesis.
+Virtual checkpoint in a loop is basically a loop header. The heuristic to find a
+loop header is to use \texttt{DominatorTree} to find a loop. After we find a
+loop, then we just need to get the header. Although there is no direct API to
+check whether a basic block is a loop header, LLVM provide it in LoopInfoBase
+API. See Listing~\ref{listing:virtual-cp}
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -234,18 +245,12 @@ Listing~\ref{listing:virtual-cp}
         }
     }
     \end{minted}
-    \caption{Getting Virtual Checkpoint\ft{every caption add a dot ``.'' to 
-    each caption ending + be careful of line 8, make it to new line.}}
+    \caption{Getting Virtual Checkpoint}
     \label{listing:virtual-cp}
 \end{listing}
 
 
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[scale=.70]{Figures/04/simple-loop-checkpoints.png}}
-    \caption{Loop CFG.}
-    \label{fig:simple-loop-checkpoints}
-\end{figure}
 
 \section{ScaRR LoA Collector}
 \label{sec:scarr-loa-collector}
