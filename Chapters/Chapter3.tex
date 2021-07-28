@@ -145,7 +145,7 @@ listing~\ref{listing:sample-c}.
     fontsize=\footnotesize,
     linenos
     ]{c}{Code/03/sample.c}
-    \caption{Simple C Program}    
+    \caption{Simple C Program.}    
     \label{listing:sample-c}
 \end{listing}
 
@@ -158,7 +158,7 @@ execute sequentially. This arrangement, makes application control flow graph
 (CFG) to be explicit in the IR. The details of LLVM IR is available in the
 Language Reference~\cite{LLVMLanguageReferencea}.
 
-\begin{listing}[htbp]
+\begin{listing}[ht]
     \inputminted[
     frame=lines,
     framesep=2mm,
@@ -166,15 +166,15 @@ Language Reference~\cite{LLVMLanguageReferencea}.
     fontsize=\footnotesize,
     linenos
     ]{llvm}{Code/03/sample.ll}
-    \caption{LLVM IR The Sample C Program}    
+    \caption{LLVM IR The Sample C Program.}    
     \label{listing:sample-ll}
 \end{listing}
 
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[scale=.5]{Figures/03/cfg.png}}
-\caption{CFG for Simple C Program}
-\label{fig:cfg}
+\begin{figure}[ht]
+    \centerline{\includegraphics[scale=.75]{Figures/03/cfg.png}}
+    \caption{CFG for Simple C Program.}
+    \label{fig:cfg}
 \end{figure}
 
 
@@ -182,7 +182,7 @@ LLVM optimizer \textemdash{} which includes Analyzer and Transformer \textemdash
 
 \begin{figure}[htbp] 
     \centerline{\includegraphics[scale=.75]{Figures/03/llvm-overview.png}} 
-    \caption{LLVM Pass} 
+    \caption{LLVM Pass.} 
     \label{fig:llvm} 
 \end{figure} 
 
@@ -224,7 +224,7 @@ the pass name after `--passes` argument in comma separated list
         ]{bash}
         opt --dot-cfg file.ll 
     \end{minted}
-    \caption{Running Legacy LLVM Pass}    
+    \caption{Running Legacy LLVM Pass.}    
     \label{listing:legacy-llvm-pass}
 \end{listing}
 
@@ -237,8 +237,8 @@ the pass name after `--passes` argument in comma separated list
         ]{bash}
         opt -passes=scarr-cp-marker,scarr-loa-collector file.ll 
     \end{minted}
-\caption{Running LLVM New Pass}    
-\label{listing:new-llvm-pass}
+    \caption{Running LLVM New Pass.}    
+    \label{listing:new-llvm-pass}
 \end{listing}
 
 \subsection{LLVM API}
@@ -273,7 +273,7 @@ listing~\ref{listing:llvm-module-api}).
         fontsize=\footnotesize,
         linenos
     ]{cpp}{Code/03/module.cpp}
-    \caption{LLVM Module API}    
+    \caption{LLVM Module API.}    
     \label{listing:llvm-module-api}
 \end{listing}
 
@@ -308,7 +308,7 @@ listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
             }
         }
     \end{minted}
-    \caption{LLVM Basic Block API}    
+    \caption{LLVM Basic Block API.}    
     \label{listing:llvm-basic-block-api}
 \end{listing}
 
@@ -345,7 +345,7 @@ LLVM IR.
     ]{bash}
         clang -S -emit-llvm source.c
     \end{minted}
-    \caption{Compiling C to LLVM IR}    
+    \caption{Compiling C to LLVM IR.}    
     \label{listing:compile-llvm-to-ir}
 \end{listing}
     
@@ -369,7 +369,7 @@ names.
         clang -S -emit-llvm -Xclang -disable-O0-optnone \
         -fno-discard-value-names source.c
     \end{minted}
-    \caption{Compiling C to LLVM IR without Optimization}    
+    \caption{Compiling C to LLVM IR without Optimization.}    
     \label{listing:compile-llvm-to-ir-no-opt}
 \end{listing}
 
@@ -399,7 +399,7 @@ This thesis is implemented on LLVM 13.0.0.
     ]{bash}
         git clone https://github.com/llvm/llvm-project
     \end{minted}
-    \caption{Cloning LLVM Source Code}    
+    \caption{Cloning LLVM Source Code.}    
     \label{listing:clone-llvm-code}
 \end{listing}
 
@@ -421,8 +421,8 @@ to listing~\ref{listing:build-llvm}.
         cmake -G Ninja ../ # generate build file for Ninja
         ninja opt # build only opt
     \end{minted}
-\caption{Building LLVM}    
-\label{listing:build-llvm}
+    \caption{Building LLVM.}    
+    \label{listing:build-llvm}
 \end{listing}
 
 With all background discussion in this chapter we should be ready to discuss the
