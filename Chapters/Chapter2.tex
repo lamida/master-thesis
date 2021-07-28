@@ -3,28 +3,48 @@
 \chapter{Scope} % Main chapter title
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 
-The main work of this research is to study the offline analysis of ScaRR's 
-model~\cite{toffaliniScaRRScalableRuntime2019} over a set of programs written 
-in C \textbackslash C++. 
-Specifically, we write a tool to extract offline measurement using the ScaRR 
-control-flow model, verify the scalability of the algorithm, and study its 
+The main work of this research is to study the offline analysis of ScaRR's
+model~\cite{toffaliniScaRRScalableRuntime2019} over a set of programs written in
+C/C++. Specifically, we write a tool to extract offline measurement using the
+ScaRR control-flow model, verify the scalability of the algorithm, and study its
 limitation.
 
 To sum up, the main contributions of this thesis are:
 \begin{enumerate}
-	\item propose an implementation of ScaRR's offline measurement extractor.
-	\item verify the scalability of ScaRR's offline measurement algorithm.
-	\item study the algorithm limitation.
+	\item Propose an implementation of ScaRR's offline measurement extractor.
+	\item Verify the scalability of ScaRR's offline measurement algorithm.
+	\item Study the algorithm limitation.
 \end{enumerate}
 
 \section{Outline}
 \label{sec:outline}
 
-\ft{here, make a list about the content of the following chapter as a list. For 
-instance:}
+\vspace{0.5cm}
+\noindent \textbf{Chapter~\ref{Chapter3}:} We discuss the background. We present
+control-flow attack and remote attestation to attest control-flow attack. We
+also discuss about ScaRR control-flow model. Last, we present about LLVM which
+we use to extract control-flow graph (CFG) and then marking basic block as
+checkpoints and find list of actions between those checkpoints.
 
 \vspace{0.5cm}
-\noindent \textbf{Chapter~\ref{Chapter3}:} We discuss the background.
+\noindent \textbf{Chapter~\ref{Chapter4}:} We present the methodology based on
+the scope of the contributions. We start with discussing about threat model. We
+then mainly shows the algorithms and implementation of the offline measurement
+extractor.
 
 \vspace{0.5cm}
-\noindent \textbf{Chapter~\ref{Chapter4}:} \dots
+\noindent \textbf{Chapter~\ref{Chapter5}:} We show the result of the
+implementation and experiment. We demonstrate on how to run the LLVM pass.
+Finally, we present the control flow result for some program that we test. We
+also discuss about the complexity analysis of the implementation. Last we
+present one of the program as case study. We show the breakdown of the process
+from showing the code, get the control-flow graph and ultimately how we get the
+offline measurement result.
+
+\vspace{0.5cm}
+\noindent \textbf{Chapter~\ref{Chapter6}:} We discuss the result, limitation and
+future works for the research.
+
+\vspace{0.5cm}
+\noindent \textbf{Chapter~\ref{Chapter7}:} We close this thesis with conclusion
+that we gather after the research.
