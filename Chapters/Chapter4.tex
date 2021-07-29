@@ -44,7 +44,7 @@ Prover's code (\ie has a hash representation of the prover's code).
 \label{sec:overview}
 
 \begin{figure}[t]
-    \centerline{\includegraphics[scale=.70]{Figures/04/scarr-overview.png}}
+    \centerline{\includegraphics[scale=.75]{Figures/04/scarr-overview.png}}
     \caption{Generating Offline Measurement.}
     \label{fig:scarr-overview}
 \end{figure}
@@ -80,20 +80,15 @@ actions.
     \label{listing:inlining}
 \end{listing}
 
-Most applications source codes consist of high-level abstraction such as module,
-class, and function. Programmers write codes in different source files or also
-known as translation units. In analyzing the program control-flow graph, we need
-to know that the program representation of the control-flow is correct. Once we
-compile the program into an intermediate representation, one of high-level
-abstraction remains is function. Function can call another function within the
-same translation unit. Function can also call an external function in a library.
-Function can hide additional control flow in the function being called. In ScaRR
-control-flow model, the external function call is one type of checkpoint that
-needs to be marked. Hence, inlining most internal function call is important to
-generate accurate offline measurement. 
+One most common compiler optimization is inlining. Inlining extracts a body of a
+function to the function that calls it. For the context of ScaRR control-flow
+model, inlining helps to generate correct checkpoints and list of actions.
+Specifically, there is a specific checkpoint called External checkpoint which
+appears if there function call instruction in a basic block calls an external
+function. Inlining the code will reduce most inter-translation unit function
+calls. Hence it makes identifying the checkpoints easier.
 
-Fortunately, inlining is a common optimization process in a compiler. In LLVM,
-we can use an inlining pass that inlines internal function within the same
+In LLVM, we can use an inlining pass that inlines internal function within the same
 translation unit.
 
 Consider a program in listing \ref{listing:inlining}. The main function calls
@@ -254,13 +249,9 @@ See Listing~\ref{listing:virtual-cp}
 
 After we mark checkpoints in the CFG, now we can find list of actions. We
 traverse the paths between two checkpoints and add significant basic blocks that
-direct the path between the two checkpoints.  The detail of this step is
-explained in section~\ref{sec:scarr-loa-collector}.
+direct the path between the two checkpoints.  
 
-\xt{TODO: summarize the algorithm in a pseudocude fashion? you should link the
-lines in the pseudo code and describe it step by step.}
-
-\begin{listing}[htbp]
+\begin{listing}[t]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -268,9 +259,34 @@ lines in the pseudo code and describe it step by step.}
         fontsize=\footnotesize,
         linenos
     ]{c++}
-    // TBD
+    function collectLoaRecursive(firstCheckpoint, successorBasicBlock) {
+        if (firstCheckpoint has more than one successor and 
+            no LoA is added yet) {
+                add firstCheckpoint as 1st (cpA) LoA for this path
+        }
+        
+        for (succ = successors of successorBasicBlock) {
+            if (succ is a checkpoint) {
+                if (one LoA has been added for this path) {
+                    add succ as the 2nd (cpB) LoA
+                }
+                add cpA and cpB LoA to measurement
+            } else if (succ is not a checkpoint) {
+                if (LoA is non empty and the previous LoA is a checkpoint) {
+                    add succ as the 2nd LoA
+                }
+                recursively collectLoaRecursive(firstCheckpoint, succ)
+            }
+        }
+    }
+
+    function collectLoa(list of basicBlock) {
+        for (basicBlock = all basicBlocks) {
+            collectLoaRecursive(basicBlock, basicBlock)
+        }
+    }
     \end{minted}
-    \caption{TBD Pseudocode for LoA}
+    \caption{Pseudocode to Collect List of Actions.}
     \label{listing:loa-pseudocode}
 \end{listing}
 
@@ -281,5 +297,6 @@ $cpA$ until we find another checkpoint $cpB$. It is possible for $cpA = cpB$. If
 there is no branch between the two checkpoints, the LoA is an empty set. If
 there is a branch, the first LoA is always $cpA$ and the second LoA is always be
 the first basic block after the branch \textemdash{} which can be $cpB$ or just
-a non-checkpoint basic block. Interested readers can refer to the implementation
+a non-checkpoint basic block. We show the pseudocode for this logic in listing
+\ref{listing:loa-pseudocode}.  Interested readers can refer to the source code
 of this pass to see the detail.
