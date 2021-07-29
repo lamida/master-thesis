@@ -4,26 +4,26 @@
 
 \label{Chapter5} % For referencing the chapter elsewhere, use~\ref{Chapter5} 
 
-In this research we used the offline measurement generator in getting the
-measurement across different real world programs. We calculate the ScaRR control
-flow information for each of the programs and we analyse and present the result
-in this chapter. The analysis and source code of the program is available in
-this Github repository: \url{https://github.com/lamida/scarr-sample-program/}.
+In this research, we used the offline measurement generator in getting the
+measurement across different real-world programs. We calculate the ScaRR control
+flow information for each of the programs. We analyze and present the result in
+this chapter. The analysis and source code of the program is available in this
+Github repository: \url{https://github.com/lamida/scarr-sample-program/}.
 
-In this research we choose 4 large open source projects for analysis. We
-download the source code and checkout the latest version of the code. The first
-software is Redis $6.2.4$ ~\cite{RedisRedis2021}, a what so called data
-structure server that is widely used in real world. The Redis source build
-consist of the server binary and the client cli. We analyse both of the program.
+We choose four large open-source projects for analysis. We download the latest
+version of the source code. The first software is Redis $6.2.4$
+~\cite{RedisRedis2021}, a so-called data structure server that is widely used in
+the real world. The Redis source build consists of the server binary and the
+client command-line interface (CLI). We analyze both of the programs.
 
-The second program we analyse is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2 is free
-and open source file compression program. The third program is openssl
-$1.1.1j$~\cite{OpensslOpenssl2021}. OpenSSL is full-featured toolkit for TLS
+The second program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2 is a free
+and open-source file compression program. The third program is OpenSSL
+$1.1.1j$~\cite{OpensslOpenssl2021}. OpenSSL is a full-featured toolkit for TLS
 protocol. 
 
-The last suite program we analyse is coreutils
-$8.32$~\cite{CoreutilsCoreutils2021}. Coreutils is suite of Unix utilities for
-file, shell and text manipulation.
+The last suite program we analyze is Coreutils
+$8.32$~\cite{CoreutilsCoreutils2021}. Coreutils is a suite of Unix utilities for
+file, shell, and text manipulation.
 
 For each of program, we are collecting the following measurements:
 
@@ -36,7 +36,8 @@ For each of program, we are collecting the following measurements:
     \item number of LoA (nLoA)
 \end{itemize}
 
-However, before going to result the next section will show how to run the pass.
+However, before we go to the result, the following section shows how to run the
+pass.
 
 \section{Running The Pass}
 
@@ -57,7 +58,7 @@ listing~\ref{listing:mark-cp-in-cfg}.
 \end{listing}
 
 We can see the basic blocks output that has been marked with checkpoint using
-LLVM dot-cfg pass.
+LLVM \texttt{dot-cfg} pass.
 
 \begin{listing}[ht]
     \begin{minted}[
@@ -73,7 +74,8 @@ LLVM dot-cfg pass.
 \end{listing}
 
 The commands in listing~\ref{listing:cp-to-cfg} generates different dot files
-per function. We can use xdot command line from graphiz to see the graph. 
+per function. We can use \texttt{xdot} command line from Graphiz to see the
+graph. 
 
 To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt}
 as shown in Listing~\ref{listing:get-loa}
@@ -91,13 +93,12 @@ as shown in Listing~\ref{listing:get-loa}
     \label{listing:get-loa}
 \end{listing}
 
-Note that we have to run scarr-cp-marker before scarr-loa-collector.
+Note that we have to run \texttt{scarr-cp-marker} before
+\texttt{scarr-loa-collector}.
 
-The result and its interpretation are discussed in the next chapter.
+We discuss the result and its interpretation in the next chapter.
 
 \section{ScaRR Control Flow Result}
-
-
 
 \begin{table}[t]
 	\centering

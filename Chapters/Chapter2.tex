@@ -3,10 +3,10 @@
 \chapter{Scope} % Main chapter title
 \label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter2} 
 
-The main work of this research is to study the offline analysis of ScaRR's
+The main work of this research is to study the offline analysis of the ScaRR's
 model~\cite{toffaliniScaRRScalableRuntime2019} over a set of programs written in
 C/C++. Specifically, we write a tool to extract offline measurement using the
-ScaRR control-flow model, verify the scalability of the algorithm, and study its
+ScaRR control-flow model, verify the scalability of the algorithm and study its
 limitation.
 
 To sum up, the main contributions of this thesis are:
@@ -22,24 +22,24 @@ To sum up, the main contributions of this thesis are:
 \vspace{0.5cm}
 \noindent \textbf{Chapter~\ref{Chapter3}:} We discuss the background. We present
 control-flow attack and remote attestation to attest control-flow attack. We
-also discuss about ScaRR control-flow model. Last, we present about LLVM which
-we use to extract control-flow graph (CFG) and then marking basic block as
-checkpoints and find list of actions between those checkpoints.
+also discuss ScaRR control-flow model. Last, we present LLVM, which we use to
+extract control-flow graph (CFG); to mark the basic block as checkpoints and
+find the list of actions between those checkpoints.
 
 \vspace{0.5cm}
 \noindent \textbf{Chapter~\ref{Chapter4}:} We present the methodology based on
-the scope of the contributions. We start with discussing about threat model. We
-then mainly shows the algorithms and implementation of the offline measurement
+the scope of the contributions. We start by discussing the threat model. We then
+mainly shows the algorithms and implementation of the offline measurement
 extractor.
 
 \vspace{0.5cm}
 \noindent \textbf{Chapter~\ref{Chapter5}:} We show the result of the
-implementation and experiment. We demonstrate on how to run the LLVM pass.
-Finally, we present the control flow result for some program that we test. We
-also discuss about the complexity analysis of the implementation. Last we
-present one of the program as case study. We show the breakdown of the process
-from showing the code, get the control-flow graph and ultimately how we get the
-offline measurement result.
+implementation and experiment. We demonstrate how to run the LLVM pass. Finally,
+we present the control flow result for some programs that we test. We also
+discuss the complexity analysis of the implementation. Last, we present one of
+the programs as a case study. We show the breakdown of the process from showing
+the code, get the control-flow graph, and ultimately how we get the offline
+measurement result.
 
 \vspace{0.5cm}
 \noindent \textbf{Chapter~\ref{Chapter6}:} We discuss the result, limitation and
