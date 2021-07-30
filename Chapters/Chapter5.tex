@@ -8,19 +8,18 @@ In this research, we used the offline measurement generator in getting the
 measurement across different real-world programs. We calculate the ScaRR control
 flow information for each of the programs. We analyze and present the result in
 this chapter. The analysis and source code of the program is available in this
-Github repository: \url{https://github.com/lamida/scarr-sample-program/}.
+Github repository.\footnote{Our offline measurement generator is available here 
+\url{https://github.com/lamida/scarr-sample-program/}.}
 
 We choose four large open-source projects for analysis. We download the latest
 version of the source code. The first software is Redis $6.2.4$
 ~\cite{RedisRedis2021}, a so-called data structure server that is widely used in
 the real world. The Redis source build consists of the server binary and the
 client command-line interface (CLI). We analyze both of the programs.
-
 The second program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2 is a free
 and open-source file compression program. The third program is OpenSSL
 $1.1.1j$~\cite{OpensslOpenssl2021}. OpenSSL is a full-featured toolkit for TLS
 protocol. 
-
 The last suite program we analyze is Coreutils
 $8.32$~\cite{CoreutilsCoreutils2021}. Coreutils is a suite of Unix utilities for
 file, shell, and text manipulation.
@@ -36,13 +35,24 @@ For each of program, we are collecting the following measurements:
     \item number of LoA (nLoA)
 \end{itemize}
 
-However, before we go to the result, the following section shows how to run the
-pass.
+In the Section~\ref{sec:running-the-pass}, we shows how to run the pass.
 
 \section{Running The Pass}
+\label{sec:running-the-pass}
 
 To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as shown in
 listing~\ref{listing:mark-cp-in-cfg}.
+We can see the output of the basic block that has been marked with checkpoint 
+using
+LLVM \texttt{dot-cfg} pass.
+The commands in listing~\ref{listing:cp-to-cfg} generates different dot files
+per function. We can use \texttt{xdot} command line from Graphiz to see the
+graph. 
+To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt}
+as shown in Listing~\ref{listing:get-loa}.
+Note that we have to run \texttt{scarr-cp-marker} before 
+\texttt{scarr-loa-collector}.
+%We discuss the result and its interpretation in the next sec.
 
 \begin{listing}[ht]
     \begin{minted}[
@@ -57,8 +67,6 @@ listing~\ref{listing:mark-cp-in-cfg}.
     \label{listing:mark-cp-in-cfg}
 \end{listing}
 
-We can see the output of the basic block that has been marked with checkpoint using
-LLVM \texttt{dot-cfg} pass.
 
 \begin{listing}[ht]
     \begin{minted}[
@@ -73,12 +81,6 @@ LLVM \texttt{dot-cfg} pass.
     \label{listing:cp-to-cfg}
 \end{listing}
 
-The commands in listing~\ref{listing:cp-to-cfg} generates different dot files
-per function. We can use \texttt{xdot} command line from Graphiz to see the
-graph. 
-
-To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt}
-as shown in Listing~\ref{listing:get-loa}
 
 \begin{listing}[ht]
     \begin{minted}[
@@ -92,11 +94,6 @@ as shown in Listing~\ref{listing:get-loa}
     \caption{Get List of Actions}    
     \label{listing:get-loa}
 \end{listing}
-
-Note that we have to run \texttt{scarr-cp-marker} before
-\texttt{scarr-loa-collector}.
-
-We discuss the result and its interpretation in the next chapter.
 
 
 \section{ScaRR Control-Flow Result}
@@ -113,13 +110,13 @@ We discuss the result and its interpretation in the next chapter.
     \label{fig:bb-chart}
 \end{figure}
 
-\begin{table}
-    \centering
-    \rowcolors{1}{}{lightgray}
-    \begin{tabular}{lrrrrrr}
+\rowcolors{2}{}{lightgray!20}
+\begin{longtable}{lrrrrrr}
+%    \centering
+%    \begin{tabular}{lrrrrrr}
     \toprule 
     Program         & CL         & IRL & BB & M & CP & LoA  \\
-    \midrule
+    \midrule 
     basename        & 190        & 827      & 19              & 17              & 13             & 26       \\
     cat             & 767        & 2215     & 119             & 151             & 94             & 216      \\
     chgrp           & 319        & 1158     & 43              & 44              & 32             & 60       \\
@@ -189,8 +186,9 @@ We discuss the result and its interpretation in the next chapter.
     wc              & 895        & 3689     & 89              & 100             & 68             & 158      \\
     yes             & 130        & 765      & 19              & 26              & 15             & 44       \\
     \bottomrule
-    \end{tabular}
-    \end{table}
+%    \end{tabular}
+    \end{longtable}
+\rowcolors{2}{}{}
 
 \begin{table}[t]
 	\centering
