@@ -5,8 +5,8 @@
 \label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter3} 
 
 We present a brief history of memory attacks and some background information on
-control-flow attacks in section~\ref{sec:control-flow-attack}. In
-section~\ref{sec:remote-attestation}, we discuss how remote attestation helps to
+control-flow attacks in Section~\ref{sec:control-flow-attack}. In
+Section~\ref{sec:remote-attestation}, we discuss how remote attestation helps to
 detect control-flow attack. We present ScaRR control flow model in
 Section~\ref{sec:scarr-model}. We present an overview of LLVM that is relevant
 to the research in Section~\ref{sec:llvm}.
@@ -75,8 +75,8 @@ measurement mismatches, it means the has been a violation due to the attacks.
 This research mainly focuses on offline measurement data generation for remote
 attestation. The verifier uses the offline measurement in the local database to
 validate the control-flow graph.  We discuss the detail of the control-flow
-model in Section \ref{sec:scarr-model}. We write the offline program analyzer
-using LLVM. We discuss some LLVM backgrounds in section \ref{sec:llvm}.
+model in Section~\ref{sec:scarr-model}. We write the offline program analyzer
+using LLVM. We discuss some LLVM backgrounds in Section~\ref{sec:llvm}.
 
 \section{ScaRR Control-Flow Model} 
 \label{sec:scarr-model}
@@ -159,11 +159,11 @@ optimization.
 \end{listing}
 
 Listing~\ref{listing:sample-c} show a simple C program. The IR of the code in
-listing \ref{listing:sample-c} is in listing~\ref{listing:sample-ll}. The text
+Listing~\ref{listing:sample-c} is in Listing~\ref{listing:sample-ll}. The text
 representation is just one form of IR. Besides this readable instruction
 representation, LLVM IR also can be represented as byte code and in-memory
-representation. In the IR, each line contains LLVM instructions. Instructions
-are grouped in basic blocks: containers for instructions that execute
+representation. In the IR, each line contains LLVM instructions. We group
+instructions into basic blocks: containers for instructions that execute
 sequentially. This arrangement explicitly represent application control-flow
 graph (CFG) in the IR. The details of LLVM IR is available in the Language
 Reference~\cite{LLVMLanguageReferencea}.
@@ -203,14 +203,13 @@ Offline Program Analyzer.
 LLVM applies transformations --- which may include some analysis pipelines ---
 and optimizations on tools called \texttt{opt}. \texttt{opt} is taking LLVM IR
 (either as text, bytecode or in memory) as input and then do transformations,
-analysis, and optimizations on it (see figure~\ref{fig:llvm}). Transformation
+analysis, and optimizations on it (see Figure~\ref{fig:llvm}). Transformation
 and optimization alter the LLVM structure. The analysis gets information from
-the structure, which usually to be used by one or more transformations.
-Different transformations, optimizations, and analyses are performed as
-pipelines of LLVM passes. LLVM pass can run per function, module or loop. LLVM
-function pass is executed once for every function in the program. LLVM module
-pass is executed once for every module. LLVM loop pass runs a time for each
-loop.  
+the structure, which usually to be used by one or more transformations. LLVM
+performs different transformations, optimizations, and analyses as pipelines of
+passes. LLVM pass can run per function, module or loop. LLVM executes function
+pass once for every function in the program. LLVM module pass is executed once
+for every module. LLVM loop pass runs a time for each loop.  
 
 
 In LLVM, there are two ways of implementing pass. First, to use the legacy
@@ -223,9 +222,9 @@ approach, we have to inherit CRTP mix-in \texttt{PassInfoMixin<PassT>} and
 override the run method.
 
 In the legacy approach, we need to provide the pass name as a literal argument
-to \texttt{opt}. See the example in listing~\ref{listing:legacy-llvm-pass}. In
+to \texttt{opt}. See the example in Listing~\ref{listing:legacy-llvm-pass}. In
 the new pass manager, we are putting the pass name after \texttt{--passes}
-argument in comma-separated list (listing~\ref{listing:new-llvm-pass}). LLVM
+argument in comma-separated list (Listing~\ref{listing:new-llvm-pass}). LLVM
 executes the passes in order.
 
 \begin{listing}[htbp]
@@ -278,7 +277,7 @@ pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from
 \texttt{IRReader.h}. Once we get a handler to a module, getting a functions
 within module is as simple as pass a module to a loop.  Module provides iterator
 that returns list of functions in the module (see
-listing~\ref{listing:llvm-module-api}).
+Listing~\ref{listing:llvm-module-api}).
 
 \begin{listing}[htbp]
     \inputminted[
@@ -300,15 +299,15 @@ can be multiple exit BasicBlocks. We can get a handler to a function either by
 getting the iterator from a module instance or by implementing a Function Pass.
 By using optimization, syntax hint, or using an inliner pass, a function can be
 inlined. In this thesis, we are using \emph{inliner-wrapper} pass to inline most
-functions before feeding the IR into the ScaRR passes. See also section
-\ref{sec:code-inlining} which discusses the inlining process.
+functions before feeding the IR into the ScaRR passes. See also
+Section~\ref{sec:code-inlining} which discusses the inlining process.
 
 \subsubsection{Basic Block}
 
 Basic Block represents a single entry and single exit section of the code. The
 single exit can be one of terminator instruction -- branches, return, unwind and
 invoke. We can get a handle to a basic block from function. Refer to
-listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
+Listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -421,7 +420,7 @@ implement the offline measurement extract using LLVM 13.0.0.
 
 After downloading the code, we can go to the LLVM directory and generate the
 build files. \texttt{cmake} supports several build tools such as make and ninja.
-Refer to listing~\ref{listing:build-llvm}.
+Refer to Listing~\ref{listing:build-llvm}.
 
 \begin{listing}[htbp]
     \begin{minted}[

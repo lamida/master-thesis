@@ -58,11 +58,11 @@ Figure~\ref{fig:scarr-overview} shows the high-level step on generating the
 offline measurement. First, we inline the source code input (which could be in
 an intermediate representation form). Section \ref{sec:code-inlining} describes
 the inlining process. Next, we mark the checkpoints from inline code,
-particularly marking in the basic block of the code. Section
-\ref{sec:scarr-checkpoint-marker} discusses this checkpoint marking step. Last,
-for each checkpoint, we collect list of actions which indicates how a process
-traverses to move from one checkpoint to another. Section
-\ref{sec:scarr-loa-collector} talks about the process of getting list of
+particularly marking in the basic block of the code.
+Section~\ref{sec:scarr-checkpoint-marker} discusses this checkpoint marking
+step. Last, for each checkpoint, we collect list of actions which indicates how
+a process traverses to move from one checkpoint to another.
+Section~\ref{sec:scarr-loa-collector} talks about the process of getting list of
 actions.
 
 \section{Code Inlining}
@@ -91,13 +91,13 @@ calls. Hence it makes identifying the checkpoints easier.
 In LLVM, we can use an inlining pass that inlines internal function within the same
 translation unit.
 
-Consider a program in listing \ref{listing:inlining}. The main function calls
+Consider a program in Listing~\ref{listing:inlining}. The main function calls
 another internal function. Without inlining, the main function control-flow
 graph shows no branches and the detail of logic in the factorial function. We
 cannot generate accurate offline measurements with this original form. However,
 after we inline, we can see branches in the control-flow graph, which represent
 the loop in the code. In this inlined representation, we can generate more
-accurate offline measurements. Figure \ref{fig:inlining} shows the factorial CFG
+accurate offline measurements. Figure~\ref{fig:inlining} shows the factorial CFG
 without inlining and with inlining.
 
 
@@ -128,7 +128,7 @@ checkpoint when appropriate.
 The logic of the checkpoint marker is to traverse the control flow graph at
 least once. We check the basic block checkpoint types as we traverse the basic
 blocks. We modify the \texttt{BasicBlock} class to add checkpoint instance variable as
-shown in listing~\ref{listing:checkpoint}, so that we can store checkpoint type.
+shown in Listing~\ref{listing:checkpoint}, so that we can store checkpoint type.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -299,5 +299,5 @@ $cpA = cpB$. If there is no branch between the two checkpoints, the LoA is an
 empty set. If there is a branch, the first LoA is always $cpA$ and the second
 LoA is always be the first basic block after the branch \textemdash{} which can
 be $cpB$ or just a non-checkpoint basic block. We show the pseudocode for this
-logic in listing \ref{listing:loa-pseudocode}.  Interested readers can refer to
+logic in Listing~\ref{listing:loa-pseudocode}.  Interested readers can refer to
 the source code of this pass to see the detail.

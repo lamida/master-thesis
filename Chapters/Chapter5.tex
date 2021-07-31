@@ -38,19 +38,14 @@ In Section~\ref{sec:running-the-pass}, we show the way to run the pass.
 \section{Running The Pass}
 \label{sec:running-the-pass}
 
-To mark the list of Checkpoints, we can invoke LLVM \texttt{opt} as shown in
-listing~\ref{listing:mark-cp-in-cfg}.
-We can see the output of the basic block that has been marked with checkpoint 
-using
-LLVM \texttt{dot-cfg} pass.
-The commands in listing~\ref{listing:cp-to-cfg} generates different dot files
-per function. We can use \texttt{xdot} command line from Graphiz to see the
-graph. 
-To mark the list of actions between checkpoints, we can invoke LLVM \texttt{opt}
-as shown in Listing~\ref{listing:get-loa}.
-Note that we have to run \texttt{scarr-cp-marker} before 
-\texttt{scarr-loa-collector}.
-%We discuss the result and its interpretation in the next sec.
+We can invoke LLVM \texttt{opt} to mark the list of Checkpoints as shown in
+Listing~\ref{listing:mark-cp-in-cfg}. We can see the output of the marked basic
+block using LLVM \texttt{dot-cfg} pass. The commands in
+Listing~\ref{listing:cp-to-cfg} generates different dot files per function. We
+can use \texttt{xdot} command line from Graphiz to see the graph. To mark the
+list of actions between checkpoints, we can invoke LLVM \texttt{opt} as shown in
+Listing~\ref{listing:get-loa}. Note that we have to run \texttt{scarr-cp-marker}
+before \texttt{scarr-loa-collector}.
 
 \begin{listing}[ht]
     \begin{minted}[
@@ -268,9 +263,9 @@ checkpoint and then collecting the LoA.
 
 We present a simple case study on how we process a program and
 get the offline measurement. We consider a program in
-listing~\ref{listing:simple-loop}. The IR is in the
-listing~\ref{listing:simple-loop-ir}. We can see the basic block of the program
-in figure~\ref{fig:simple-loop-bb}. 
+Listing~\ref{listing:simple-loop}. The IR is in the
+Listing~\ref{listing:simple-loop-ir}. We can see the basic block of the program
+in Figure~\ref{fig:simple-loop-bb}. 
 
 
 \begin{listing}[htbp]
@@ -316,7 +311,7 @@ After the code is inline, the offline measurement generator traverse the basic
 block and using the heuristic marks some basic blocks to some checkpoints type.
 The next step, the measurement extractor traverse each path between two
 checkpoints and collect list of action between them. The measurement result is
-shown in the figure~\ref{fig:simple-loop-loa}.
+shown in the Figure~\ref{fig:simple-loop-loa}.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[scale=.75]{Figures/05/simple-loop-loa.png}}
