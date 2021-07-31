@@ -199,10 +199,11 @@ Offline Program Analyzer.
 \end{figure} 
 
 \subsection{LLVM Pass}
+\label{subsec:llvm-pass}
 
 LLVM applies transformations --- which may include some analysis pipelines ---
-and optimizations on tools called \texttt{opt}. \texttt{opt} is taking LLVM IR
-(either as text, bytecode or in memory) as input and then do transformations,
+and optimizations on tools called \texttt{opt}. \texttt{opt} takes LLVM IR
+(either as text, bytecode or in memory) as input and then does transformations,
 analysis, and optimizations on it (see Figure~\ref{fig:llvm}). Transformation
 and optimization alter the LLVM structure. The analysis gets information from
 the structure, which usually to be used by one or more transformations. LLVM
@@ -255,14 +256,13 @@ executes the passes in order.
 
 \subsection{LLVM API}
 
-In writing the LLVM pass, we use LLVM API. In this section, we present relevant
-component that is required in implementing LLVM Pass for the Offline Program
-Analyzer. LLVM API is leveraging many C++ features and libraries such as
-template and STL. The API also provides many ready to use data structure which
-is not available in the STL. A more broad discussion on the important elements
-of the API is available in the Programmers Manual~\cite{LLVMProgrammerManuala}.
-We also can refer to the Complete API documentation in the doxygen
-page~\cite{LLVMLLVMa}.
+We use LLVM API to write LLVM pass. In this section, we present relevant
+required components in implementing LLVM Pass for the offline program analysis.
+LLVM API uses many C++ features and libraries such as template and STL. The API
+also provides many ready to use data structure which is not available in the
+STL. A more broad discussion on the important elements of the API is available
+in the Programmers Manual~\cite{LLVMProgrammerManuala}. We also can refer to the
+Complete API documentation in the Doxygen page~\cite{LLVMLLVMa}.
 
 \subsubsection{Module}
 
@@ -274,7 +274,7 @@ program (source file) or can be multiple translation units combined by a linker.
 
 In LLVM pass, we can get access to a module by implementing a texttt{Module}
 pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from
-\texttt{IRReader.h}. Once we get a handler to a module, getting a functions
+\texttt{IRReader.h}. Once we get a handler to a module, getting a function
 within module is as simple as pass a module to a loop.  Module provides iterator
 that returns list of functions in the module (see
 Listing~\ref{listing:llvm-module-api}).

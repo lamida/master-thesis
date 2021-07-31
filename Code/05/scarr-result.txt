@@ -1,0 +1,83 @@
+=============================================================
+ScaRR Offline Measurement Statistics
+=============================================================
+Offline Measurement Size: 3
+Number of Checkpoints: 3
+Number of List of Actions: 4
+csv,simple-loop-no-ext.ll,5,3,3,4
+=============================================================
+Checkpoints and LoA Details: 
+=============================================================
+Measurement 0
+LoA Size: 0
+
+Checkpoint_0_A: 
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  store i32 0, i32* %1, align 4
+  store i32 0, i32* %2, align 4
+  br label %3
+
+Checkpoint_0_B: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+=============================================================
+=============================================================
+Measurement 1
+LoA Size: 2
+
+
+Checkpoint_1_A: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+
+Checkpoint_1_B: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+LoA Details: 
+
+LOA_0: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+
+LOA_1: 
+6:                                                ; preds = %3
+  br label %7
+=============================================================
+=============================================================
+Measurement 2
+LoA Size: 2
+
+
+Checkpoint_2_A: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+
+Checkpoint_2_B: 
+10:                                               ; preds = %3
+  %11 = load i32, i32* %1, align 4
+  ret i32 %11
+LoA Details: 
+
+LOA_0: 
+3:                                                ; preds = %7, %0
+  %4 = load i32, i32* %2, align 4
+  %5 = icmp slt i32 %4, 10
+  br i1 %5, label %6, label %10
+
+LOA_1: 
+10:                                               ; preds = %3
+  %11 = load i32, i32* %1, align 4
+  ret i32 %11
+=============================================================
+RESULT ENDS

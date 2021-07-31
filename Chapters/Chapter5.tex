@@ -4,39 +4,95 @@
 
 \label{Chapter5} % For referencing the chapter elsewhere, use~\ref{Chapter5} 
 
-In this research, we used the offline measurement generator in getting the
+In this research, we use the offline measurement generator in getting the
 measurement across different real-world programs. We calculate the ScaRR control
 flow information for each of the programs. We analyze and present the result in
 this chapter. The analysis and source code of the program is available in this
-Github repository.\footnote{Our offline measurement generator is available here 
+Github repository.\footnote{Our offline measurement generator is available here
 \url{https://github.com/lamida/scarr-sample-program/}.}
 
-We choose four large open-source projects for analysis. The first software is
-Redis $6.2.4$ ~\cite{RedisRedis2021}, a so-called data structure server that is
-widely used in the real world. The Redis source build consists of the server
-binary and the client command-line interface (CLI). We analyze both of the
-programs. The second program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2
-is a free and open-source file compression program. The third program is OpenSSL
+We choose four large open-source software projects for analysis. The first
+software is Redis $6.2.4$ ~\cite{RedisRedis2021}, a so-called data structure
+server. The Redis source build consists of the server binary and the client
+command-line interface (CLI). We analyze both of the programs. The second
+program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2 is a free and
+open-source file compression program. The third program is OpenSSL
 $1.1.1j$~\cite{OpensslOpenssl2021}. OpenSSL is a full-featured toolkit for TLS
-protocol. The last suite program we analyze is Coreutils
+protocol. The last program we analyze is Coreutils
 $8.32$~\cite{CoreutilsCoreutils2021}. Coreutils is a suite of Unix utilities for
 file, shell, and text manipulation.
 
-For each of program, we are collecting the following measurements:
 
-\begin{itemize}
-    \item source code lines
-    \item IR lines
-    \item number of basic blocks (nBB)
-    \item number of ScaRR measurements (nM)
-    \item number of checkpoints (nCP)
-    \item number of LoA (nLoA)
-\end{itemize}
 
-In Section~\ref{sec:running-the-pass}, we show the way to run the pass.
+\section{Running LLVM Pass}
+\label{sec:running-llvm-pass}
 
-\section{Running The Pass}
-\label{sec:running-the-pass}
+We write the tool to extract the ScaRR offline measurement using LLVM.
+Specifically, we implement the tool as LLVM pass. We discuss some background on
+LLVM pass in Subsection \ref{subsec:llvm-pass} in Chapter~\ref{Chapter3}. In
+this section, we show how to use the pass.
+
+\begin{listing}[h]
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{console}
+        opt -passes=scarr-cp-marker <file>.ll
+    \end{minted}
+    \caption{Mark Checkpoint in BasicBlock.}    
+    \label{listing:mark-cp-in-cfg}
+\end{listing}
+
+\begin{listing}[h]
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{console}
+        opt -passes=scarr-cp-marker,dot-cfg <file>.ll
+    \end{minted}
+    \caption{Print Checkpoints in CFG dot file.}    
+    \label{listing:cp-to-cfg}
+\end{listing}
+
+\begin{listing}[h]
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{console}
+        opt -passes=scarr-cp-marker,scarr-loa-collector <file>.ll
+    \end{minted}
+    \caption{Get List of Actions.}    
+    \label{listing:get-loa}
+\end{listing}
+
+\begin{listing}[h]
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+    ]{text}
+    =============================================================
+    ScaRR Offline Measurement Statistics
+    =============================================================
+    Offline Measurement Size: 151
+    Number of Checkpoints: 94
+    Number of List of Actions: 216
+    csv,../cat.ll,119,151,94,216
+    =============================================================
+    Checkpoints and LoA Details: 
+    ============================================================
+    ... the detail output ...
+    \end{minted}
+    \caption{Output of ScaRR Offline Measurement.}    
+    \label{listing:scarr-output}
+\end{listing}
 
 We can invoke LLVM \texttt{opt} to mark the list of Checkpoints as shown in
 Listing~\ref{listing:mark-cp-in-cfg}. We can see the output of the marked basic
@@ -45,70 +101,32 @@ Listing~\ref{listing:cp-to-cfg} generates different dot files per function. We
 can use \texttt{xdot} command line from Graphiz to see the graph. To mark the
 list of actions between checkpoints, we can invoke LLVM \texttt{opt} as shown in
 Listing~\ref{listing:get-loa}. Note that we have to run \texttt{scarr-cp-marker}
-before \texttt{scarr-loa-collector}.
-
-\begin{listing}[ht]
-    \begin{minted}[
-        frame=lines,
-        framesep=2mm,
-        baselinestretch=1.2,
-        fontsize=\footnotesize,
-    ]{bash}
-        opt -passes=scarr-cp-marker <file>.ll
-    \end{minted}
-    \caption{Mark Checkpoint in BasicBlock.}    
-    \label{listing:mark-cp-in-cfg}
-\end{listing}
-
-
-\begin{listing}[ht]
-    \begin{minted}[
-        frame=lines,
-        framesep=2mm,
-        baselinestretch=1.2,
-        fontsize=\footnotesize,
-    ]{bash}
-        opt -passes=scarr-cp-marker,dot-cfg <file>.ll
-    \end{minted}
-    \caption{Print Checkpoints in CFG dot file.}    
-    \label{listing:cp-to-cfg}
-\end{listing}
-
-
-\begin{listing}[ht]
-    \begin{minted}[
-        frame=lines,
-        framesep=2mm,
-        baselinestretch=1.2,
-        fontsize=\footnotesize,
-    ]{c++}
-        opt -passes=scarr-cp-marker,scarr-loa-collector <file>.ll
-    \end{minted}
-    \caption{Get List of Actions}    
-    \label{listing:get-loa}
-\end{listing}
-
+before \texttt{scarr-loa-collector}. Listing~\ref{listing:scarr-output} shows
+output of the offline measurement extractor.
 
 \section{ScaRR Control-Flow Result}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[scale=.55]{Figures/05/code-lines-chart.png}}
-    \caption{Lines of Code, Lines of IR and Number of BasicBlocks.} 
-    \label{fig:code-lines-chart}
-\end{figure}
+For each program, we collect the following measurements. The text in parenthesis
+are the abbreviations that we use for the column headers in
+Table~\ref{table:scarr-result}.
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[scale=.55]{Figures/05/bb-chart.png}}
-    \caption{Basic Block and ScaRR Control-Flow Result.} 
-    \label{fig:bb-chart}
-\end{figure}
+\begin{itemize}
+    \item Source code lines (CL)
+    \item IR lines (IRL)
+    \item Number of basic blocks (BB)
+    \item Number of ScaRR measurements (M)
+    \item Number of checkpoints (CP)
+    \item Number of LoA (LoA)
+\end{itemize}
+
+
 
 \rowcolors{2}{}{lightgray!20}
 \begin{longtable}{lrrrrrr}
-%    \centering
-%    \begin{tabular}{lrrrrrr}
     \toprule 
     Program         & CL         & IRL & BB & M & CP & LoA  \\
+    \midrule 
+    \multicolumn{7}{l}{Coreutils} \\
     \midrule 
     basename        & 190        & 827      & 19              & 17              & 13             & 26       \\
     cat             & 767        & 2215     & 119             & 151             & 94             & 216      \\
@@ -178,68 +196,39 @@ before \texttt{scarr-loa-collector}.
     users           & 150        & 899      & 5               & 2               & 3              & 4        \\
     wc              & 895        & 3689     & 89              & 100             & 68             & 158      \\
     yes             & 130        & 765      & 19              & 26              & 15             & 44       \\
+    \midrule 
+    \multicolumn{7}{l}{Redis} \\
+    \midrule 
+    redis-benchmark & 1982       & 29367    & 254             & 407             & 211            & 564       \\
+    redis-cli       & 8400       & 45836    & 513             & 630             & 388            & 1002       \\
+    server          & 6397       & 25790    & 88              & 91              & 52             & 138       \\
+    \midrule 
+    \multicolumn{7}{l}{Bzip2} \\
+    \midrule 
+    bzip2           & 2036       & 8542    & 143             & 132             & 76            & 244       \\
+    \midrule 
+    \multicolumn{7}{l}{OpenSSL} \\
+    \midrule 
+    openssl         & 832        & 1793    & 28              & 30              & 19            & 42       \\
     \bottomrule
-%    \end{tabular}
+    \caption{ScaRR Offline Measurement Result.}
+    \label{table:scarr-result}
     \end{longtable}
 \rowcolors{2}{}{}
 
-\begin{table}[t]
-	\centering
-	\begin{tabular}{lrrrrrr}
-		\toprule 
-		\multirow{2}{*}{Use case} &
-		\multirow{2}{*}{\# functions} & 
-		\multicolumn{2}{c}{\emph{action}} & 
-		\multicolumn{2}{c}{edge} & 
-		\multicolumn{1}{c}{\% \emph{action}} \\ 
-		
-		& & \multicolumn{1}{c}{$\mu$} & \multicolumn{1}{c}{$\sigma$} & 
-		\multicolumn{1}{c}{$\mu$} & \multicolumn{1}{c}{$\sigma$} & 
-		\multicolumn{1}{c}{explored} \\
-		
-		\midrule	
-		\textsf{Contact} & $71$ & $12.77$ & $12.59$ & $15.09$ 
-		& 
-		$17.64$ & $96.4\%$ \\
-		\textsf{libdvdcss} & $47$ & $25.40$ & $22.05$ & 
-		$34.44$ 
-		& $31.50$ & $92.8\%$ \\
-		\textsf{StealthDB} & $44$ & $18.29$ & $13.53$ & 
-		$21.97$ & $18.05$ & $96.6\%$ \\
-		\textsf{SGX-Biniax2} & $49$ & $8.55$ & 
-		$8.75$ & $9.29$ & $11.71$ & $91.6\%$ \\
-		\textsf{Unit-test} & $17$ & $6.88$ & $7.47$ & $7.17$ & $10.52$ & 
-		$94.0\%$ \\ 
-		\midrule
-		\emph{total} & $228$ & - & - & - & - & - \\ 
-		\bottomrule
-	\end{tabular} 
-	\caption{\ft{this is a style example. Important things: no vertical 
-	lines, numbers right aligned, keep a consistent number of decimal place (at 
-	least per column), no horizontal lines besides top, bottom, and a few 
-	middle after the header. 
-	Extra point 1, for very long table pls consider to use alternative row 
-	colors 
-	https://tex.stackexchange.com/questions/5363/how-to-create-alternating-rows-in-a-table
-	 . Extra point 2, to span a table over multiple pages check this 
-	https://tex.stackexchange.com/questions/26462/make-a-table-span-multiple-pages
-	 }}
-	\label{tbl:example}
-\end{table}
+We can see the trend from the measurement in the table by sorting the data
+first. Figure~\ref{fig:measurement-result} presents the measurements result by
+comparing the number of basic blocks against three different measurement
+metrics: number of checkpoints, number of LoAs and number of measurements. We
+can clearly see there is linear relationship among the metrics which verifies
+our assumption.
 
-\csvautolongtable{csv/coreutils.csv}
+\begin{figure}[h]
+    \centerline{\includegraphics[scale=.45]{Figures/05/scarr-result.png}}
+    \caption{Measurement Results.} 
+    \label{fig:measurement-result}
+\end{figure}
 
-\begin{table}[h]
-    \centering
-    \csvautotabular{csv/redis.csv}
-    \caption{Redis ScaRR measurements.}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \csvautotabular{csv/misc.csv}
-    \caption{Some additional programs ScaRR measurements.}
-\end{table}
 
 \section{Complexity Analysis}
 
@@ -268,7 +257,7 @@ Listing~\ref{listing:simple-loop-ir}. We can see the basic block of the program
 in Figure~\ref{fig:simple-loop-bb}. 
 
 
-\begin{listing}[htbp]
+\begin{listing}[h]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -297,32 +286,48 @@ in Figure~\ref{fig:simple-loop-bb}.
     \label{listing:simple-loop-ir}
 \end{listing}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[scale=.75]{Figures/05/simple-loop.png}}
+\begin{figure}[t]
+    \centerline{\includegraphics[scale=.60]{Figures/05/simple-loop.png}}
     \caption{Simple Loop Basic Block.} 
     \label{fig:simple-loop-bb}
 \end{figure}
 
-The first step to get the offline measurement is to inline the code in basic
-block. In this simple program, the code can't be inlined further because there
+The first step to get the offline measurement is to inline the code in the basic
+block. In this simple program, we cannot inline the code further, because there
 is no function call at all. 
 
-After the code is inline, the offline measurement generator traverse the basic
-block and using the heuristic marks some basic blocks to some checkpoints type.
-The next step, the measurement extractor traverse each path between two
-checkpoints and collect list of action between them. The measurement result is
-shown in the Figure~\ref{fig:simple-loop-loa}.
+After we inline the code, we traverse the basic block and use heuristic to
+marks some basic blocks to some checkpoints types. The next step, the
+measurement extractor traverse each path between two checkpoints and collect the
+list of action between them. We show the visual of measurement result in
+Figure~\ref{fig:simple-loop-loa}.
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[scale=.75]{Figures/05/simple-loop-loa.png}}
+\begin{figure}[ht]
+    \centerline{\includegraphics[scale=.60]{Figures/05/simple-loop-loa.png}}
     \caption{Simple Loop Checkpoints and LoAs.} 
     \label{fig:simple-loop-loa}
 \end{figure}
 
-The exact measurement result is the following:
+The actual measurement between the checkpoints is the following. In summary,
+this program has 5 lines of source code and around 39 IR source lines. The
+program has 5 basic blocks, 4 LoAs and 4 measurements.
 
 \begin{align*}  
     N_0 - N_3 &\Rightarrow [] \\
     N_3 - N_3 &\Rightarrow [N_3, N_6] \\
     N_3 - N_{10} &\Rightarrow [N_3, N_{10}] \\
 \end{align*}
+
+% \newenvironment{code}{\captionsetup{type=listing}}{}
+% \begin{code}
+% \inputminted[
+% frame=lines,
+% framesep=2mm,
+% baselinestretch=1.2,
+% fontsize=\footnotesize,
+% linenos, breaklines
+% ]{text}{Code/05/scarr-result.txt}
+% % \captionof{listing}{case study measurement result. \label{listing:measurement-result}}    
+% \caption{Measurement Result.}
+% \label{listing:measurement-result}
+% \end{code}
