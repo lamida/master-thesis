@@ -85,7 +85,7 @@ function to the function that calls it. For the context of ScaRR control-flow
 model, inlining helps to generate correct checkpoints and list of actions.
 Specifically, there is a specific checkpoint called External checkpoint which
 appears if there function call instruction in a basic block calls an external
-function. Inlining the code will reduce most inter-translation unit function
+function. Inlining the code reduces most inter-translation-unit function
 calls. Hence it makes identifying the checkpoints easier.
 
 In LLVM, we can use an inlining pass that inlines internal function within the same
@@ -122,8 +122,8 @@ BBL_{dn})]$$
 We need program's control-flow graph (CFG) from inlined codes to generate
 checkpoints. In Chapter~\ref{Chapter3} we list these four types of checkpoints:
 \textbf{Thread Begin}, \textbf{Thread End}, \textbf{Exit Point} and
-\textbf{Virtual Checkpoint}. Now we will present the heuristic on how we will
-mark it as a checkpoint when appropriate.  
+\textbf{Virtual Checkpoint}. Now we present the heuristic on how we mark it as a
+checkpoint when appropriate.  
 
 The logic of the checkpoint marker is to traverse the control flow graph at
 least once. We check the basic block checkpoint types as we traverse the basic
@@ -157,12 +157,12 @@ shown in listing~\ref{listing:checkpoint}, so that we can store checkpoint type.
 \vspace{0.5cm}
 \noindent \textbf{Thread begin} identifies the beginning of a thread or start of
 a program. In this thesis, we mark this checkpoint as the first basic block in
-the main function. If a program is is a multithreaded program, we will mark the
+the main function. If a program is is a multithreaded program, we mark the
 thread begin for each basic block that starts the thread.
 
 \vspace{0.5cm}
 \noindent \textbf{Thread end} marks the end of a thread or end of a program. In
-a multiple-threaded program, we will mark the thread end for each of basic block
+a multiple-threaded program, we mark the thread end for each of the basic block
 that terminates a thread. In this thesis, we mark thread end checkpoint for the
 last basic block that has no more successors.
 
@@ -172,7 +172,7 @@ outside of translation unit. The heuristic of marking this type of basic block
 is we iterate all instructions in a basic block. We check if the instruction is
 a \texttt{call} instruction. Then, we check whether the called function has any
 basic block. If the function has no basic block, it means it is an external
-function. Hence, we will mark this as an exit point and stop. If none of the
+function. Hence, we mark this as an exit point and stop. If none of the
 instructions is a \texttt{call} instruction or all \texttt{call} instruction in
 this basic block call function with nonempty basic block, it means this basic
 block calls an internal function. Therefore, this basic block is not an exit
@@ -203,7 +203,7 @@ point. Listing~\ref{listing:exit-point-cp} shows the snippet to find ExitPoint.
 
 \vspace{0.5cm}
 \noindent \textbf{Virtual checkpoint} is a checkpoint that marks special cases
-such as loop or recursion. We will discuss only for loop case in this thesis.
+such as loop or recursion. We discuss only for loop case in this thesis.
 Virtual checkpoint in a loop is a loop header. The heuristic to find a loop
 header is to use \texttt{DominatorTree} to find a loop. After we find a loop,
 then we just need to get the header. Although there is no direct API to check
