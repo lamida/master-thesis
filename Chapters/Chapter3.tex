@@ -4,13 +4,12 @@
 
 \label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter3} 
 
-In this chapter, we present a brief history of memory attacks and some
-background information on control-flow attacks in
-section~\ref{sec:control-flow-attack}. In section~\ref{sec:remote-attestation},
-we discuss how remote attestation helps to detect control-flow attack. We
-present ScaRR control flow model in section~\ref{sec:scarr-model}. The chapter
-ends in section~\ref{sec:llvm}, which shares an overview of LLVM that is
-relevant to the research. 
+We present a brief history of memory attacks and some background information on
+control-flow attacks in section~\ref{sec:control-flow-attack}. In
+section~\ref{sec:remote-attestation}, we discuss how remote attestation helps to
+detect control-flow attack. We present ScaRR control flow model in
+Section~\ref{sec:scarr-model}. We present an overview of LLVM that is relevant
+to the research in Section~\ref{sec:llvm}.
 
 \section{Control Flow Attack}
 \label{sec:control-flow-attack}
@@ -19,7 +18,7 @@ A control-flow attack happens when an adversary maliciously makes a program act
 on his choice. The adversary can do so without statically modifies the program
 binary but alters the runtime properties of the program. The adversary intention
 can be to execute malicious operations or to leak secret information. Many of
-these runtime software security attacks occurs due to memory corruption bug
+these runtime software security attacks occur due to memory corruption bug
 in software written in low-level languages like C and
 C++~\cite{szekeresSoKEternalWar2013}.
 
@@ -30,18 +29,17 @@ schusterCounterfeitObjectorientedProgramming2015}  and data only
 attack~\cite{chenNonControlDataAttacksAre2005,
 carliniControlFlowBendingEffectiveness2015}. 
 
-Control-flow hijack can be classified further into code injection attacks and
-code reuse attacks such as return-oriented
-programming~\cite{roemerReturnorientedProgrammingSystems2012}. Code injection
-attack injects malicious codes to the program. The malicious code executes
-action prepared by the attacker. Code injection attack is already mitigated by
-solutions like non-executable stack (NX), Data Execution Prevention and \( W
-\bigoplus R \)~\cite{vanderveenMemoryErrorsPresent2012}. Code reuse attack
-executes malicious action without injecting any codes. It cannot be detected by
-the previously mentioned defenses mechanism. As an example, return-oriented
-program chains together short instruction sequences already present in the
-program’s address space, each of which ends in a \texttt{return} instruction.
-Unfortunately, ROP can not be mitigated by \( W \bigoplus R
+We can classify control-flow hijack into code injection attacks and code reuse
+attacks. Code injection attack injects malicious codes to the program. The
+malicious code executes action prepared by the attacker. We can mitigate code
+injection attacks using solutions like non-executable stack (NX), Data Execution
+Prevention and \( W \bigoplus R \)~\cite{vanderveenMemoryErrorsPresent2012}.
+Code reuse attack executes malicious action without injecting any codes. Return
+oriented programming~\cite{roemerReturnorientedProgrammingSystems2012} is
+example of code reuse attack. Return-oriented program chains together short
+instruction sequences already present in the program. Specifically, adversaries
+use instruction that ends in a \texttt{return} opcode. Unfortunately, ROP cannot
+be mitigated by \( W \bigoplus R
 \)~\cite{roemerReturnorientedProgrammingSystems2012}.
 
 Memory error attacks and defenses are a continuous battle which unfortunately
@@ -54,29 +52,31 @@ of research in this area which we briefly presented in Chapter~\ref{Chapter1}.
 \label{sec:remote-attestation}
 
 In this thesis, we explore the use of remote attestation in detecting the
-control-flow attack. Remote attestation is the activity of making a claim about
-properties of a remote target by supplying evidence to an appraiser over a
+control-flow attack. The goal of remote attestation is to validate the state of
+a remote system. Generally, we implement the remote attestation as protocol with
+two parties, the verifier as the attester and the remote system as the prover.
+Prover provides evidence to verifier over a
 network~\cite{cokerPrinciplesRemoteAttestation2011a}. The ubiquitous deployment
 of IoT and different applications in the cloud require a robust remote
-attestation method to ensure detection when the application is attacked.  Remote
-attestation scope was only covering static attestation of the application
-binary. However, in recent years there has been a more sophisticated attack
-that can alter the behavior of application so that static attestation does not
-suffice. 
+attestation method. A good remote attestation can ensure the detection of any
+attacks. Initially, remote attestation only covers static attestation of the
+application binary. However, in recent years there has been a more sophisticated
+attack that can alter application behaviors; so that only static attestation
+does not suffice. 
 
-In remote attestation, there are two roles involved, a trusted prover and a
-verifier. A prover is the one that must prove that the software has not been
-compromised. Verifier checks prover to ask the current state of the runtime of
-the program. Alternatively, prover also can just update the verifier
-periodically without being asked. The verifier compares the response from the
-prover with the local database which has been generated before. If any of
-measurement mismatches, it means the has been a violation due to the adversary's
-attack.
+As we mention above, there are two roles involved in the remote attestation.
+They are a trusted prover and a verifier. A prover is the one that must prove
+that the software runtime integrity. Verifier checks prover to ask the current
+state of the runtime of the program. Alternatively, the prover also can update
+the verifier periodically without an explicit trigger from the verifier. The
+verifier checks the prover response with the local database. If any of
+measurement mismatches, it means the has been a violation due to the attacks.
 
 This research mainly focuses on offline measurement data generation for remote
-attestation. The offline measurement is used by the verifier to validate the
-control flow graph. In the next section, we discuss the detail of the
-control-flow model. We use LLVM in implementing the offline program analyzer.
+attestation. The verifier uses the offline measurement in the local database to
+validate the control-flow graph.  We discuss the detail of the control-flow
+model in Section \ref{sec:scarr-model}. We write the offline program analyzer
+using LLVM. We discuss some LLVM backgrounds in section \ref{sec:llvm}.
 
 \section{ScaRR Control-Flow Model} 
 \label{sec:scarr-model}
@@ -135,16 +135,16 @@ set).
 
 LLVM is a compiler framework developed by Chris Lattner. LLVM provides portable
 program representation and different compiler toolings. LLVM supports the
-implementation of various frontends, backends, and middle optimizers for various
+implementation of various frontends, backends, and middle optimizers for many
 programming languages~\cite{lattnerLLVMCompilationFramework2004a}. 
 
 \subsection{Intermediate Representation}
 
-LLVM intermediate representation (IR) provides high-level information about
-programs to support sophisticated analysis and transformations. However, the
-representation is low-level enough to represent arbitrary programs and to allow
-extensive optimization. As an example, consider a simple C program in
-listing~\ref{listing:sample-c}.
+LLVM intermediate representation (IR) is a high-level representation of programs
+that enables analysis, instrumentations, and transformations. However, the IR is
+sufficiently low-level to represent arbitrary programs and to allow broad
+optimization. 
+
 
 \begin{listing}[htbp]
     \inputminted[
@@ -158,13 +158,14 @@ listing~\ref{listing:sample-c}.
     \label{listing:sample-c}
 \end{listing}
 
-The IR of the program can be seen in listing~\ref{listing:sample-ll}. The text
-representation below is just one form of IR. Besides this readable instruction
+Listing~\ref{listing:sample-c} show a simple C program. The IR of the code in
+listing \ref{listing:sample-c} is in listing~\ref{listing:sample-ll}. The text
+representation is just one form of IR. Besides this readable instruction
 representation, LLVM IR also can be represented as byte code and in-memory
 representation. In the IR, each line contains LLVM instructions. Instructions
 are grouped in basic blocks: containers for instructions that execute
-sequentially. This arrangement, makes the application control flow graph (CFG)
-to be explicit in the IR. The details of LLVM IR is available in the Language
+sequentially. This arrangement explicitly represent application control-flow
+graph (CFG) in the IR. The details of LLVM IR is available in the Language
 Reference~\cite{LLVMLanguageReferencea}.
 
 \begin{listing}[ht]

@@ -57,24 +57,23 @@ In this thesis, we want to answer these questions.
 
 \section{Related Works}
 
-In this section, we discuss the different runtime remote attestation models.
+We discuss different runtime remote attestation models in this section.
 Specifically, we discuss how different attestation schemes encode the offline
 program representations.
 
 C-Flat~\cite{aberaCFLATControlFlowAttestation2016} is the first remote
 attestation scheme to detect runtime control flow attack for embedded systems.
-C-Flat generates offline measurement by traversing all possible paths of a
-program, from the start node to the termination node. In each node, C-Flat
-hashes the node ID and the hash of the previous node. In the first node, since
-there is no previous hash, we pass 0. All of those steps create hash chains
-which we store as offline measurement database.
+C-Flat generates offline measurement by traversing all program's possible paths,
+from the start node to the termination node. In each node, C-Flat hashes the
+node ID and the hash of the previous node. In the first node, since there is no
+previous hash, we pass 0. All of those steps create hash chains which we store
+as offline measurement database.
 
-With that control-flow model, C-Flat can attest the exact control-flow path of
-the program. C-Flat also doesn't need source code, because the offline
-measurement can be run on the binary program. However, C-Flat has one limitation
----which is stated by the authors--- on its inefficiencies for having to explore
-all possible paths from program control flow
-graph~\cite{aberaCFLATControlFlowAttestation2016}.
+C-Flat can attest exact flow path of a program from the hash chains information.
+C-Flat does not need source code, because the offline measurement can be run on
+the binary program. However, C-Flat has one limitation ---which is stated by the
+authors--- on its inefficiencies for having to explore all possible paths from
+program control flow graph~\cite{aberaCFLATControlFlowAttestation2016}.
 
 Lo-Fat~\cite{dessoukyLOFATLowOverheadControl2017} improves C-Flat by using
 hardware support for control flow attestation. The hardware will intercept the
@@ -86,13 +85,15 @@ therefore it still induces high verification cost.
 Atrium~\cite{zeitouniATRIUMRuntimeAttestation2017} is remote attestation scheme
 that can provide resiliency against physical memory attacks where adversaries
 can exploit the property of Time of Check Time of Use (TOCTOU) during
-attestation. In this paper, the author describes memory bank attacks. In that
-attack the adversary can control instruction fetches to benign memory area when
-attestation is running and directs the fetch to the malicious area otherwise.
+attestation. In the paper, the author describes memory bank attacks. In that
+attack, the adversary can control instruction fetches to prevent detection.
+During attestation time, the program fetches the instruction from the benign
+memory area; when attestation does not run, the attack directs the fetch to the
+malicious area.
 
-The offline measurement is calculated slightly different compared with C-Flat
-and Lo-Fat. In Atrium, the verifier performs one-time pre-processing to generate
-CFG of the program and computes cryptographic hash measurement over the
+Atrium calculates the offline program measurement slightly differently compared
+with C-Flat and Lo-Fat. In Atrium, the verifier performs a one-time process to
+generate CFG of the program. Then, Atrium computes hash measurement on the
 instructions and addresses of basic blocks. C-Flat only hashes the node ID.
 While this approach can mitigate the TOCTOU attack, the offline measurement
 generation still grows exponentially as the complexity of the program increases.
@@ -102,18 +103,20 @@ assisted remote attestation scheme that allow verifier to detect these different
 attacks:
 
 \begin{itemize}
-    \item control-data attack such as code injection or code reuse attack like ROP
-    \item non-control-data attack
-    \item data-only attack such us DOP which do not affect control flow
+    \item Control-data attack such as code injection or code reuse attack like
+    ROP.
+    \item Non-control-data attack.
+    \item Data-only attack such us DOP which do not affect control flow.
 \end{itemize}
 
 The offline measurement phase of LiteHax only generates program CFG without
-calculating any hash over the whole control flows and data flow events. The way
-LiteHax calculates hash is different from previous schemes. However, in the
-online prover-side verification time, provers still compute hashes and sending
-them as reports to the verifier. Verifier runs symbolic execution and
-incremental forward data-flow analysis without doing any lookup to offline
-measurement database.
+calculating any hash over the whole control flows and data flow events. LiteHax
+calculates hashes differently from previous schemes. However, in the online
+prover-side verification time, provers still compute hashes and sending them as
+reports to the verifier. Verifier does two processes on the reports. First, it
+executes symbolic execution and then runs incremental forward data-flow
+analysis. The two steps do not require any lookup to offline measurement
+database.
 
 Diat~\cite{aberaDIATDataIntegrity2019} is a remote attestation scheme that can
 attest data integrity and control-flow of autonomous collaborative network

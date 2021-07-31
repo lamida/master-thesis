@@ -4,24 +4,23 @@
 
 \label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter6} 
 
-In Chapter~\ref{Chapter5}, we present the result of the implementation of
-ScaRR's offline measurement generator. We learn that the algorithm time
-complexity is linear to the input. The input here is the size of the program. We
-measure the size of the program as a number of lines. The number of lines is
-also linear with the size of intermediate representation and the number of basic
-blocks. Ultimately, the most important finding we confirm that the number of
-measurement is also linear with the size of the program. With that confidence
-that we can use the algorithm to do runtime remote attestation for a complex
-program.
+In Chapter~\ref{Chapter5}, we discuss the result of ScaRR's offline measurement
+generator. We learn that the algorithm time complexity is linear to the input.
+The input here is the size of the program. We measure the size of the program as
+the size of source code lines. The number of lines is also linear with the size
+of intermediate representation and basic blocks number. The most important
+finding we confirm ss the number of measurements is also linear with the program
+size. We know now that we can use the algorithm to do runtime remote attestation
+for a complex program.
 
-In this study, we identify the limitation of the algorithm. We can use this for
-possible future works. First, we do not test the algorithm with a program that
-contains recursion, signals, and exception. We also just test the algorithm with
-single-threaded program. We do not run the algorithm on a program that is
-written by a programming language other than C. 
+In this study, we identify the limitation of the algorithm. We can use the
+findings for possible future works. First, we do not test the algorithm with a
+program that contains recursion, signals, and exception. We also only test the
+algorithm with a single-thread program. We only run the analysis on C programs.
 
-We also noticed the limitation on the algorithm cannot detect non-control data
-attack which do not modify the program control-flow. The algorithm do know
-whether a program is going to a loop. Unfortunately, the algorithm do not know
-how many iteration a program should run. The offline measurement cannot know f
-there is any attack that modifies the number of the loop. 
+We also noticed the limitation on the algorithm that cannot detect non-control
+data attacks. Non-control data attack does not modify program CFG. Next, the
+algorithm does not track the number of loop iteration. The algorithm does know
+whether a program is going to a loop. Unfortunately, the algorithm does not know
+how many iterations a program should run. The offline measurement cannot know
+when there is an attack that modifies the number of the loop. 

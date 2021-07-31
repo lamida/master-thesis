@@ -11,16 +11,14 @@ this chapter. The analysis and source code of the program is available in this
 Github repository.\footnote{Our offline measurement generator is available here 
 \url{https://github.com/lamida/scarr-sample-program/}.}
 
-We choose four large open-source projects for analysis. We download the latest
-version of the source code. The first software is Redis $6.2.4$
-~\cite{RedisRedis2021}, a so-called data structure server that is widely used in
-the real world. The Redis source build consists of the server binary and the
-client command-line interface (CLI). We analyze both of the programs.
-The second program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2 is a free
-and open-source file compression program. The third program is OpenSSL
+We choose four large open-source projects for analysis. The first software is
+Redis $6.2.4$ ~\cite{RedisRedis2021}, a so-called data structure server that is
+widely used in the real world. The Redis source build consists of the server
+binary and the client command-line interface (CLI). We analyze both of the
+programs. The second program we analyze is bzip2 $1.08$~\cite{Bzip2Bzip2}. Bzip2
+is a free and open-source file compression program. The third program is OpenSSL
 $1.1.1j$~\cite{OpensslOpenssl2021}. OpenSSL is a full-featured toolkit for TLS
-protocol. 
-The last suite program we analyze is Coreutils
+protocol. The last suite program we analyze is Coreutils
 $8.32$~\cite{CoreutilsCoreutils2021}. Coreutils is a suite of Unix utilities for
 file, shell, and text manipulation.
 
@@ -35,7 +33,7 @@ For each of program, we are collecting the following measurements:
     \item number of LoA (nLoA)
 \end{itemize}
 
-In the Section~\ref{sec:running-the-pass}, we shows how to run the pass.
+In Section~\ref{sec:running-the-pass}, we show the way to run the pass.
 
 \section{Running The Pass}
 \label{sec:running-the-pass}
@@ -250,28 +248,28 @@ Note that we have to run \texttt{scarr-cp-marker} before
 
 \section{Complexity Analysis}
 
-We divide the complexity analysis of the program to time complexity and space
+We divide the complexity analysis of the program into time complexity and space
 complexity. 
 
-The time complexity of Checkpoint marker is $O(n)$. We just need to traverse the
+The time complexity of Checkpoint Marker is $O(n)$. We only need to traverse the
 basic block once to identify whether a basic block is a checkpoint.
 
-The time complexity of LoA collector is also $O(n)$. We need to traverse the
-basic block one time, to get the bread-first or depth-first list of the basic
-block. For each basic block, first we mark the first checkpoint as the first
-basic block. We stop as soon as we find a next checkpoint or a first basic block
-after branch. Therefore the time complexity of LoA collector is $O(n)$.
+The time complexity of LoA collector is also $O(n)$. We traverse the basic block
+one time either by breadth-first or depth-first list of the basic block. First,
+we mark the first checkpoint as the first basic block as we move in traversing.
+We stop as soon as we find the next checkpoint or a first basic block after
+branch. We can see the time complexity of LoA collector is $O(n)$.
 
 The space complexity for both algorithms is also $O(n)$. The only additional
-storage that we require is to store N number basic block during markig the
+storage that we require is to store N number basic block during marking the
 checkpoint and then collecting the LoA.
 
 \section{Case Study}
 
-In this section we present a simple case study on how we process a program and
+We present a simple case study on how we process a program and
 get the offline measurement. We consider a program in
 listing~\ref{listing:simple-loop}. The IR is in the
-listing~\ref{listing:simple-loop-ir}. We can see the basic block fo the program
+listing~\ref{listing:simple-loop-ir}. We can see the basic block of the program
 in figure~\ref{fig:simple-loop-bb}. 
 
 

@@ -123,12 +123,12 @@ We need program's control-flow graph (CFG) from inlined codes to generate
 checkpoints. In Chapter~\ref{Chapter3} we list these four types of checkpoints:
 \textbf{Thread Begin}, \textbf{Thread End}, \textbf{Exit Point} and
 \textbf{Virtual Checkpoint}. Now we will present the heuristic on how we will
-mark as a checkpoint when appropriate.  The logic of checkpoint marker is to
-traverse the control flow graph at least once. For each basic block, we have to
-check whether the basic block can be considered as any of checkpoint types
-mentioned above. To allow marking additional information about ScaRR checkpoint,
-we are modifying the BasicBlock class to add checkpoint instance variable as
-shown in listing~\ref{listing:checkpoint}.
+mark it as a checkpoint when appropriate.  
+
+The logic of the checkpoint marker is to traverse the control flow graph at
+least once. We check the basic block checkpoint types as we traverse the basic
+blocks. We modify the \texttt{BasicBlock} class to add checkpoint instance variable as
+shown in listing~\ref{listing:checkpoint}, so that we can store checkpoint type.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -169,14 +169,14 @@ last basic block that has no more successors.
 \vspace{0.5cm}
 \noindent \textbf{Exit point} marks that a basic block that calls function
 outside of translation unit. The heuristic of marking this type of basic block
-is we iterate all instructions in a basic block. For each instruction, if the
-instruction is a \texttt{call} instruction, we check whether the called function
-has any basic block. If the function has no basic block, it means it is an
-external function, hence we will mark this as an exit point and stop. If none of
-the instructions is a \texttt{call} instruction or all \texttt{call} instruction
-in this basic block call function with nonempty basic block, it means this basic
-block calls an internal function, therefore this basic block is not an exit
-point. Please refer to Listing~\ref{listing:exit-point-cp}.
+is we iterate all instructions in a basic block. We check if the instruction is
+a \texttt{call} instruction. Then, we check whether the called function has any
+basic block. If the function has no basic block, it means it is an external
+function. Hence, we will mark this as an exit point and stop. If none of the
+instructions is a \texttt{call} instruction or all \texttt{call} instruction in
+this basic block call function with nonempty basic block, it means this basic
+block calls an internal function. Therefore, this basic block is not an exit
+point. Listing~\ref{listing:exit-point-cp} shows the snippet to find ExitPoint.
 
 \begin{listing}[htbp]
     \begin{minted}[
@@ -247,9 +247,10 @@ See Listing~\ref{listing:virtual-cp}
 \section{ScaRR LoA Collector}
 \label{sec:scarr-loa-collector}
 
-After we mark checkpoints in the CFG, now we can find list of actions. We
+Checkpoints information is a requirement to get the list of actions.  We
 traverse the paths between two checkpoints and add significant basic blocks that
-direct the path between the two checkpoints.  
+direct the path between the two checkpoints. Those basic blocks comprise the
+list of actions. 
 
 \begin{listing}[t]
     \begin{minted}[
@@ -291,12 +292,12 @@ direct the path between the two checkpoints.
 \end{listing}
 
 The algorithm of getting LoA between two checkpoints is a little bit more
-complex. First, we iterate all the basic blocks, and if the basic block is a
-checkpoint we mark this as $cpA$. Next, we recursively traverse the successor of
-$cpA$ until we find another checkpoint $cpB$. It is possible for $cpA = cpB$. If
-there is no branch between the two checkpoints, the LoA is an empty set. If
-there is a branch, the first LoA is always $cpA$ and the second LoA is always be
-the first basic block after the branch \textemdash{} which can be $cpB$ or just
-a non-checkpoint basic block. We show the pseudocode for this logic in listing
-\ref{listing:loa-pseudocode}.  Interested readers can refer to the source code
-of this pass to see the detail.
+complex. First, we iterate all the basic blocks. Once we find a basic block with
+some checkpoint types, we mark this as $cpA$. Next, we recursively traverse the
+successor of $cpA$ until we find another checkpoint $cpB$. It is possible for
+$cpA = cpB$. If there is no branch between the two checkpoints, the LoA is an
+empty set. If there is a branch, the first LoA is always $cpA$ and the second
+LoA is always be the first basic block after the branch \textemdash{} which can
+be $cpB$ or just a non-checkpoint basic block. We show the pseudocode for this
+logic in listing \ref{listing:loa-pseudocode}.  Interested readers can refer to
+the source code of this pass to see the detail.
