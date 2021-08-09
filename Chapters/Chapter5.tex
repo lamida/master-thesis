@@ -7,7 +7,7 @@
 In this research, we use the offline measurement generator in getting the
 measurement across different real-world programs. We calculate the ScaRR control
 flow information for each of the programs. We analyze and present the result in
-this chapter. The analysis and source code of the program is available 
+this chapter. The analysis and source code of the program is available
 online.\footnote{Our offline measurement generator is available here
 \url{https://github.com/lamida/scarr-sample-program/}.}
 
@@ -220,11 +220,12 @@ We can see the trend from the measurement in the table by sorting the data
 first. Figure~\ref{fig:measurement-result} presents the measurements result by
 comparing the number of basic blocks against three different measurement
 metrics: number of checkpoints, number of LoAs and number of measurements. We
-can clearly see there is linear relationship among the metrics which verifies
+can see there is a linear relationship among the metrics, which verifies
 our assumption.
 
+
 \begin{figure}[h]
-    \centerline{\includegraphics[scale=.45]{Figures/05/scarr-result-v2.png}}
+    \centerline{\includegraphics[scale=.65]{Figures/05/scarr-result-v2.png}}
     \caption{Measurement Results.} 
     \label{fig:measurement-result}
 \end{figure}
@@ -287,7 +288,7 @@ in Figure~\ref{fig:simple-loop-bb}.
 \end{listing}
 
 \begin{figure}[t]
-    \centerline{\includegraphics[scale=.60]{Figures/05/simple-loop.png}}
+    \centerline{\includegraphics[scale=.70]{Figures/05/simple-loop.png}}
     \caption{Simple Loop Basic Block.} 
     \label{fig:simple-loop-bb}
 \end{figure}
@@ -306,6 +307,7 @@ Figure~\ref{fig:simple-loop-loa}.
     \centerline{\includegraphics[scale=.60]{Figures/05/simple-loop-loa.png}}
     \caption{Simple Loop Checkpoints and LoAs.} 
     \label{fig:simple-loop-loa}
+    \vspace{20cm}
 \end{figure}
 
 The actual measurement between the checkpoints is the following. In summary,
@@ -317,17 +319,3 @@ program has 5 basic blocks, 4 LoAs and 4 measurements.
     N_3 - N_3 &\Rightarrow [N_3, N_6] \\
     N_3 - N_{10} &\Rightarrow [N_3, N_{10}] \\
 \end{align*}
-
-% \newenvironment{code}{\captionsetup{type=listing}}{}
-% \begin{code}
-% \inputminted[
-% frame=lines,
-% framesep=2mm,
-% baselinestretch=1.2,
-% fontsize=\footnotesize,
-% linenos, breaklines
-% ]{text}{Code/05/scarr-result.txt}
-% % \captionof{listing}{case study measurement result. \label{listing:measurement-result}}    
-% \caption{Measurement Result.}
-% \label{listing:measurement-result}
-% \end{code}

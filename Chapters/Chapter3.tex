@@ -60,13 +60,13 @@ network~\cite{cokerPrinciplesRemoteAttestation2011a}. The ubiquitous deployment
 of IoT and different applications in the cloud require a robust remote
 attestation method. A good remote attestation can ensure the detection of any
 attacks. Initially, remote attestation only covers static attestation of the
-application binary. However, in recent years there has been a more sophisticated
-attack that can alter application behaviors; so that only static attestation
-does not suffice. 
+application binary. Later, more sophisticated attacks --that can alter
+application behaviors-- appears so that only static attestation does not
+suffice. 
 
 As we mention above, there are two roles involved in the remote attestation.
 They are a trusted prover and a verifier. A prover is the one that must prove
-that the software runtime integrity. Verifier checks prover to ask the current
+that the software's runtime integrity. Verifier checks prover to ask the current
 state of the runtime of the program. Alternatively, the prover also can update
 the verifier periodically without an explicit trigger from the verifier. The
 verifier checks the prover response with the local database. If any of
@@ -118,16 +118,17 @@ LoA is defined through the following notation:
 
 $$[(BBL_{s1},BBL_{d1}),...,(BBL_{sn},BBL_{dn})]$$
 
-Consider again the CFG in the Figure~\ref{fig:simple-loop-checkpoints}. The LoA
+Consider the CFG in the Figure~\ref{fig:simple-loop-checkpoints}. The LoA
 between $N_3$ (Checkpoint Virtual) and $N_{10}$ (checkpoint ThreadEnd) is
 $[(BBL_3, BBL_{10})]$. However, the LoA between $N_0$ and $N_3$ is $[]$ (empty
 set).
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centerline{\includegraphics[scale=.70]{Figures/03/simple-loop-checkpoints.png}}
     \caption{Loop CFG.}
     \label{fig:simple-loop-checkpoints}
 \end{figure}
+
 
 
 \section{LLVM}
@@ -145,8 +146,16 @@ that enables analysis, instrumentations, and transformations. However, the IR is
 sufficiently low-level to represent arbitrary programs and to allow broad
 optimization. 
 
+Listing~\ref{listing:sample-c} shows a simple C program whose the IR of the code
+is in Listing~\ref{listing:sample-ll}. The text representation is just one form
+of IR. Besides this readable instruction representation, LLVM IR also can be
+represented as byte code and in-memory representation. In the IR, each line
+contains LLVM instructions. We group instructions into basic blocks: containers
+for instructions that execute sequentially. This arrangement explicitly
+represents the application control-flow graph (CFG) in the IR. The details of
+LLVM IR is available in the Language Reference~\cite{LLVMLanguageReferencea}.
 
-\begin{listing}[htbp]
+\begin{listing}[ht!]
     \inputminted[
     frame=lines,
     framesep=2mm,
@@ -158,17 +167,7 @@ optimization.
     \label{listing:sample-c}
 \end{listing}
 
-Listing~\ref{listing:sample-c} show a simple C program. The IR of the code in
-Listing~\ref{listing:sample-c} is in Listing~\ref{listing:sample-ll}. The text
-representation is just one form of IR. Besides this readable instruction
-representation, LLVM IR also can be represented as byte code and in-memory
-representation. In the IR, each line contains LLVM instructions. We group
-instructions into basic blocks: containers for instructions that execute
-sequentially. This arrangement explicitly represent application control-flow
-graph (CFG) in the IR. The details of LLVM IR is available in the Language
-Reference~\cite{LLVMLanguageReferencea}.
-
-\begin{listing}[ht]
+\begin{listing}[ht!]
     \inputminted[
     frame=lines,
     framesep=2mm,
@@ -179,7 +178,6 @@ Reference~\cite{LLVMLanguageReferencea}.
     \caption{LLVM IR The Sample C Program.}    
     \label{listing:sample-ll}
 \end{listing}
-
 
 \begin{figure}[ht]
     \centerline{\includegraphics[scale=.75]{Figures/03/cfg.png}}
@@ -192,7 +190,7 @@ LLVM optimizer --- which includes Analyzer and Transformer --- are working on
 IR. In this thesis, we are using this analyzer and transformer in building the
 Offline Program Analyzer.
 
-\begin{figure}[htbp] 
+\begin{figure}[ht] 
     \centerline{\includegraphics[scale=.75]{Figures/03/llvm-overview.png}} 
     \caption{LLVM Pass.} 
     \label{fig:llvm} 
@@ -228,7 +226,7 @@ the new pass manager, we are putting the pass name after \texttt{--passes}
 argument in comma-separated list (Listing~\ref{listing:new-llvm-pass}). LLVM
 executes the passes in order.
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -241,7 +239,7 @@ executes the passes in order.
     \label{listing:legacy-llvm-pass}
 \end{listing}
 
-\begin{listing}[htpb]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -279,7 +277,7 @@ within module is as simple as pass a module to a loop.  Module provides iterator
 that returns list of functions in the module (see
 Listing~\ref{listing:llvm-module-api}).
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \inputminted[
         frame=lines,
         framesep=2mm,
@@ -309,7 +307,7 @@ single exit can be one of terminator instruction -- branches, return, unwind and
 invoke. We can get a handle to a basic block from function. Refer to
 Listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -351,7 +349,7 @@ compile source files into LLVM IR text files.
 Listing~\ref{listing:compile-llvm-to-ir} shows how to compile a C program into
 LLVM IR. 
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -374,7 +372,7 @@ names that can help when troubleshooting and exploring the generated IR.
 Listing~\ref{listing:compile-llvm-to-ir-no-opt} shows how to compile to IR
 without any optimization and to preserve the function and variable names.
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -405,7 +403,7 @@ the pass after the implementation so that we can run it.
 We can download LLVM uses git. See Listing~\ref{listing:clone-llvm-code}. We
 implement the offline measurement extract using LLVM 13.0.0.
 
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -418,11 +416,7 @@ implement the offline measurement extract using LLVM 13.0.0.
     \label{listing:clone-llvm-code}
 \end{listing}
 
-After downloading the code, we can go to the LLVM directory and generate the
-build files. \texttt{cmake} supports several build tools such as make and ninja.
-Refer to Listing~\ref{listing:build-llvm}.
-
-\begin{listing}[htbp]
+\begin{listing}[h!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -438,7 +432,12 @@ Refer to Listing~\ref{listing:build-llvm}.
     \end{minted}
     \caption{Building LLVM.}    
     \label{listing:build-llvm}
+    \vspace{128cm} % push the image up
 \end{listing}
+
+After downloading the code, we can go to the LLVM directory and generate the
+build files. \texttt{cmake} supports several build tools such as make and ninja.
+Refer to Listing~\ref{listing:build-llvm}.
 
 With all background discussion in this chapter, we should be ready to discuss
 the methodology in Chapter~\ref{Chapter4}.

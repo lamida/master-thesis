@@ -102,7 +102,7 @@ without inlining and with inlining.
 
 
 \begin{figure}[h]
-    \centerline{\includegraphics[scale=.80]{Figures/04/inlining-function.png}}
+    \centerline{\includegraphics[scale=.70]{Figures/04/inlining-function.png}}
     \caption{Original and Inlined Factorial Program.}
     \label{fig:inlining}
 \end{figure}
@@ -130,7 +130,7 @@ least once. We check the basic block checkpoint types as we traverse the basic
 blocks. We modify the \texttt{BasicBlock} class to add checkpoint instance variable as
 shown in Listing~\ref{listing:checkpoint}, so that we can store checkpoint type.
 
-\begin{listing}[htbp]
+\begin{listing}[ht!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -178,7 +178,7 @@ this basic block call function with nonempty basic block, it means this basic
 block calls an internal function. Therefore, this basic block is not an exit
 point. Listing~\ref{listing:exit-point-cp} shows the snippet to find ExitPoint.
 
-\begin{listing}[htbp]
+\begin{listing}[ht!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -201,16 +201,7 @@ point. Listing~\ref{listing:exit-point-cp} shows the snippet to find ExitPoint.
     \label{listing:exit-point-cp}
 \end{listing}
 
-\vspace{0.5cm}
-\noindent \textbf{Virtual checkpoint} is a checkpoint that marks special cases
-such as loop or recursion. We discuss only for loop case in this thesis.
-Virtual checkpoint in a loop is a loop header. The heuristic to find a loop
-header is to use \texttt{DominatorTree} to find a loop. After we find a loop,
-then we just need to get the header. Although there is no direct API to check
-whether a basic block is a loop header, LLVM provides it in LoopInfoBase API.
-See Listing~\ref{listing:virtual-cp}
-
-\begin{listing}[htbp]
+\begin{listing}[ht!]
     \begin{minted}[
         frame=lines,
         framesep=2mm,
@@ -240,7 +231,17 @@ See Listing~\ref{listing:virtual-cp}
     \caption{Getting Virtual Checkpoint}
     \label{listing:virtual-cp}
 \end{listing}
+\vspace{20cm}
 
+
+\vspace{0.5cm}
+\noindent \textbf{Virtual checkpoint} is a checkpoint that marks special cases
+such as loop or recursion. We discuss only for loop case in this thesis.
+Virtual checkpoint in a loop is a loop header. The heuristic to find a loop
+header is to use \texttt{DominatorTree} to find a loop. After we find a loop,
+then we just need to get the header. Although there is no direct API to check
+whether a basic block is a loop header, LLVM provides it in LoopInfoBase API.
+See Listing~\ref{listing:virtual-cp}
 
 
 
@@ -290,6 +291,7 @@ list of actions.
     \caption{Pseudocode to Collect List of Actions.}
     \label{listing:loa-pseudocode}
 \end{listing}
+\vspace{20cm}
 
 The algorithm of getting LoA between two checkpoints is a little bit more
 complex. First, we iterate all the basic blocks. Once we find a basic block with
