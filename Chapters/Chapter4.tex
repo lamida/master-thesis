@@ -5,15 +5,13 @@
 \label{Chapter4} % For referencing the chapter elsewhere, use~\ref{Chapter4} 
 
 In this chapter, we present the methodology of the research. First, we present
-the threat model in section~\ref{sec:threat-model}.  After that, we show the
-overview of ScaRR algorithm to extract checkpoints and list of actions in
-section \ref{sec:overview}. Section~\ref{sec:scarr-checkpoint-marker} discusses
-the LLVM implementation to get checkpoints.
-Section~\ref{sec:scarr-loa-collector} discusses the methodology of getting list
-of actions.  Checkpoints and list of actions are collected to build offline
-measurement database that is used for the remote attestation. The last section
-shows how to run the LLVM passes to get the result which is presented in
-Chapter~\ref{Chapter5}.
+the threat model in section~\ref{sec:threat-model}.  We show the overview of
+ScaRR algorithm to extract checkpoints and list of actions in section
+\ref{sec:overview}. We discuss code inlining in Section~\ref{sec:code-inlining}.
+Section~\ref{sec:scarr-checkpoint-marker} discusses the LLVM implementation to
+get checkpoints. Section~\ref{sec:scarr-loa-collector} discusses the methodology
+of getting list of actions.  We use checkpoint and list of actions to build the
+offline measurement database for remote attestation. 
 
 \section{Threat Model}
 \label{sec:threat-model}
@@ -82,23 +80,22 @@ actions.
 
 One most common compiler optimization is inlining. Inlining extracts a body of a
 function to the function that calls it. For the context of ScaRR control-flow
-model, inlining helps to generate correct checkpoints and list of actions.
-Specifically, there is a specific checkpoint called External checkpoint which
-appears if there function call instruction in a basic block calls an external
-function. Inlining the code reduces most inter-translation-unit function
-calls. Hence it makes identifying the checkpoints easier.
-
-In LLVM, we can use an inlining pass that inlines internal function within the same
-translation unit.
+model, inlining helps to generate correct checkpoints and list of actions. There
+is a checkpoint called exit-point that require code inlining for accurate
+identification. Exit-point appears at function call instruction in a basic block
+whose calls an external function. Inlining the code reduces most
+inter-translation-unit function calls. Hence it makes identifying the exit-point
+checkpoints easier.  In LLVM, we can use an inlining pass that inlines internal
+function within the same translation unit.
 
 Consider a program in Listing~\ref{listing:inlining}. The main function calls
-another internal function. Without inlining, the main function control-flow
-graph shows no branches and the detail of logic in the factorial function. We
-cannot generate accurate offline measurements with this original form. However,
-after we inline, we can see branches in the control-flow graph, which represent
-the loop in the code. In this inlined representation, we can generate more
-accurate offline measurements. Figure~\ref{fig:inlining} shows the factorial CFG
-without inlining and with inlining.
+another internal function. Without inlining, the \texttt{main} function
+control-flow graph shows no branches and the detail of logic in the factorial
+function. We cannot generate accurate offline measurements with this original
+form. However, after we inline, we can see branches in the control-flow graph,
+which represent the loop in the code. In this inlined representation, we can
+generate more accurate offline measurements. Figure~\ref{fig:inlining} shows the
+factorial CFG without inlining and with inlining.
 
 
 \begin{figure}[h]
@@ -167,7 +164,7 @@ that terminates a thread. In this thesis, we mark thread end checkpoint for the
 last basic block that has no more successors.
 
 \vspace{0.5cm}
-\noindent \textbf{Exit point} marks that a basic block that calls function
+\noindent \textbf{Exit-point} marks that a basic block that calls function
 outside of translation unit. The heuristic of marking this type of basic block
 is we iterate all instructions in a basic block. We check if the instruction is
 a \texttt{call} instruction. Then, we check whether the called function has any
