@@ -121,6 +121,7 @@ In particular, we measured:
 
 
 
+\afterpage{
 \rowcolors{2}{}{lightgray!20}
 \begin{longtable}{lrrrrrr}
     \toprule 
@@ -215,6 +216,7 @@ In particular, we measured:
     \label{table:scarr-result}
     \end{longtable}
 \rowcolors{2}{}{}
+}
 
 We can see the trend from the measurement in the table by sorting the data
 first. Figure~\ref{fig:measurement-result} presents the measurements result by
@@ -224,7 +226,7 @@ can see there is a linear relationship among the metrics, which verifies
 our assumption.
 
 
-\begin{figure}[h]
+\begin{figure}[t]
     \centerline{\includegraphics[scale=.65]{Figures/05/scarr-result-v2.png}}
     \caption{Measurement Results.} 
     \label{fig:measurement-result}
@@ -233,12 +235,9 @@ our assumption.
 
 \section{Complexity Analysis}
 
-We divide the complexity analysis of the program into time complexity and space
-complexity. 
-
-The time complexity of Checkpoint Marker is $O(n)$. We only need to traverse the
-basic block once to identify whether a basic block is a checkpoint.
-
+We split the complexity analysis of the program into time complexity and space
+complexity. The time complexity of Checkpoint Marker is $O(n)$. We only need to
+traverse the basic block once to identify whether a basic block is a checkpoint.
 The time complexity of LoA collector is also $O(n)$. We traverse the basic block
 one time either by breadth-first or depth-first list of the basic block. First,
 we mark the first checkpoint as the first basic block as we move in traversing.
