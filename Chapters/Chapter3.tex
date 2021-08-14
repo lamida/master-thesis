@@ -46,13 +46,13 @@ Memory error attacks and defenses are a continuous battle which unfortunately
 has not shown that it is over. In 2016, Abera et al proposed to use remote
 attestation to detect control flow
 attack~\cite{aberaCFLATControlFlowAttestation2016}. That paper opened many types
-of research in this area which we briefly presented in Chapter~\ref{Chapter1}.
+of research in this area which we briefly present in Chapter~\ref{Chapter1}.
  
 \section{Remote Attestation}
 \label{sec:remote-attestation}
 
-In this thesis, we explore the use of remote attestation in detecting the
-control-flow attack. The goal of remote attestation is to validate the state of
+In this thesis, we explore the use of remote attestation in detecting
+control-flow attacks. The goal of remote attestation is to validate the state of
 a remote system. Generally, we implement the remote attestation as protocol with
 two parties, the verifier as the attester and the remote system as the prover.
 Prover provides evidence to verifier over a
@@ -60,9 +60,8 @@ network~\cite{cokerPrinciplesRemoteAttestation2011a}. The ubiquitous deployment
 of IoT and different applications in the cloud require a robust remote
 attestation method. A good remote attestation can ensure the detection of any
 attacks. Initially, remote attestation only covers static attestation of the
-application binary. Later, more sophisticated attacks --that can alter
-application behaviors-- appears so that only static attestation does not
-suffice. 
+application binary. Recently, more sophisticated attacks --- that can alter
+application behaviors --- emerges so that static attestation does not suffice. 
 
 As we mention above, there are two roles involved in the remote attestation.
 They are a trusted prover and a verifier. A prover is the one that must prove
@@ -84,7 +83,7 @@ using LLVM. We discuss some LLVM backgrounds in Section~\ref{sec:llvm}.
 ScaRR~\cite{toffaliniScaRRScalableRuntime2019} takes lesson learned from many
 former runtime remote attestation scheme to build a model that can perform in a
 scalable way and can perform remote attestation on a complex system. ScaRR
-control-flow model consists of two main components, checkpoint and list of
+control-flow model consists of two main components: checkpoint and list of
 action. 
 
 As with many previous runtime attestation schemes, ScaRR models and validates
@@ -200,8 +199,8 @@ Offline Program Analyzer.
 \label{subsec:llvm-pass}
 
 LLVM applies transformations --- which may include some analysis pipelines ---
-and optimizations on tools called \texttt{opt}. \texttt{opt} takes LLVM IR
-(either as text, bytecode or in memory) as input and then does transformations,
+and optimizations using tools called \texttt{opt}. \texttt{opt} takes LLVM IR
+(either as text, bytecode, or in memory) as input and then does transformations,
 analysis, and optimizations on it (see Figure~\ref{fig:llvm}). Transformation
 and optimization alter the LLVM structure. The analysis gets information from
 the structure, which usually to be used by one or more transformations. LLVM
@@ -255,12 +254,13 @@ executes the passes in order.
 \subsection{LLVM API}
 
 We use LLVM API to write LLVM pass. In this section, we present relevant
-required components in implementing LLVM Pass for the offline program analysis.
-LLVM API uses many C++ features and libraries such as template and STL. The API
-also provides many ready to use data structure which is not available in the
-STL. A more broad discussion on the important elements of the API is available
-in the Programmers Manual~\cite{LLVMProgrammerManuala}. We also can refer to the
-Complete API documentation in the Doxygen page~\cite{LLVMLLVMa}.
+required components in implementing LLVM pass for the offline program analysis.
+LLVM API uses many C++ features and libraries such as Standard Template Library
+(STL). The API also provides many ready to use data structure which is not
+available in the STL. A more broad discussion on the important elements of the
+API is available in the Programmers Manual~\cite{LLVMProgrammerManuala}. We also
+can refer to the Complete API documentation in the Doxygen
+page~\cite{LLVMLLVMa}.
 
 \subsubsection{Module}
 
@@ -270,11 +270,11 @@ target characteristics. Module can present as a single translation unit of a
 program (source file) or can be multiple translation units combined by a linker.
 
 
-In LLVM pass, we can get access to a module by implementing a texttt{Module}
+In LLVM pass, we can get access to a module by implementing a \texttt{Module}
 pass or by parsing IR using \texttt{parseIR} or \texttt{parseIRFile} from
 \texttt{IRReader.h}. Once we get a handler to a module, getting a function
-within module is as simple as pass a module to a loop.  Module provides iterator
-that returns list of functions in the module (see
+within module is as simple as iterating the module in a loop.  Module provides
+iterator that returns list of functions in the module (see
 Listing~\ref{listing:llvm-module-api}).
 
 \begin{listing}[h!]
@@ -303,8 +303,8 @@ Section~\ref{sec:code-inlining} which discusses the inlining process.
 \subsubsection{Basic Block}
 
 Basic Block represents a single entry and single exit section of the code. The
-single exit can be one of terminator instruction -- branches, return, unwind and
-invoke. We can get a handle to a basic block from function. Refer to
+single exit can be one of the terminator instructions:  branches, return, unwind
+and invoke. We can get a handle to a basic block from function. Refer to
 Listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
 
 \begin{listing}[h!]
@@ -327,12 +327,12 @@ Listing~\ref{listing:llvm-basic-block-api} to see how to get the basic block.
 
 \subsubsection{Graph Traversal}
 
-LLVM CFG is structured as a graph. Therefore the basic block can be traversed
-using different ready-to-use graph traversal algorithms. LLVM offers some common
-graph traversal algorithms such as breadth-first search and depth-first search.
-The algorithms can be used immediately on basic blocks and functions. If there
-is a need to traverse a custom structure, the algorithms just require the new
-structure to implement \emph{GraphWriter} interface.
+LLVM CFG has already been structured as graphs. Therefore the basic block can be
+traversed using different ready-to-use graph traversal algorithms. LLVM offers
+some common graph traversal algorithms such as breadth-first search and
+depth-first search. The algorithms can be used immediately on basic blocks and
+functions. If there is a need to traverse a custom structure, the algorithms
+just require the new structure to implement \texttt{GraphWriter} interface.
 
 \subsection{Tools}
 
@@ -342,7 +342,7 @@ step.
 
 \subsubsection{clang}
 
-\texttt{clang} is one of the frontend provided by LLVM. It can compiles C, C++
+\texttt{clang} is one of the frontends provided by LLVM. It can compiles C, C++
 and Objective C. \texttt{clang} command-line arguments are compatible with
 widely use GCC compiler. The main use of \texttt{clang} in this research is to
 compile source files into LLVM IR text files.
@@ -362,9 +362,9 @@ LLVM IR.
     \label{listing:compile-llvm-to-ir}
 \end{listing}
     
-We can pass the optimization level from 0 (no optimization) to 3 (maximum
-optimization) when compiling the source code. The optimization level 3 makes
-code run faster but it produces a larger code size.
+We can set 0 (no optimization) to 3 (maximum optimization) to the optimization
+flag of \texttt{clang}. Optimization level 3 makes programs run faster but
+produces a larger program size.
 
 By default, clang strips out value names and optimizes the code when generating
 LLVM IR. We can use this flag to disable optimization and get readable value
@@ -388,20 +388,24 @@ without any optimization and to preserve the function and variable names.
 
 \subsubsection{opt}
 
-\texttt{opt} is the LLVM optimizer and analyzer that can be invoked from the
-command line. We use \texttt{opt} to execute the offline program analyzer which
-marks basic block checkpoints and calculate list of actions which can be used as
-information to detect control flow violations during remote attestation.
+\texttt{opt} is the LLVM optimizer and analyzer. We can invoke \texttt{opt} from
+the command line and tell which LLVM pass that we want to run. We use
+\texttt{opt} to execute the offline program analyzer to marks basic block
+checkpoints and calculate list of actions. We use the information from LLVM pass
+via \texttt{opt} to detect control-flow violations during remote attestation.
 
 \subsubsection{cmake}
 
 \texttt{cmake} is a build file generator that has an important role in large
-projects like LLVM. Although a deep understanding of \texttt{cmake} is not
-required in implementing LLVM pass, but we need to know at least how to build
-the pass after the implementation so that we can run it.
+projects like LLVM. Although we do not require a deep understanding of
+\texttt{cmake} in implementing LLVM pass, we need to know at least how to build
+the LLVM source code that we write.
 
-We can download LLVM uses git. See Listing~\ref{listing:clone-llvm-code}. We
-implement the offline measurement extract using LLVM 13.0.0.
+We can download LLVM using git (see Listing~\ref{listing:clone-llvm-code}). We
+implement the offline measurement extract using LLVM 13.0.0.  After downloading
+the code, we can go to the LLVM directory and generate the build files.
+\texttt{cmake} supports several build tools such as make and ninja. Refer to
+Listing~\ref{listing:build-llvm}.
 
 \begin{listing}[h!]
     \begin{minted}[
@@ -435,9 +439,6 @@ implement the offline measurement extract using LLVM 13.0.0.
     \vspace{128cm} % push the image up
 \end{listing}
 
-After downloading the code, we can go to the LLVM directory and generate the
-build files. \texttt{cmake} supports several build tools such as make and ninja.
-Refer to Listing~\ref{listing:build-llvm}.
 
 With all background discussion in this chapter, we should be ready to discuss
 the methodology in Chapter~\ref{Chapter4}.
