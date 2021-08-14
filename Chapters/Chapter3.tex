@@ -152,7 +152,8 @@ represented as byte code and in-memory representation. In the IR, each line
 contains LLVM instructions. We group instructions into basic blocks: containers
 for instructions that execute sequentially. This arrangement explicitly
 represents the application control-flow graph (CFG) in the IR. The details of
-LLVM IR is available in the Language Reference~\cite{LLVMLanguageReferencea}.
+LLVM IR is available in the Language
+Reference.~\footnote{\url{https://llvm.org/docs/LangRef.html}}
 
 \begin{listing}[ht!]
     \inputminted[
@@ -258,9 +259,10 @@ required components in implementing LLVM pass for the offline program analysis.
 LLVM API uses many C++ features and libraries such as Standard Template Library
 (STL). The API also provides many ready to use data structure which is not
 available in the STL. A more broad discussion on the important elements of the
-API is available in the Programmers Manual~\cite{LLVMProgrammerManuala}. We also
+API is available in the Programmers
+Manual.~\footnote{\url{https://llvm.org/docs/ProgrammersManual.html}} We also
 can refer to the Complete API documentation in the Doxygen
-page~\cite{LLVMLLVMa}.
+page.~\footnote{\url{https://llvm.org/doxygen/}}
 
 \subsubsection{Module}
 
