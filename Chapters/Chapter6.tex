@@ -6,17 +6,18 @@
 
 In Chapter~\ref{Chapter5}, we discuss the result of ScaRR's offline measurement
 generator. We learn that the algorithm time complexity is linear to the input.
-The input here is the size of the program. We measure the size of the program as
-the size of source code lines. The number of lines is also linear with the size
-of intermediate representation and basic blocks number. The most important
-finding we confirm the number of measurements is also linear with the program
-size. We know now that we can use the algorithm to do runtime remote attestation
-for a complex program.
+The input is the size of the program. We measure the size of the program as the
+size of source code lines. The number of lines is also linear with the size of
+intermediate representation and basic blocks number. The most important finding
+is we confirm the number of measurements is also linear with the program size.
+We know now that we can use the algorithm to do runtime remote attestation for a
+complex program.
 
 In this study, we identify the limitation of the algorithm. We can use the
 findings for possible future works. First, we do not test the algorithm with a
 program that contains recursion, signals, and exception. We also only test the
-algorithm with a single-thread program. We only run the analysis on C programs.
+algorithm with a single-thread program. Last, we only run the analysis on C
+programs.
 
 We also noticed the limitation on the algorithm that cannot detect non-control
 data attacks. Non-control data attack does not modify program CFG. Next, the
