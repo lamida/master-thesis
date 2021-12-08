@@ -1,6 +1,6 @@
 # Master Thesis
 
-This repository hosts the LaTeX source for my master's thesis. The main.pdf is the compiled version of the thesis.
+This repository hosts the LaTeX source for my master's thesis. The [main.pdf](https://github.com/lamida/master-thesis/blob/main/main.pdf) is the compiled version of the thesis.
 
 I was doing my master in Cybersecurity at [SUTD](https://istd.sutd.edu.sg/education/mssd/) and graduated in 2021. 
 
