@@ -1,6 +1,14 @@
-This is a template for LaTeX thesis (M.Sc. or PhD) at SUTD.
+# Master Thesis
 
-This template was adapted by Martin Ochoa based on a template downloaded from:
+This repository hosts the LaTeX source for my master's thesis. The main.pdf is the compiled version of the thesis.
+
+I was doing my master in Cybersecurity at [SUTD](https://istd.sutd.edu.sg/education/mssd/) and graduated in 2021. 
+
+This thesis project was advised by [Flavio Toffalini](http://flaviotoffalini.info/) and [Prof. Jianying Zhou](http://jianying.space/).  
+
+## LaTeX Template
+
+This thesis uses [template](https://github.com/sutd-mo/thesis-template) by Martin Ochoa based on a template downloaded from:
 
 http://www.LaTeXTemplates.com
 
