@@ -1,10 +1,12 @@
-# Master Thesis
+# Master Thesis - Study of Model for Runtime Remote Attestations
 
 This repository hosts the LaTeX source for my master's thesis. The [main.pdf](https://github.com/lamida/master-thesis/blob/main/main.pdf) is the compiled version of the thesis.
 
 I was doing my master in Cybersecurity at [SUTD](https://istd.sutd.edu.sg/education/mssd/) and graduated in 2021. 
 
-This thesis project was advised by [Flavio Toffalini](http://flaviotoffalini.info/) and [Prof. Jianying Zhou](http://jianying.space/).  
+This thesis project was advised by [Flavio Toffalini](http://flaviotoffalini.info/) and [Prof. Jianying Zhou](http://jianying.space/). 
+
+The thesis is implementing ScaRR runtime remote attestation using LLVM.
 
 ## LaTeX Template
 
